@@ -1,0 +1,182 @@
+---
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  fig.align = 'center',
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-")
+```
+
+[![Build Status](https://travis-ci.org/eric88tchong/Rinstapkg.svg?branch=master)](https://travis-ci.org/eric88tchong/Rinstapkg)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/eric88tchong/Rinstapkg?branch=master&svg=true)](https://ci.appveyor.com/project/eric88tchong/Rinstapkg)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Rinstapkg)](http://cran.r-project.org/package=Rinstapkg)
+[![Coverage Status](https://codecov.io/gh/eric88tchong/Rinstapkg/branch/master/graph/badge.svg)](https://codecov.io/gh/eric88tchong/Rinstapkg?branch=master)
+
+<br>
+<img src="man/figures/Rinstapkg.png" width="120px" align="right" />
+
+**Rinstapkgpkg** is an R package that connects to the Instagram API using tidy principles. 
+Rinstapkgpkg is short for The <b>R</b>eal <b>Insta</b>gram <b>P</b>ac<b>k</b>a<b>g</b>e. 
+With this package you can like, comment, follow, and slide into some DMs just like the 
+real Instagram. You can also get tons of feed data: user feeds, timeline feeds, location 
+feeds and more! All this comes without the need to register for an application. 
+Here are some of the package highlights:  
+
+  * OAuth 2.0 (Single Sign On) and Basic (Username-Password) Authentication methods (`ig_auth()`)
+  * Retrieve Feeds of different types:
+    * `ig_get_user_feed()`, `ig_get_timeline_feed()`, `ig_get_hashtag_feed()`, and more!
+  * Retrieve Users, Tags, Comments, and Perform Searches: 
+    * `ig_get_followers()`, `ig_get_user_tags()`, `ig_get_media_comments()`, `ig_search_users()`, etc.
+  * Utility calls (`ig_change_password()`, `ig_sync_features()`)
+
+**NOTE:** With great power comes great responsibility. Use of this package means 
+that you will not use it to spam, harass, or perform other nefarious acts.
+
+## Table of Contents  
+  * [Installation](#installation)
+  * [Usage](#usage)
+    * [Authenticate](#authenticate)
+    * [Timeline Feed](#timeline-feed)
+    * [Get Followers](#get-followers)
+    * [Search Users](#search-users)
+  * [Future](#future)
+  * [Credits](#credits)
+  * [More Information](#more-information)
+
+## Installation
+
+```{r, eval = FALSE}
+# cannot yet be installed from CRAN
+#install.packages("Rinstapkgpkg")
+
+# get the latest version available on GitHub using the devtools package
+# install.packages("devtools")
+devtools::install_github("eric88tchong/Rinstapkgpkg")
+```
+
+If you encounter a bug or issue, please file a minimal reproducible example on [GitHub](https://github.com/eric88tchong/Rinstapkgpkg/issues).
+
+## Usage
+
+### Authenticate
+
+First, load the **Rinstapkgpkg** package and login. There are two ways to authenticate:  
+
+  1. OAuth 2.0
+  2. Basic Username-Password
+
+It is recommended to use OAuth 2.0 if you apply for and are approved for an Instagram 
+App. This way multiple users can use your app without having to explicity share 
+their credentials with you. If you do not have an approved app, you can still use this 
+package by providing your username and password.
+
+```{r auth, include = FALSE}
+suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(here)))
+library(Rinstapkgpkg)
+
+# OAuth2.0 token authentication, which we won't use here
+#token_path <- here::here("tests", "testthat", "Rinstapkgpkg_token.rds")
+#suppressMessages(ig_auth(token = token_path, verbose = FALSE))
+
+# Username-Password authentication
+settings_path <- here::here("tests", "testthat", "Rinstapkgpkg_test_settings.rds")
+suppressMessages(ig_auth(username=settings_path$username, 
+                         password=settings_path$password))
+```
+
+```{r, eval=FALSE}
+suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(purrr)))
+library(Rinstapkgpkg)
+
+# Using OAuth 2.0 authentication
+ig_auth()
+
+# Using Basic Username-Password authentication
+ig_auth(username = "YOUR_USERNAME_OR_EMAIL_HERE", 
+        password = "YOUR_PASSWORD_HERE")
+```
+
+After logging in with `ig_auth()`, you can check your connectivity by looking at 
+the information returned about the current user. It should be information about you!
+
+```{r my-profile}
+user_info <- ig_my_profile()
+sprintf("User Id: %s", user_info$id)
+```
+
+### Timeline Feed
+
+DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+
+```{r timeline-feed}
+timeline_results <- ig_get_timeline_feed()
+timeline_results
+```
+
+### Get Followers
+
+DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+
+```{r get-followers}
+follower_results <- ig_get_followers()
+follower_results
+```
+
+### Search Users
+
+DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+
+```{r search-users}
+search_results <- ig_search_users()
+search_results
+```
+
+## Future
+
+Future methods to support: 
+
+ - Profile Functions: 
+     - `ig_profile_picture_change()`
+     - `ig_profile_picture_remove()`
+     - `ig_profile_set_private()`
+     - `ig_profile_set_public()`
+     - `ig_profile_get()`
+     - `ig_profile_edit()`
+     - `ig_remove_self_tag()`
+     - `ig_approve_friendship()`
+     - `ig_ignore_friendship()`
+     - `ig_ignore_friendship()`
+ - Creation Functions: 
+     - `ig_upload_photo()`
+     - `ig_upload_video()`
+     - `ig_upload_album()`
+ - More In-App Functions
+     - `ig_direct_message()`
+     - `ig_direct_share()`
+     - `ig_follow()`
+     - `ig_unfollow()`
+     - `ig_block()`
+     - `ig_unblock()`
+
+## Credits
+
+This application uses other open source software components. The authentication 
+components are mostly verbatim copies of the routines established in the **googlesheets** 
+package (https://github.com/jennybc/googlesheets). Methods are inspired by the 
+**Instagram-API-python** library (https://github.com/LevPasha/Instagram-API-python). 
+We acknowledge and are grateful to these developers for their contributions to open source.
+
+## More Information
+
+Use of this package means that you will not use it to spam, harass, or perform 
+other nefarious acts. For more details on how to use the API please see this 
+package's website at https://eric88tchong.github.io/Rinstapkgpkg. 
+
+[Top](#)

@@ -1,0 +1,81 @@
+title: Rinstapkg
+url: https://eric88tchong.github.io/Rinstapkg
+template:
+  params:
+    bootswatch: spacelab
+    ganalytics: UA-XXXXXXX-XXX REPLACE MEEEEEE!!!! -> Must Setup a Google Analytics Account
+    docsearch:
+      api_key: REPLACE MEEEEE!!!!!! -> Instructions Here: https://pkgdown.r-lib.org/articles/pkgdown.html#search
+      index_name: Rinstapkg
+
+home:
+  strip_header: true
+  
+navbar:
+  type: default
+  left:
+    - text: "Articles"
+      icon: fas fa-book
+      menu: 
+      -  text: Getting Started
+         href: articles/getting-started.html
+    - text: Reference
+      icon: fa-file-code-o
+      href: reference/index.html
+    - text: News
+      icon: fa-newspaper-o
+      href: news/index.html
+  right:
+    - text: GitHub
+      icon: fa-github fa-lg
+      href: https://github.com/eric88tchong/Rinstapkg
+      
+reference:
+  - title: Authentication
+    desc: Functions used for authenticating
+    contents:
+      - '`ig_auth`'
+      - '`ig_sync_features`'
+  - title: Retrieve Functions
+    desc: Functions used for getting data
+    contents:
+      - '`ig_get_user_feed`'
+      - '`ig_get_timeline_feed`'
+      - '`ig_get_hashtag_feed`'
+      - '`ig_get_location_feed`'
+      - '`ig_get_popular_feed`'
+      - '`ig_get_liked_feed`'
+      - '`ig_get_saved_feed`'
+      - '`ig_get_followers`'
+      - '`ig_get_followings`'
+      - '`ig_get_user_tags`'
+      - '`ig_get_geomedia`'
+  - title: Search Functions
+    desc: Functions used for searching data
+    contents:      
+      - '`ig_search_users`'
+      - '`ig_search_username`'
+      - '`ig_search_tags`'
+  - title: Media Functions
+    desc: Functions typically used to interact with media (a.k.a. posts)
+    contents:
+      - '`ig_like`'
+      - '`ig_unlike`'
+      - '`ig_save`'
+      - '`ig_unsave`'
+      - '`ig_comment`'
+      - '`ig_comment_delete`'
+      - '`ig_get_media_info`'
+      - '`ig_get_media_comments`'
+      - '`ig_get_media_likers`'
+      - '`ig_edit_media`'
+      - '`ig_delete_media`'
+  - title: Activity Functions
+    desc: Functions for recent activity and timelines as it relates to your account
+    contents:
+      - '`ig_my_timeline`'
+      - '`ig_my_recent_activity`'
+      - '`ig_following_recent_activity`'
+      - '`ig_my_inbox_v2`'
+      - '`ig_autocomplete_userlist`'
+      

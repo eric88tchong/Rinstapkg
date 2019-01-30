@@ -1,0 +1,37 @@
+Package: Rinstapkg
+Title: An Implementation of the 'Instagram' API Using Tidy Principles
+Version: 0.0.0.9000
+Date: 2019-01-27
+Description: An implementation of the 'Instagram' API using tidy principles. This 
+    includes functions to get feeds and users, but also perform basic in-app 
+    functionality such as liking, commenting, following, and blocking. Use of this 
+    package means that you will not use it to spam, harass, or perform other nefarious 
+    acts. For more details on how to use the API please see this package's website 
+    <https://eric88tchong.github.io/Rinstapkg/> for more information, documentation, 
+    and examples.
+Authors@R: c(
+    person("Eric", "Tchong", , "est2fr@virginia.edu", c("aut", "cre")),
+    person(c("Steven", "M."), "Mortimer", , "reportmort@gmail.com", c("ctb"))
+    )
+URL: https://github.com/eric88tchong/Rinstapkg
+BugReports: https://github.com/eric88tchong/Rinstapkg/issues
+Encoding: UTF-8
+Depends:
+    R (>= 3.1.0)
+License: MIT + file LICENSE
+LazyData: true
+Imports:
+    methods,
+    httr,
+    dplyr,
+    jsonlite,
+    purrr,
+    readr,
+    lubridate
+Suggests:
+    knitr,
+    testthat,
+    rmarkdown,
+    here
+VignetteBuilder: knitr
+RoxygenNote: 6.1.0
