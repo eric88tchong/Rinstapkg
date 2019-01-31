@@ -18,6 +18,5 @@
 ^tic\.R$
 man-roxygen
 inst/hex
-tests/testthat/Rinstapkg.tar.enc
-tests/testthat/.httr-oauth
-tests/testthat/.httr-oauth-Rinstapkg
+tests/testthat/Rinstapkg_test_settings.rds.enc
+tests/testthat/Rinstapkg_test_settings.rds

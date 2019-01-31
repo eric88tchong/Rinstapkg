@@ -22,7 +22,7 @@ vignettes/*.html
 vignettes/*.pdf
 
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
+.httr-oauth*
 .httr-oauth-Rinstapkg
 Rinstapkg_test_settings.rds
 Rinstapkg_token.rds
