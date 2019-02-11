@@ -4,8 +4,12 @@
 \alias{ig_get_user_feed}
 \title{ig_get_user_feed}
 \usage{
-ig_get_user_feed()
+ig_get_user_feed(user_id, return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
+}
+\arguments{
+\item{user_id}{An integer}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function uses the user_id to return a dataframe of information from that account's feed
 }

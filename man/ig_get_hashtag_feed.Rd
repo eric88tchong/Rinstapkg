@@ -4,8 +4,12 @@
 \alias{ig_get_hashtag_feed}
 \title{ig_get_hashtag_feed}
 \usage{
-ig_get_hashtag_feed()
+ig_get_hashtag_feed(hashtag_string, return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
+}
+\arguments{
+\item{hashtag_string}{A string of characters: do not include the hashtag at the beginning}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function filters by hashtags and returns all posts that have the save hashtag string
 }

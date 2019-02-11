@@ -4,8 +4,10 @@
 \alias{ig_get_followings}
 \title{ig_get_followings}
 \usage{
-ig_get_followings()
+ig_get_followings(user_ID, return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!
+THIS WORKS!!!!
 }

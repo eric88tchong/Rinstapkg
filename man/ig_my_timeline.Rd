@@ -7,6 +7,18 @@
 ig_my_timeline(max_id = NULL, min_timestamp = NULL, return_df = TRUE,
   paginate = TRUE, max_pages = 10, verbose = FALSE)
 }
+\arguments{
+\item{max_id}{integer; this integer represents the last id of a post that you 
+would want to retrieve from your timeline}
+}
+\value{
+\code{tbl_df} or \code{list}
+}
 \description{
 NEEDS DOCUMENTATION!!!!
+}
+\examples{
+\dontrun{
+my_timeline <- ig_my_timeline()
+}
 }

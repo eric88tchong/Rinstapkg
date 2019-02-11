@@ -4,7 +4,8 @@
 \alias{ig_get_saved_feed}
 \title{ig_get_saved_feed}
 \usage{
-ig_get_saved_feed()
+ig_get_saved_feed(return_df = TRUE, verbose = FALSE, paginate = TRUE,
+  max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

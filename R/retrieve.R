@@ -1,9 +1,14 @@
 ##### THIS FILE NEEDS FUNCTIONS & DOCUMENTATION 
 
-#' ig_get_user_id
+#' Return User ID
 #' 
 #' This function uses and instagram username to return the userID that you will need for other functions
 #' 
+#' @param username A character string 
+#' @examples{
+#' ig_get_user_id("r4sctest")
+#' ig_get_user_id("r4scatUVA")
+#' }
 #' @export
 ig_get_user_id <- function(username,return_df=FALSE){
   
@@ -15,9 +20,12 @@ ig_get_user_id <- function(username,return_df=FALSE){
 }
 #' ig_get_user_feed
 #' 
-#' NEEDS DOCUMENTATION!!!!
-#' THIS WORKS!!!!!!! OMFG!!!!!!!!
+#' This function uses the user_id to return a dataframe of information from that account's feed
 #' 
+#' @param user_id An integer 
+#' @example{
+#' ig_get_user_feed(10719578450)
+#' }
 #' @export
 ig_get_user_feed <- function(user_id, return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
   
@@ -40,8 +48,9 @@ ig_get_timeline_feed <- function(){
  
 #' ig_get_hashtag_feed
 #' 
-#' NEEDS DOCUMENTATION!!!!
-#' THIS WORKSSSS!!!!!
+#' This function filters by hashtags and returns all posts that have the save hashtag string
+#' 
+#' @param hashtag_string A string of characters: do not include the hashtag at the beginning
 #' @export
 ig_get_hashtag_feed <- function(hashtag_string,return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
   

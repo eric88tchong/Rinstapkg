@@ -4,8 +4,10 @@
 \alias{ig_get_popular_feed}
 \title{ig_get_popular_feed}
 \usage{
-ig_get_popular_feed()
+ig_get_popular_feed(return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!
+I think this works
 }

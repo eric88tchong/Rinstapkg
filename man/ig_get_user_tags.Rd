@@ -4,8 +4,10 @@
 \alias{ig_get_user_tags}
 \title{ig_get_user_tags}
 \usage{
-ig_get_user_tags()
+ig_get_user_tags(user_ID, return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!
+NEEDS tEST
 }

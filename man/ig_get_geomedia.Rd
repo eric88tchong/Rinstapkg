@@ -4,8 +4,10 @@
 \alias{ig_get_geomedia}
 \title{ig_get_geomedia}
 \usage{
-ig_get_geomedia()
+ig_get_geomedia(user_ID, return_df = TRUE, verbose = FALSE,
+  paginate = TRUE, max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!
+NEEDS TEST
 }

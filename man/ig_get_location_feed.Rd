@@ -4,8 +4,10 @@
 \alias{ig_get_location_feed}
 \title{ig_get_location_feed}
 \usage{
-ig_get_location_feed()
+ig_get_location_feed(location_string, return_df = TRUE,
+  verbose = FALSE, paginate = TRUE, max_pages = 10)
 }
 \description{
 NEEDS DOCUMENTATION!!!!
+Not Sure of Syntax
 }
