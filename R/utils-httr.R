@@ -172,7 +172,7 @@ ig_generic_GET <- function(relative_endpoint, query=NULL, item_name=NULL, return
       message(httr_url)  
     }
   }
-  
+  #fix catch error function for 404
   resp <- rGET(httr_url)
   catch_errors(resp)
   resp_parsed <- content(resp, "parsed")
