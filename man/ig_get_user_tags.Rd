@@ -2,12 +2,22 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_tags}
 \alias{ig_get_user_tags}
-\title{ig_get_user_tags}
+\title{Return dataframe with all posts that specified user was tagged in}
 \usage{
 ig_get_user_tags(user_ID, return_df = TRUE, verbose = FALSE,
   paginate = TRUE, max_pages = 10)
 }
+\arguments{
+\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+
+\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+
+\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 21 entries}
+
+\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+
+\item{user_id}{An integer}
+}
 \description{
-NEEDS DOCUMENTATION!!!!
-NEEDS tEST
+This fuction returns all of the posts that the specified user was tagged in
 }

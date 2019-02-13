@@ -158,10 +158,14 @@ ig_get_followings <- function(user_ID,return_df=TRUE, verbose=FALSE){
   #Target Endpoint: friendships/{username_id}/following/
 }
 
-#' ig_get_user_tags
+#' Return dataframe with all posts that specified user was tagged in
 #' 
-#' NEEDS DOCUMENTATION!!!!
-#' NEEDS tEST
+#' This fuction returns all of the posts that the specified user was tagged in
+#' @param user_id An integer 
+#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
+#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
+#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 21 entries
+#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
 #' @export
 ig_get_user_tags <- function(user_ID, return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
   ig_generic_GET(relative_endpoint = sprintf("usertags/%s/feed",user_ID),
