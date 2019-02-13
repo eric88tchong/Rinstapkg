@@ -2,14 +2,25 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_hashtag_feed}
 \alias{ig_get_hashtag_feed}
-\title{ig_get_hashtag_feed}
+\title{Return a dataframe of posts with the specified hashtag}
 \usage{
 ig_get_hashtag_feed(hashtag_string, return_df = TRUE, verbose = FALSE,
   paginate = TRUE, max_pages = 10)
 }
 \arguments{
 \item{hashtag_string}{A string of characters: do not include the hashtag at the beginning}
+
+\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+
+\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+
+\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+
+\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
 }
 \description{
-This function filters by hashtags and returns all posts that have the save hashtag string
+This function filters by hashtags and returns all posts that have the same hashtag string
+}
+\examples{
+ig_get_hashtag_feed("R4SC4LIFE")
 }

@@ -9,5 +9,5 @@ ig_get_geomedia(user_ID, return_df = TRUE, verbose = FALSE,
 }
 \description{
 NEEDS DOCUMENTATION!!!!
-NEEDS TEST
+NEEDS tEST
 }

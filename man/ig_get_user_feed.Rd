@@ -2,14 +2,25 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_feed}
 \alias{ig_get_user_feed}
-\title{ig_get_user_feed}
+\title{Return a dateframe of the posts from a specified account}
 \usage{
 ig_get_user_feed(user_id, return_df = TRUE, verbose = FALSE,
   paginate = TRUE, max_pages = 10)
 }
 \arguments{
 \item{user_id}{An integer}
+
+\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+
+\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+
+\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+
+\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
 }
 \description{
 This function uses the user_id to return a dataframe of information from that account's feed
+}
+\examples{
+ig_get_user_feed("10719578450")
 }

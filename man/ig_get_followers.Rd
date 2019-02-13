@@ -2,12 +2,15 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_followers}
 \alias{ig_get_followers}
-\title{ig_get_followers}
+\title{Returns a dataframe with information of followers of the account if it is public}
 \usage{
-ig_get_followers(user_ID, return_df = TRUE, verbose = FALSE,
-  paginate = TRUE, max_pages = 10)
+ig_get_followers(user_ID, return_df = TRUE, verbose = FALSE)
+}
+\arguments{
+\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+
+\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
-THIS WORKS!!!!!!
+This function needs testing
 }

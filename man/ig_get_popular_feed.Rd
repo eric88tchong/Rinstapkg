@@ -9,5 +9,5 @@ ig_get_popular_feed(return_df = TRUE, verbose = FALSE,
 }
 \description{
 NEEDS DOCUMENTATION!!!!
-I think this works
+I think this works but can only be run after a certain timeframe
 }

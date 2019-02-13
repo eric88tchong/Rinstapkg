@@ -2,11 +2,20 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_saved_feed}
 \alias{ig_get_saved_feed}
-\title{ig_get_saved_feed}
+\title{Returns a dataframe with all the posts that you saved}
 \usage{
 ig_get_saved_feed(return_df = TRUE, verbose = FALSE, paginate = TRUE,
   max_pages = 10)
 }
+\arguments{
+\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+
+\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+
+\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+
+\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+}
 \description{
-NEEDS DOCUMENTATION!!!!
+This function returns the posts that you saved inside of your account
 }

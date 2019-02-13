@@ -2,19 +2,19 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_id}
 \alias{ig_get_user_id}
-\title{Return User ID}
+\title{Return the user ID from a username}
 \usage{
 ig_get_user_id(username, return_df = FALSE)
 }
 \arguments{
 \item{username}{A character string}
+
+\item{return_df}{When return_df=FALSE, this function will return a list, in this case, return df will return just return the integer that is the user id.}
 }
 \description{
 This function uses and instagram username to return the userID that you will need for other functions
 }
 \examples{
-{
 ig_get_user_id("r4sctest")
 ig_get_user_id("r4scatUVA")
-}
 }
