@@ -14,10 +14,12 @@ ig_search_users <- function(){
 #' NEEDS DOCUMENTATION!!!!
 #' 
 #' @export
-ig_search_username <- function(){
-  #Target Endpoint: users/{username}/usernameinfo/
+ig_search_username <- function(username,return_df=TRUE){
+  
+  ig_generic_GET(relative_endpoint=sprintf("users/%s/usernameinfo/",username), 
+                           item_name = "user", 
+                           return_df = return_df)
 }
-
 #' ig_search_tags
 #' 
 #' NEEDS DOCUMENTATION!!!!
