@@ -87,9 +87,13 @@ ig_get_location_feed <- function(location_string,return_df=TRUE, verbose=FALSE, 
   #Target Endpoint: feed/location/
 }
 
-#' ig_get_popular_feed
+#' Return dataframe with the current most popular posts on instagram
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function just returns current most popular posts on instagram
+#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
+#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
+#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 24 entries
+#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
 #' I think this works but can only be run after a certain timeframe
 #' @export
 ig_get_popular_feed <- function(return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
