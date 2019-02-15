@@ -2,15 +2,37 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_followers}
 \alias{ig_get_followers}
-\title{Returns a dataframe with information of followers of the account if it is public}
+\title{Get all followers of user}
 \usage{
-ig_get_followers(user_ID, return_df = TRUE, verbose = FALSE)
+ig_get_followers(user_id, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
 }
 \arguments{
-\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+\item{user_id}{integer; the unique id to identify an Instagram user which can be 
+found in the \code{"pk"} field on a \code{user} object}
 
-\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function needs testing
+This fuction returns all of the users that follow the specified user.
+}
+\examples{
+\dontrun{
+this_user_id <- ig_get_user_id("r4scatUVA")
+ig_get_followers(this_user_id)
+}
 }

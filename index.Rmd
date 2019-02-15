@@ -20,8 +20,8 @@ knitr::opts_chunk$set(
 <br>
 <img src="man/figures/Rinstapkg.png" width="120px" align="right" />
 
-**Rinstapkgpkg** is an R package that connects to the Instagram API using tidy principles. 
-Rinstapkgpkg is short for The <b>R</b>eal <b>Insta</b>gram <b>P</b>ac<b>k</b>a<b>g</b>e. 
+**Rinstapkg** is an R package that connects to the Instagram API using tidy principles. 
+Rinstapkg is short for The <b>R</b>eal <b>Insta</b>gram <b>P</b>ac<b>k</b>a<b>g</b>e. 
 With this package you can like, comment, follow, and slide into some DMs just like the 
 real Instagram. You can also get tons of feed data: user feeds, timeline feeds, location 
 feeds and more! All this comes without the need to register for an application. 
@@ -52,20 +52,20 @@ that you will not use it to spam, harass, or perform other nefarious acts.
 
 ```{r, eval = FALSE}
 # cannot yet be installed from CRAN
-#install.packages("Rinstapkgpkg")
+#install.packages("Rinstapkg")
 
 # get the latest version available on GitHub using the devtools package
 # install.packages("devtools")
-devtools::install_github("eric88tchong/Rinstapkgpkg")
+devtools::install_github("eric88tchong/Rinstapkg")
 ```
 
-If you encounter a bug or issue, please file a minimal reproducible example on [GitHub](https://github.com/eric88tchong/Rinstapkgpkg/issues).
+If you encounter a bug or issue, please file a minimal reproducible example on [GitHub](https://github.com/eric88tchong/Rinstapkg/issues).
 
 ## Usage
 
 ### Authenticate
 
-First, load the **Rinstapkgpkg** package and login. There are two ways to authenticate:  
+First, load the **Rinstapkg** package and log in. There are two ways to authenticate:  
 
   1. OAuth 2.0
   2. Basic Username-Password
@@ -78,22 +78,22 @@ package by providing your username and password.
 ```{r auth, include = FALSE}
 suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(here)))
-library(Rinstapkgpkg)
+library(Rinstapkg)
 
 # OAuth2.0 token authentication, which we won't use here
-#token_path <- here::here("tests", "testthat", "Rinstapkgpkg_token.rds")
+#token_path <- here::here("tests", "testthat", "Rinstapkg_token.rds")
 #suppressMessages(ig_auth(token = token_path, verbose = FALSE))
 
 # Username-Password authentication
-settings_path <- here::here("tests", "testthat", "Rinstapkgpkg_test_settings.rds")
-suppressMessages(ig_auth(username=settings_path$username, 
-                         password=settings_path$password))
+settings <- readRDS(here::here("tests", "testthat", "Rinstapkg_test_settings.rds"))
+suppressMessages(ig_auth(username=settings$prod_username, 
+                         password=settings$prod_password))
 ```
 
 ```{r, eval=FALSE}
 suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(purrr)))
-library(Rinstapkgpkg)
+library(Rinstapkg)
 
 # Using OAuth 2.0 authentication
 ig_auth()
@@ -104,38 +104,59 @@ ig_auth(username = "YOUR_USERNAME_OR_EMAIL_HERE",
 ```
 
 After logging in with `ig_auth()`, you can check your connectivity by looking at 
-the information returned about the current user. It should be information about you!
-
-```{r my-profile}
-user_info <- ig_my_profile()
-sprintf("User Id: %s", user_info$id)
-```
+the information returned about your timeline (`ig_my_timeline()`), inbox (`ig_my_inbox()`), 
+or recent activity (`ig_my_recent_activity()`). It should be information about you!
 
 ### Timeline Feed
 
-DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+A simple function to start with is verifying that you can retrieve your timeline as 
+it would appear in the Instagramm app or online. This function returns data that 
+would appear in the authenticated user's timeline feed. By default, the data is 
+returned as a tidy `tbl_df` where each row represents one post from the feed. If 
+you prefer to work with a list format, then just specify `return_df=FALSE` as an 
+argument.
 
 ```{r timeline-feed}
-timeline_results <- ig_get_timeline_feed()
+timeline_results <- ig_my_timeline()
 timeline_results
 ```
 
 ### Get Followers
 
-DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+With the `ig_get_followers()` function you can retrieve a `tbl_df` of all the users 
+that follow a particular user. Just provide the `user_id` of the account who's followers 
+you would like to get. **NOTE**: The Instagram APIs use Ids to retrieve information so 
+instead of giving the account's username (typically starting with an \@symbol), you 
+need to first grab the `user_id` of that account using the username, then supply it 
+to the `ig_get_followers()` function. 
 
-```{r get-followers}
-follower_results <- ig_get_followers()
+```{r get-followers-1}
+# Get Justin's Biebers beliebers!
+# Side Note: A belieber is a HUGE Justin Bieber fan.
+bieber_user_id <- ig_get_user_id("justinbieber")
+follower_results <- ig_get_followers(bieber_user_id)
 follower_results
 ```
 
-### Search Users
+In the example above you'll notice that we didn't retrieve all 100M+ followers that 
+Justin Bieber has. By default the function only returns the top 10 pages of followers, 
+but you can set the `max_pages` argument equal to `Inf` to return all of them. Caution: 
+This might take awhile!
 
-DESCRIPTION ABOUT THIS FUNCTION GOES HERE.
+```{r get-followers-2, eval=FALSE}
+# return all 100M+ followers of Justin Bieber
+follower_results <- ig_get_followers(bieber_user_id, max_pages = Inf)
+```
 
-```{r search-users}
-search_results <- ig_search_users()
-search_results
+### Get Following
+
+With the `ig_get_following()` function you can retrieve a `tbl_df` of all the users 
+that a particular user is following. For example, Justin Bieber follows ~100 users. Who 
+are those lucky few?
+
+```{r get-following}
+following_results <- ig_get_following(bieber_user_id)
+following_results
 ```
 
 ## Future
@@ -170,13 +191,14 @@ Future methods to support:
 This application uses other open source software components. The authentication 
 components are mostly verbatim copies of the routines established in the **googlesheets** 
 package (https://github.com/jennybc/googlesheets). Methods are inspired by the 
-**Instagram-API-python** library (https://github.com/LevPasha/Instagram-API-python). 
-We acknowledge and are grateful to these developers for their contributions to open source.
+**Instagram-API-python** library (https://github.com/LevPasha/Instagram-API-python) and 
+**Instagram-API** library (https://github.com/mgp25/Instagram-API). We acknowledge 
+and are grateful to these developers for their contributions to open source.  
 
 ## More Information
 
 Use of this package means that you will not use it to spam, harass, or perform 
 other nefarious acts. For more details on how to use the API please see this 
-package's website at https://eric88tchong.github.io/Rinstapkgpkg. 
+package's website at https://eric88tchong.github.io/Rinstapkg. 
 
 [Top](#)

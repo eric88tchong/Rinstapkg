@@ -1,0 +1,9 @@
+pandoc: '2.5'
+pkgdown: 1.1.0
+pkgdown_sha: ~
+articles:
+  getting-started: getting-started.html
+urls:
+  reference: https://eric88tchong.github.io/Rinstapkg/reference
+  article: https://eric88tchong.github.io/Rinstapkg/articles
+

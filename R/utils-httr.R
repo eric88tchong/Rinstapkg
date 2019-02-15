@@ -123,16 +123,16 @@ spf <- function(...) stop(sprintf(...), call. = FALSE)
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
-catch_errors <- function(x){
-  if(http_error(x)){
+catch_errors <- function(x) {
+  if(http_error(x)) {
     response_parsed <- content(x, encoding='UTF-8')
     # convert to list if xml content type
     content_type <- x$headers$`content-type`
-    if(grepl('xml', content_type)){
+    if(grepl('xml', content_type)) {
       response_parsed <- as_list(response_parsed)
     }
-    if(status_code(x) < 500){
-      if(!is.null(response_parsed$status) & !is.null(response_parsed$message)){
+    if(status_code(x) < 500) {
+      if(!is.null(response_parsed$status) & !is.null(response_parsed$message)) {
         stop(sprintf("Status: %s\nMessage: %s", 
                      response_parsed$status, response_parsed$message), call. = FALSE)  
       }
@@ -155,8 +155,9 @@ catch_errors <- function(x){
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
-ig_generic_GET <- function(relative_endpoint, query=NULL, item_name=NULL, return_df=TRUE, 
-                           paginate=FALSE, page_index=1, max_pages=10, verbose=FALSE){
+ig_generic_GET <- function(relative_endpoint, query = NULL, item_name = NULL, 
+                           return_df = TRUE, paginate = FALSE, page_index = 1, 
+                           max_pages = 10, verbose = FALSE) {
   
   endpoint_url <- parse_url(sprintf('%s/%s', 
                                     getOption("Rinstapkg.private_base_url"), 
@@ -172,9 +173,9 @@ ig_generic_GET <- function(relative_endpoint, query=NULL, item_name=NULL, return
       message(httr_url)  
     }
   }
-  #fix catch error function for 404
+  
   resp <- rGET(httr_url)
-  catch_errors(resp)
+  catch_errors(resp) # how should we handle 404 errors?
   resp_parsed <- content(resp, "parsed")
   
   target_data <- if(is.null(item_name)) resp_parsed else resp_parsed[[item_name]]
@@ -208,9 +209,12 @@ ig_generic_GET <- function(relative_endpoint, query=NULL, item_name=NULL, return
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
-ig_generic_POST <- function(relative_endpoint, body_as_list, return_df=FALSE, verbose=FALSE){
+ig_generic_POST <- function(relative_endpoint, body_as_list, 
+                            return_df = FALSE, verbose = FALSE) {
   
-  endpoint_url <- parse_url(sprintf('%s/%s', getOption("Rinstapkg.private_base_url"), relative_endpoint))
+  endpoint_url <- parse_url(sprintf('%s/%s', 
+                                    getOption("Rinstapkg.private_base_url"), 
+                                    relative_endpoint))
   httr_url <- build_url(endpoint_url)
   if(verbose) httr_url
   

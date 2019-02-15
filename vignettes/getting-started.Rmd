@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
-author: "Steven M. Mortimer"
-date: "2018-03-12"
+author: "Eric Tchong"
+date: "2019-02-15"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -23,167 +23,99 @@ knitr::opts_chunk$set(
 )
 ```
 
-First, load the `salesforcer` package and login. There are two ways to authenticate: 
-1) OAuth 2.0 and 2) Basic Username-Password. It is recommended to use OAuth 2.0 so that 
-passwords do not have to be shared/embedded within scripts. User credentials will 
-be stored in locally cached file entitled ".httr-oauth-salesforcer" in the current working 
-directory.
+First, load the **Rinstapkg** package and log in. There are two ways to authenticate:  
+
+  1. OAuth 2.0
+  2. Basic Username-Password
+
+It is recommended to use OAuth 2.0 if you apply for and are approved for an Instagram App. 
+This way multiple users can use your app without having to explicity share their 
+credentials with you. Note that the OAuth credentials will be stored in locally 
+cached file entitled ".httr-oauth-Rinstapkg" in the current working directory.  
+
+If you do not have an approved app, you can still use this package by providing your 
+username and password.
 
 ```{r auth, include = FALSE}
 suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(here)))
-library(salesforcer)
-token_path <- here::here("tests", "testthat", "salesforcer_token.rds")
-suppressMessages(sf_auth(token = token_path, verbose = FALSE))
+library(Rinstapkg)
+
+# OAuth2.0 token authentication, which we won't use here
+#token_path <- here::here("tests", "testthat", "Rinstapkg_token.rds")
+#suppressMessages(ig_auth(token = token_path, verbose = FALSE))
+
+# Username-Password authentication
+settings <- readRDS(here::here("tests", "testthat", "Rinstapkg_test_settings.rds"))
+suppressMessages(ig_auth(username=settings$prod_username, 
+                         password=settings$prod_password))
 ```
 
 ```{r load-package, eval=FALSE}
 suppressWarnings(suppressMessages(library(dplyr)))
-library(salesforcer)
-sf_auth()
+library(Rinstapkg)
+ig_auth(username = "MY_USERNAME", password = "MY_PASSWORD") 
 ```
 
-Just a note, that it's not necessary to setup your own Connected App in Salesforce 
-to use OAuth 2.0 authentication. The only difference is that the authentication 
-will be run through the client created and associated with the `salesforcer` 
-package. By using the package client, you will *NOT* be giving access to Salesforce 
-to anyone, the package is just the medium for you to connect to your own data. 
-If you wanted more control you would specify those options like so: 
+After logging in with `ig_auth()`, you can check your connectivity by looking at 
+the information returned about your timeline (`ig_my_timeline()`), inbox (`ig_my_inbox()`), 
+or recent activity (`ig_my_recent_activity()`). It should be information about you!
 
-```{r other-params, eval=FALSE}
-options(salesforcer.consumer_key = "012345678901-99thisisatest99connected33app22key")
-options(salesforcer.consumer_secret = "Th1s1sMyConsumerS3cr3t")
+### Timeline Feed
 
-sf_auth()
+A simple function to start with is verifying that you can retrieve your timeline as 
+it would appear in the Instagramm app or online. This function returns data that 
+would appear in the authenticated user's timeline feed. By default, the data is 
+returned as a tidy `tbl_df` where each row represents one post from the feed. If 
+you prefer to work with a list format, then just specify `return_df=FALSE` as an 
+argument.
+
+```{r timeline-feed}
+timeline_results <- ig_my_timeline()
+timeline_results
 ```
 
-After logging in with `sf_auth()`, you can check your connectivity by looking at 
-the information returned about the current user. It should be information about you!
+### Get Followers
 
-```{r}
-# pull down information of person logged in
-# it's a simple easy call to get started 
-# and confirm a connection to the APIs
-user_info <- sf_user_info()
-sprintf("User Id: %s", user_info$id)
-sprintf("User Active?: %s", user_info$isActive)
+With the `ig_get_followers()` function you can retrieve a `tbl_df` of all the users 
+that follow a particular user. Just provide the `user_id` of the account who's followers 
+you would like to get. **NOTE**: The Instagram APIs use Ids to retrieve information so 
+instead of giving the account's username (typically starting with an \@symbol), you 
+need to first grab the `user_id` of that account using the username, then supply it 
+to the `ig_get_followers()` function. 
+
+```{r get-followers-1}
+# Get Justin's Biebers beliebers!
+# Side Note: A belieber is a HUGE Justin Bieber fan.
+bieber_user_id <- ig_get_user_id("justinbieber")
+follower_results <- ig_get_followers(bieber_user_id)
+follower_results
 ```
 
-### Create
-Salesforce has objects and those objects contain records. One default object is the 
-"Contact" object. This example shows how to create two records in the Contact object.
+In the example above you'll notice that we didn't retrieve all 100M+ followers that 
+Justin Bieber has. By default the function only returns the top 10 pages of followers, 
+but you can set the `max_pages` argument equal to `Inf` to return all of them. Caution: 
+This might take awhile!
 
-```{r}
-n <- 2
-new_contacts <- tibble(FirstName = rep("Test", n),
-                       LastName = paste0("Contact-Create-", 1:n))
-created_records <- sf_create(new_contacts, "Contact")
-created_records
+```{r get-followers-2, eval=FALSE}
+# return all 100M+ followers of Justin Bieber
+follower_results <- ig_get_followers(bieber_user_id, max_pages = Inf)
 ```
 
-### Retrieve
-Retrieve pulls down a specific set of records and fields. It's very similar to 
-running a query, but doesn't use SOQL. Here is an example where we retrieve the 
-data we just created.
+### Get Following
 
-```{r}
-retrieved_records <- sf_retrieve(ids=created_records$id, 
-                                 fields=c("FirstName", "LastName"), 
-                                 object_name="Contact")
-retrieved_records
-```
+With the `ig_get_following()` function you can retrieve a `tbl_df` of all the users 
+that a particular user is following. For example, Justin Bieber follows ~100 users. Who 
+are those lucky few?
 
-
-### Query
-
-Salesforce has proprietary form of SQL called SOQL (Salesforce Object Query 
-Language). SOQL is a powerful tool that allows you to return the attributes of records 
-on almost any object in Salesforce including Accounts, Contacts, Tasks, Opportunities, 
-even Attachments! Below is an example where we grab the data we just created 
-including Account object information for which the Contact record is associated 
-with. The Account column is all `NA` since we have yet to provide information to 
-link these Contacts with Accounts.
-
-```{r query-records}
-my_soql <- sprintf("SELECT Id, 
-                           Account.Name, 
-                           FirstName, 
-                           LastName 
-                    FROM Contact 
-                    WHERE Id in ('%s')", 
-                   paste0(created_records$id , collapse="','"))
-
-queried_records <- sf_query(my_soql)
-queried_records
-```
-
-### Update
-
-After creating records you can update them using `sf_update()`. Updating a record 
-requires you to pass the Salesforce `Id` of the record. Salesforce creates a unique 
-18-character identifier on each record and uses that to know which record to 
-attach the update information you provide. Simply include a field or column in your 
-update dataset called "Id" and the information will be matched. Here is an example 
-where we update each of the records we created earlier with a new first name 
-called "TestTest".
-
-```{r update-records}
-# Update some of those records
-queried_records <- queried_records %>%
-  mutate(FirstName = "TestTest") %>% 
-  select(-Account)
-
-updated_records <- sf_update(queried_records, object_name="Contact")
-updated_records
-```
-
-### Delete
-You can also delete records in Salesforce. The method implements a "soft" delete 
-meaning that the deleted records go to the Recycle Bin which can be emptied or 
-queried against later in the event that the record needed.
-
-```{r}
-deleted_records <- sf_delete(updated_records$id)
-deleted_records
-```
-
-### Upsert
-Finally, Salesforce has a unique method called "upsert" that allows you to 
-create and/or update records at the same time. More specifically, if the record 
-is not found based an an "External Id" field, then Salesforce will create the 
-record instead of updating one. Below is an example where we create 2 records, 
-then upsert 3, where 2 are matched and updated and one is created. **NOTE**: You 
-will need to create a custom field on the target object and ensure it is labeled as 
-an "External Id" field. Read more at http://blog.jeffdouglas.com/2010/05/07/using-exernal-id-fields-in-salesforce/.
-
-```{r}
-n <- 2
-new_contacts <- tibble(FirstName = rep("Test", n),
-                       LastName = paste0("Contact-Create-", 1:n), 
-                       My_External_Id__c=letters[1:n])
-created_records <- sf_create(new_contacts, "Contact")
-
-upserted_contacts <- tibble(FirstName = rep("Test", n),
-                            LastName = paste0("Contact-Upsert-", 1:n), 
-                            My_External_Id__c=letters[1:n])
-new_record <- tibble(FirstName = "Test",
-                     LastName = paste0("Contact-Upsert-", n+1), 
-                     My_External_Id__c=letters[n+1])
-upserted_contacts <- bind_rows(upserted_contacts, new_record)
-
-upserted_records <- sf_upsert(input_data=upserted_contacts, 
-                              object_name="Contact", 
-                              external_id_fieldname="My_External_Id__c")
-upserted_records
-```
-
-```{r, include = FALSE}
-deleted_records <- sf_delete(upserted_records$id)
+```{r get-following}
+following_results <- ig_get_following(bieber_user_id)
+following_results
 ```
 
 ### Check out the Tests
 
-The **salesforcer** package has quite a bit of unit test coverage to track any 
-changes made between newly released versions of the Salesforce API (typically 4 each year). 
-These tests are an excellent source of examples because they cover most all cases of 
-utilizing the package functions. 
+The **Rinstapkg** package has quite a bit of unit test coverage. These tests are an 
+excellent source of examples because they cover most all cases of utilizing the 
+package functions, which goes beyond what we have covered here in the "Getting Started" 
+vignette. 

@@ -1,189 +1,285 @@
-##### THIS FILE NEEDS FUNCTIONS & DOCUMENTATION 
-
 #' Return the user ID from a username
 #' 
-#' This function uses and instagram username to return the userID that you will need for other functions
+#' This function accepts a Instagram username and returns their \code{user_id}, which is 
+#' needed for other functions
 #' 
-#' @param username A character string 
-#' @param return_df When return_df=FALSE, this function will return a list, in this case, return df will return just return the integer that is the user id. 
-#' @examples
-#' ig_get_user_id("r4sctest")
+#' @template username
+#' @examples \dontrun{
 #' ig_get_user_id("r4scatUVA")
+#' }
 #' @export
-ig_get_user_id <- function(username,return_df=FALSE){
-  
-  my_list<- ig_generic_GET(relative_endpoint=sprintf("users/%s/usernameinfo/",username), 
-                 item_name = "user", 
-                 return_df = return_df)
-  return(my_list$pk)
-
+ig_get_user_id <- function(username) {
+  as.integer(ig_search_username(username)$pk)
 }
-#' Return a dateframe of the posts from a specified account
+
+#' Return data from a feed-like Instagram endpoint
+#'
+#' @template return_df
+#' @template paginate 
+#' @template max_pages 
+#' @template verbose
+#' @name feed
+NULL
+
+#' Get a user's timeline feed
 #' 
-#' This function uses the user_id to return a dataframe of information from that account's feed
+#' This function uses the \code{user_id} to return data that would appear in a 
+#' user's timeline feed.
 #' 
-#' @param user_id An integer 
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
-#' @examples 
-#' ig_get_user_feed("10719578450")
+#' @section Feeds:
+#' @template user_id
+#' @template max_id
+#' @template min_timestamp
+#' @template ranked_content
+#' @inheritParams feed
+#' @examples \dontrun{
+#' ig_get_user_feed(10719578450)
+#' }
 #' @export
-ig_get_user_feed <- function(user_id, return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
-  
-  ig_generic_GET(relative_endpoint=sprintf("feed/user/%s",user_id), 
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+ig_get_user_feed <- function(user_id, max_id = NULL, min_timestamp = NULL, 
+                             ranked_content = TRUE, return_df = TRUE, 
+                             paginate = TRUE, max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id, 
+                     min_timestamp = min_timestamp,
+                     rank_token = ig_rank_token(),
+                     ranked_content = tolower(ranked_content))
+  ig_generic_GET(relative_endpoint = sprintf("feed/user/%s", user_id), 
+                 query = this_query,
+                 item_name = "items", 
                  return_df = return_df,
-                 verbose=verbose)
-}
-
-  #Target Endpoint: feed/user/
-
-#' ig_get_timeline_feed
-#' 
-#' NEEDS DOCUMENTATION!!!!
-#' Ask steve why we need this....
-#' @export
-ig_get_timeline_feed <- function(){
-  #Target Endpoint: feed/timeline/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
  
-#' Return a dataframe of posts with the specified hashtag
+#' Get the feed for a hashtag
 #' 
-#' This function filters by hashtags and returns all posts that have the same hashtag string
+#' This function filters by hashtags and returns all posts that have the same 
+#' hashtag string
 #' 
-#' @param hashtag_string A string of characters: do not include the hashtag at the beginning
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
-#' @examples 
+#' @section Feeds:
+#' @template hashtag
+#' @template max_id
+#' @template ranked_content
+#' @inheritParams feed
+#' @examples \dontrun{ 
 #' ig_get_hashtag_feed("R4SC4LIFE")
+#' }
 #' @export
-ig_get_hashtag_feed <- function(hashtag_string,return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
-  
-  ig_generic_GET(relative_endpoint = sprintf("feed/tag/%s",hashtag_string),
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE, 
+                                return_df = TRUE, paginate = TRUE, max_pages = 10, 
+                                verbose = FALSE) {
+  this_query <- list(max_id = max_id, 
+                     rank_token = ig_rank_token(),
+                     ranked_content = tolower(ranked_content))
+  ig_generic_GET(relative_endpoint = sprintf("feed/tag/%s", hashtag),
+                 query = this_query,
+                 item_name = "items", 
                  return_df = return_df,
-                 verbose=verbose)
-  #Target Endpoint: feed/tag/
-}
-#' Return a dataframe of posts at the specified location
-#' 
-#' This function filters by location and returns all the posts that have the same location_string
-#' @param location_string A string of characters: Syntax: unknown yet
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
-#' @export
-ig_get_location_feed <- function(location_string,return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
-  ig_generic_GET(relative_endpoint = sprintf("feed/location/%s",location_string),
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
-                 return_df = return_df,
-                 verbose=verbose)
-  
-  #Target Endpoint: feed/location/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
 
-#' Return dataframe with the current most popular posts on instagram
+#' Get the feed for a location
 #' 
-#' This function just returns current most popular posts on instagram
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 24 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
-#' I think this works but can only be run after a certain timeframe
+#' This function filters by location and returns all posts that have the same location
+#' 
+#' @section Feeds:
+#' @template location_id
+#' @template max_id
+#' @template ranked_content
+#' @inheritParams feed
+#' @details Note that if your location is a "group" (such as a city), the feed will 
+#' include media from multiple locations within that area. But if your
+#' location is a very specific place such as a specific night club, it will usually 
+#' only include media from that exact location.
+#' @seealso \url{https://docs.social-streams.com/article/118-find-instagram-location-id}
+#' @examples \dontrun{
+#' # location feed for the city of Washington, DC
+#' ig_get_location_feed(213480180)
+#' }
 #' @export
-ig_get_popular_feed <- function(return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
+ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TRUE, 
+                                 return_df = TRUE, paginate = TRUE, 
+                                 max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id, 
+                     rank_token = ig_rank_token(),
+                     ranked_content = tolower(ranked_content))
+  ig_generic_GET(relative_endpoint = sprintf("feed/location/%s", location_id),
+                 query = this_query,
+                 item_name = "items", 
+                 return_df = return_df,
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
+}
+
+#' Get the feed of most popular current posts on Instagram
+#' 
+#' This function returns current most popular posts on Instagram
+#' 
+#' @section Feeds:
+#' @template max_id
+#' @template ranked_content
+#' @inheritParams feed
+#' @examples \dontrun{
+#' ig_get_popular_feed()
+#' }
+#' @export
+ig_get_popular_feed <- function(max_id = NULL, ranked_content = TRUE, 
+                                return_df = TRUE, paginate = TRUE, 
+                                max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id, 
+                     rank_token = ig_rank_token(),
+                     ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = "feed/popular",
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+                 query = this_query,
+                 item_name = "items", 
                  return_df = return_df,
-                 verbose=verbose)
-  
-  #Target Endpoint: feed/popular/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
 
-#' ig_get_liked_feed
+#' Get feed of your liked media
 #' 
-#' NEEDS DOCUMENTATION!!!!
-#' THIS WORKS!!!!!
+#' This function returns all of the posts that you have liked
+#' 
+#' @section Feeds:
+#' @template max_id
+#' @inheritParams feed
+#' @examples \dontrun{
+#' ig_get_liked_feed()
+#' }
 #' @export
-ig_get_liked_feed <- function(return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
+ig_get_liked_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE, 
+                              max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = "feed/liked",
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+                 query = this_query,
+                 item_name = "items", 
                  return_df = return_df,
-                 verbose=verbose)
-  #Target Endpoint: feed/liked/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
 
-#' Returns a dataframe with all the posts that you saved
+#' Get feed of your saved media
 #' 
-#' This function returns the posts that you saved inside of your account
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
+#' This function returns all of the posts that you have saved
+#' 
+#' @section Feeds:
+#' @template max_id
+#' @inheritParams feed
+#' @examples \dontrun{
+#' ig_get_saved_feed()
+#' }
 #' @export
-ig_get_saved_feed <- function(return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
+ig_get_saved_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE, 
+                              max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = "feed/saved",
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+                 query = this_query,
+                 item_name = "items", 
                  return_df = return_df,
-                 verbose=verbose)
-  #Target Endpoint: feed/saved/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
 
-#' Returns a dataframe with information of followers of the account if it is public
+#' Get all posts that a user was tagged in
 #' 
-#' This function needs testing
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @export
-ig_get_followers <- function(user_ID,return_df=TRUE, verbose=FALSE){
-  ig_generic_GET(relative_endpoint = sprintf("friendships/%s/followers",user_ID),
-                 item_name = "users", return_df = return_df, verbose=verbose)
-  #Target Endpoint: friendships/{username_id}/followers/
-}
-
-#' Returns a dataframe with information of all the people this account follows if it is public
+#' This fuction returns all of the posts that the specified user was tagged in.
 #' 
-#' This function uses user ID to return a dataframe of all the people the account is following
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
+#' @section Feeds:
+#' @template user_id
+#' @template max_id
+#' @template ranked_content
+#' @inheritParams feed
+#' @examples \dontrun{
+#' this_user_id <- ig_get_user_id("r4scatUVA")
+#' ig_get_user_tags(this_user_id)
+#' }
 #' @export
-ig_get_followings <- function(user_ID,return_df=TRUE, verbose=FALSE){
-  ig_generic_GET(relative_endpoint = sprintf("friendships/%s/following",user_ID),
-                 item_name = "users", return_df = return_df, verbose=verbose)
-  #Target Endpoint: friendships/{username_id}/following/
-}
-
-#' Return dataframe with all posts that specified user was tagged in
-#' 
-#' This fuction returns all of the posts that the specified user was tagged in
-#' @param user_id An integer 
-#' @param return_df When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list
-#' @param verbose When verbose=FALSE, this function will run without printing the intermediary steps 
-#' @param paginate When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 21 entries
-#' @param max_pages When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page
-#' @export
-ig_get_user_tags <- function(user_ID, return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
-  ig_generic_GET(relative_endpoint = sprintf("usertags/%s/feed",user_ID),
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+ig_get_user_tags <- function(user_id, max_id = NULL, ranked_content = TRUE, 
+                             return_df = TRUE, paginate = TRUE, 
+                             max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id, 
+                     rank_token = ig_rank_token(),
+                     ranked_content = tolower(ranked_content))
+  ig_generic_GET(relative_endpoint = sprintf("usertags/%s/feed", user_id),
+                 query = this_query,
+                 item_name = "items",
                  return_df = return_df,
-                 verbose=verbose)
-  #Target Endpoint: usertags/{username_id}/feed/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
 }
 
-#' ig_get_geomedia
+#' Get all locations that a user was tagged at
 #' 
-#' NEEDS DOCUMENTATION!!!!
-#' NEEDS tEST
+#' This fuction returns all of the locations that the specified user was tagged at.
+#' 
+#' @section Feeds:
+#' @template user_id
+#' @template max_id
+#' @inheritParams feed
+#' @examples \dontrun{
+#' this_user_id <- ig_get_user_id("r4scatUVA")
+#' ig_get_geomedia(this_user_id)
+#' }
 #' @export
-ig_get_geomedia <- function(user_ID, return_df=TRUE, verbose=FALSE, paginate=TRUE, max_pages = 10){
-  ig_generic_GET(relative_endpoint = sprintf("maps/user/%s",user_ID),
-                 item_name = "items", paginate=paginate, max_pages=max_pages, 
+ig_get_geomedia <- function(user_id, max_id = NULL, return_df = TRUE, 
+                            paginate = TRUE, max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id)
+  ig_generic_GET(relative_endpoint = sprintf("maps/user/%s", user_id),
+                 query = this_query,
+                 item_name = "items",
                  return_df = return_df,
-                 verbose=verbose)
-  #Target Endpoint: maps/user/{username_id}/
+                 paginate = paginate, 
+                 max_pages = max_pages,
+                 verbose = verbose)
+}
+
+#' Get all followers of user
+#' 
+#' This fuction returns all of the users that follow the specified user.
+#' 
+#' @template user_id
+#' @template max_id
+#' @inheritParams feed
+#' @examples \dontrun{
+#' this_user_id <- ig_get_user_id("r4scatUVA")
+#' ig_get_followers(this_user_id)
+#' }
+#' @export
+ig_get_followers <- function(user_id, max_id = NULL, return_df = TRUE, 
+                             paginate = TRUE, max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id)
+  ig_generic_GET(relative_endpoint = sprintf("friendships/%s/followers", user_id),
+                 item_name = "users", 
+                 return_df = return_df, 
+                 verbose = verbose)
+}
+
+#' Get all users that a user follows
+#' 
+#' This fuction returns all of the users that the specified user follows
+#' 
+#' @template user_id
+#' @template max_id
+#' @inheritParams feed
+#' @examples \dontrun{
+#' this_user_id <- ig_get_user_id("r4scatUVA")
+#' ig_get_following(this_user_id)
+#' }
+#' @export
+ig_get_following <- function(user_id, max_id = NULL, return_df = TRUE, 
+                             paginate = TRUE, max_pages = 10, verbose = FALSE) {
+  this_query <- list(max_id = max_id)
+  ig_generic_GET(relative_endpoint = sprintf("friendships/%s/following", user_id),
+                 item_name = "users", 
+                 return_df = return_df, 
+                 verbose = verbose)
 }

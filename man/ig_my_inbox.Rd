@@ -2,10 +2,16 @@
 % Please edit documentation in R/activity.R
 \name{ig_my_inbox}
 \alias{ig_my_inbox}
-\title{ig_my_inbox}
+\title{Get direct inbox messages for your account}
 \usage{
 ig_my_inbox(return_df = TRUE, verbose = FALSE)
 }
+\arguments{
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{verbose}{logical; do you want informative messages?}
+}
 \description{
-NEEDS DOCUMENTATION!!!!
+This function returns direct messages for your account.
 }

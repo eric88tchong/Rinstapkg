@@ -2,10 +2,20 @@
 % Please edit documentation in R/activity.R
 \name{ig_autocomplete_userlist}
 \alias{ig_autocomplete_userlist}
-\title{ig_autocomplete_userlist}
+\title{Get bootstrap user data (autocompletion user list)}
 \usage{
 ig_autocomplete_userlist(return_df = TRUE, verbose = FALSE)
 }
+\arguments{
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{verbose}{logical; do you want informative messages?}
+}
 \description{
-NEEDS DOCUMENTATION!!!!
+This function returns a list of users for you guessed by Instagram.
+}
+\details{
+WARNING: This is a special, very heavily throttled API endpoint. Instagram 
+REQUIRES that you wait several minutes between calls to it
 }

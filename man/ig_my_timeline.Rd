@@ -2,21 +2,47 @@
 % Please edit documentation in R/activity.R
 \name{ig_my_timeline}
 \alias{ig_my_timeline}
-\title{ig_my_timeline}
+\title{Get the authenticated user's timeline feed}
 \usage{
-ig_my_timeline(max_id = NULL, min_timestamp = NULL, return_df = TRUE,
-  paginate = TRUE, max_pages = 10, verbose = FALSE)
+ig_my_timeline(max_id = NULL, min_timestamp = NULL,
+  ranked_content = TRUE, return_df = TRUE, paginate = TRUE,
+  max_pages = 10, verbose = FALSE)
 }
 \arguments{
-\item{max_id}{integer; this integer represents the last id of a post that you 
-would want to retrieve from your timeline}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{min_timestamp}{integer, date, or datetime; a value identifying the oldest post by date 
+that you would want to retrieve in this function call. Dates and various datetime 
+objects will be converted into an integer representing time in epoch (seconds since 
+January 1st, 1970) since that is what the API requires}
+
+\item{ranked_content}{logical; do you want the feed content to be sorted by rank?}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \value{
 \code{tbl_df} or \code{list}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function returns data that would appear in the authenticated user's 
+timeline feed.
 }
+\section{Feeds}{
+
+}
+
 \examples{
 \dontrun{
 my_timeline <- ig_my_timeline()

@@ -3,10 +3,6 @@ url: https://eric88tchong.github.io/Rinstapkg
 template:
   params:
     bootswatch: spacelab
-    ganalytics: UA-XXXXXXX-XXX REPLACE MEEEEEE!!!! -> Must Setup a Google Analytics Account
-    docsearch:
-      api_key: REPLACE MEEEEE!!!!!! -> Instructions Here: https://pkgdown.r-lib.org/articles/pkgdown.html#search
-      index_name: Rinstapkg
 
 home:
   strip_header: true
@@ -39,15 +35,15 @@ reference:
   - title: Retrieve Functions
     desc: Functions used for getting data
     contents:
+      - '`ig_get_user_id`'
       - '`ig_get_user_feed`'
-      - '`ig_get_timeline_feed`'
       - '`ig_get_hashtag_feed`'
       - '`ig_get_location_feed`'
       - '`ig_get_popular_feed`'
       - '`ig_get_liked_feed`'
       - '`ig_get_saved_feed`'
       - '`ig_get_followers`'
-      - '`ig_get_followings`'
+      - '`ig_get_following`'
       - '`ig_get_user_tags`'
       - '`ig_get_geomedia`'
   - title: Search Functions
@@ -74,8 +70,7 @@ reference:
     desc: Functions for recent activity and timelines as it relates to your account
     contents:
       - '`ig_my_timeline`'
+      - '`ig_my_inbox`'
       - '`ig_my_recent_activity`'
       - '`ig_following_recent_activity`'
-      - '`ig_my_inbox_v2`'
       - '`ig_autocomplete_userlist`'
-      

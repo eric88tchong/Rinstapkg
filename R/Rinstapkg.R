@@ -1,4 +1,4 @@
-#' \code{Rinstapkg} package
+#' \code{Rinstapkg} package\if{html}{\figure{Rinstapkg.png}{options: width="25\%" align="right" alt="Figure: Rinstapkg.png"}}
 #'
 #' An R package connecting to the Instagram API using tidy principles
 #'
@@ -9,12 +9,12 @@
 #' acts.
 #' 
 #' Additional material can be found in the 
-#' \href{https://github.com/reportmort/Rinstapkg}{README} on GitHub
+#' \href{https://github.com/eric88tchong/Rinstapkg}{README} on GitHub
 #'
 #' @docType package
 #' @name Rinstapkg
 #' @importFrom dplyr %>%
-NULL
+"_PACKAGE"
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))

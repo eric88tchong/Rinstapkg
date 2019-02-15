@@ -346,6 +346,30 @@ csrf_token_available <- function(verbose = TRUE) {
   TRUE
 }
 
+#' Check rank_token availability
+#'
+#' Check if a rank_token is available in \code{\link{Rinstapkg}}'s internal
+#' \code{.state} environment.
+#'
+#' @return logical
+#' @note This function is meant to be used internally. Only use when debugging.
+#' @keywords internal
+#' @export
+rank_token_available <- function(verbose = TRUE) {
+  if (is.null(.state$rank_token)) {
+    if (verbose) {
+      message("The rank_token is NULL in Rinstapkg's internal .state environment. ", 
+              "This can occur if the user is authorized using OAuth 2.0, which doesn't ", 
+              "require a rank_token, or the user is not yet performed any authorization ", 
+              "routine.\n",
+              "When/if needed, 'Rinstapkg' will initiate authentication ",
+              "and authorization.\nOr run ig_auth() to trigger this explicitly.")
+    }
+    return(FALSE)
+  }
+  TRUE
+}
+
 #' Check token availability
 #'
 #' Check if a token is available in \code{\link{Rinstapkg}}'s internal
@@ -398,4 +422,17 @@ ig_access_token <- function(verbose = FALSE) {
 ig_csrf_token <- function(verbose = TRUE) {
   if (!csrf_token_available(verbose = verbose)) return(NULL)
   .state$csrf_token
+}
+
+#' Return rank_token resulting from Basic auth routine
+#'
+#' @template verbose
+#' @return character; a string of the rank_token element of the current authorized 
+#' API session; otherwise NULL
+#' @note This function is meant to be used internally. Only use when debugging.
+#' @keywords internal
+#' @export
+ig_rank_token <- function(verbose = TRUE) {
+  if (!rank_token_available(verbose = verbose)) return(NULL)
+  .state$rank_token
 }

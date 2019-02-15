@@ -4,7 +4,7 @@
 \name{Rinstapkg}
 \alias{Rinstapkg}
 \alias{Rinstapkg-package}
-\title{\code{Rinstapkg} package}
+\title{\code{Rinstapkg} package\if{html}{\figure{Rinstapkg.png}{options: width="25\%" align="right" alt="Figure: Rinstapkg.png"}}}
 \description{
 An R package connecting to the Instagram API using tidy principles
 }
@@ -16,5 +16,22 @@ package means that you will not use it to spam, harass, or perform other nefario
 acts.
 
 Additional material can be found in the 
-\href{https://github.com/reportmort/Rinstapkg}{README} on GitHub
+\href{https://github.com/eric88tchong/Rinstapkg}{README} on GitHub
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/eric88tchong/Rinstapkg}
+  \item Report bugs at \url{https://github.com/eric88tchong/Rinstapkg/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Eric Tchong \email{est2fr@virginia.edu}
+
+Other contributors:
+\itemize{
+  \item Steven M. Mortimer \email{reportmort@gmail.com} [contributor]
+}
+
 }

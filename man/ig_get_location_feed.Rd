@@ -2,22 +2,54 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_location_feed}
 \alias{ig_get_location_feed}
-\title{Return a dataframe of posts at the specified location}
+\title{Get the feed for a location}
 \usage{
-ig_get_location_feed(location_string, return_df = TRUE,
-  verbose = FALSE, paginate = TRUE, max_pages = 10)
+ig_get_location_feed(location_id, max_id = NULL, ranked_content = TRUE,
+  return_df = TRUE, paginate = TRUE, max_pages = 10,
+  verbose = FALSE)
 }
 \arguments{
-\item{location_string}{A string of characters: Syntax: unknown yet}
+\item{location_id}{integer; the unique id to identify a place which can be 
+found in the \code{"pk"}, \code{"external_id"}, or \code{"facebook_places_id"} fields 
+on other objects returned via the Instagram API}
 
-\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
 
-\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+\item{ranked_content}{logical; do you want the feed content to be sorted by rank?}
 
-\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
 
-\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function filters by location and returns all the posts that have the same location_string
+This function filters by location and returns all posts that have the same location
+}
+\details{
+Note that if your location is a "group" (such as a city), the feed will 
+include media from multiple locations within that area. But if your
+location is a very specific place such as a specific night club, it will usually 
+only include media from that exact location.
+}
+\section{Feeds}{
+
+}
+
+\examples{
+\dontrun{
+# location feed for the city of Washington, DC
+ig_get_location_feed(213480180)
+}
+}
+\seealso{
+\url{https://docs.social-streams.com/article/118-find-instagram-location-id}
 }

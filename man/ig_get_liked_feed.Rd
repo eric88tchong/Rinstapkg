@@ -2,12 +2,37 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_liked_feed}
 \alias{ig_get_liked_feed}
-\title{ig_get_liked_feed}
+\title{Get feed of your liked media}
 \usage{
-ig_get_liked_feed(return_df = TRUE, verbose = FALSE, paginate = TRUE,
-  max_pages = 10)
+ig_get_liked_feed(max_id = NULL, return_df = TRUE, paginate = TRUE,
+  max_pages = 10, verbose = FALSE)
+}
+\arguments{
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
-THIS WORKS!!!!!
+This function returns all of the posts that you have liked
+}
+\section{Feeds}{
+
+}
+
+\examples{
+\dontrun{
+ig_get_liked_feed()
+}
 }

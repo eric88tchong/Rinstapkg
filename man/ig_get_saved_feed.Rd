@@ -2,20 +2,37 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_saved_feed}
 \alias{ig_get_saved_feed}
-\title{Returns a dataframe with all the posts that you saved}
+\title{Get feed of your saved media}
 \usage{
-ig_get_saved_feed(return_df = TRUE, verbose = FALSE, paginate = TRUE,
-  max_pages = 10)
+ig_get_saved_feed(max_id = NULL, return_df = TRUE, paginate = TRUE,
+  max_pages = 10, verbose = FALSE)
 }
 \arguments{
-\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
 
-\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
 
-\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
 
-\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function returns the posts that you saved inside of your account
+This function returns all of the posts that you have saved
+}
+\section{Feeds}{
+
+}
+
+\examples{
+\dontrun{
+ig_get_saved_feed()
+}
 }

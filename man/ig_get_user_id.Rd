@@ -4,17 +4,18 @@
 \alias{ig_get_user_id}
 \title{Return the user ID from a username}
 \usage{
-ig_get_user_id(username, return_df = FALSE)
+ig_get_user_id(username)
 }
 \arguments{
-\item{username}{A character string}
-
-\item{return_df}{When return_df=FALSE, this function will return a list, in this case, return df will return just return the integer that is the user id.}
+\item{username}{character; the username of the Instagram user, typically referenced 
+by using the "@" symbol}
 }
 \description{
-This function uses and instagram username to return the userID that you will need for other functions
+This function accepts a Instagram username and returns their \code{user_id}, which is 
+needed for other functions
 }
 \examples{
-ig_get_user_id("r4sctest")
+\dontrun{
 ig_get_user_id("r4scatUVA")
+}
 }

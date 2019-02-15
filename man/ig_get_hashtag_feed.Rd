@@ -2,25 +2,44 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_hashtag_feed}
 \alias{ig_get_hashtag_feed}
-\title{Return a dataframe of posts with the specified hashtag}
+\title{Get the feed for a hashtag}
 \usage{
-ig_get_hashtag_feed(hashtag_string, return_df = TRUE, verbose = FALSE,
-  paginate = TRUE, max_pages = 10)
+ig_get_hashtag_feed(hashtag, max_id = NULL, ranked_content = TRUE,
+  return_df = TRUE, paginate = TRUE, max_pages = 10,
+  verbose = FALSE)
 }
 \arguments{
-\item{hashtag_string}{A string of characters: do not include the hashtag at the beginning}
+\item{hashtag}{character; do not include the hashtag (pound sign) at the beginning 
+of the string}
 
-\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
 
-\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+\item{ranked_content}{logical; do you want the feed content to be sorted by rank?}
 
-\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 18 entries}
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
 
-\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function filters by hashtags and returns all posts that have the same hashtag string
+This function filters by hashtags and returns all posts that have the same 
+hashtag string
 }
+\section{Feeds}{
+
+}
+
 \examples{
+\dontrun{ 
 ig_get_hashtag_feed("R4SC4LIFE")
+}
 }

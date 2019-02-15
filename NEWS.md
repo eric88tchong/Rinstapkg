@@ -9,15 +9,15 @@ feeds and more!
 
   * OAuth 2.0 and Basic authentication methods (`ig_auth()`)
   * Retrieve Feed Data: 
+    * `ig_get_user_id()`
     * `ig_get_user_feed()`
-    * `ig_get_timeline_feed()`
     * `ig_get_hashtag_feed()`
     * `ig_get_location_feed()`
     * `ig_get_popular_feed()`
     * `ig_get_liked_feed()`
     * `ig_get_saved_feed()`
     * `ig_get_followers()`
-    * `ig_get_followings()`
+    * `ig_get_following()`
     * `ig_get_user_tags()`
     * `ig_get_geomedia()`
     * `ig_get_media_comments()`
@@ -31,7 +31,8 @@ feeds and more!
     * `ig_comment()`
     * `ig_comment_delete()`
   * Profile functions: 
-    * `ig_my_inbox_v2()`
+    * `ig_my_timeline()`
+    * `ig_my_inbox()`
     * `ig_my_recent_activity()`
     * `ig_following_recent_activity()`
     * `ig_autocomplete_userlist()`

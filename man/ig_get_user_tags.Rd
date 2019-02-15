@@ -2,22 +2,44 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_tags}
 \alias{ig_get_user_tags}
-\title{Return dataframe with all posts that specified user was tagged in}
+\title{Get all posts that a user was tagged in}
 \usage{
-ig_get_user_tags(user_ID, return_df = TRUE, verbose = FALSE,
-  paginate = TRUE, max_pages = 10)
+ig_get_user_tags(user_id, max_id = NULL, ranked_content = TRUE,
+  return_df = TRUE, paginate = TRUE, max_pages = 10,
+  verbose = FALSE)
 }
 \arguments{
-\item{return_df}{When return_df=TRUE, this function will return the results in dataframe form, if return_df=FALSE it will return a list}
+\item{user_id}{integer; the unique id to identify an Instagram user which can be 
+found in the \code{"pk"} field on a \code{user} object}
 
-\item{verbose}{When verbose=FALSE, this function will run without printing the intermediary steps}
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
 
-\item{paginate}{When paginate=TRUE, this function allows you to return multiple page in instagram, currently each page has 21 entries}
+\item{ranked_content}{logical; do you want the feed content to be sorted by rank?}
 
-\item{max_pages}{When max_pages = 10 & paginate=TRUE this function will return all the entries down to the last entry of the 10th page}
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
 
-\item{user_id}{An integer}
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This fuction returns all of the posts that the specified user was tagged in
+This fuction returns all of the posts that the specified user was tagged in.
+}
+\section{Feeds}{
+
+}
+
+\examples{
+\dontrun{
+this_user_id <- ig_get_user_id("r4scatUVA")
+ig_get_user_tags(this_user_id)
+}
 }
