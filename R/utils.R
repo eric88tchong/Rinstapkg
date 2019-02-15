@@ -12,6 +12,7 @@ Rinstapkg_state <- function(){
 #' This function takes an input and converts it to the Unix epoch which is the 
 #' number of seconds that have elapsed since January 1, 1970 at Midnight UTC.
 #' 
+#' @importFrom lubridate as_datetime
 #' @param x object to be coerced
 #' @export
 as_epoch <- function(x){

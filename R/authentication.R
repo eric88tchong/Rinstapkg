@@ -221,10 +221,14 @@ ig_auth <- function(username = NULL,
 #' This function performs a sync of the conditions of the app you are working with. 
 #' The experiment conditions must need to be set prior to logging in using \link{ig_auth} by 
 #' first using \code{options(Rinstapkg.experiments="...")}.
-#'  
+#'
+#' @param features character; a long string with commas separating each of the 
+#' experimental values to be set
+#' @template verbose
 #' @note This is mainly for backend functionality during login.
 #' @export
-ig_sync_features <- function(features = getOption("Rinstapkg.experiments"), verbose=FALSE){
+ig_sync_features <- function(features = getOption("Rinstapkg.experiments"), 
+                             verbose = FALSE){
   current_state <- Rinstapkg_state()
   this_dat <- list('_uuid' = current_state$session_guid,
                    '_uid' = current_state$username_id,

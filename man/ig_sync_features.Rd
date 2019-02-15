@@ -7,6 +7,12 @@
 ig_sync_features(features = getOption("Rinstapkg.experiments"),
   verbose = FALSE)
 }
+\arguments{
+\item{features}{character; a long string with commas separating each of the 
+experimental values to be set}
+
+\item{verbose}{logical; do you want informative messages?}
+}
 \description{
 This function performs a sync of the conditions of the app you are working with. 
 The experiment conditions must need to be set prior to logging in using \link{ig_auth} by 
