@@ -119,18 +119,12 @@ spf <- function(...) stop(sprintf(...), call. = FALSE)
 #' Function to catch and print HTTP errors
 #'
 #' @importFrom httr content http_error
-#' @importFrom xml2 as_list xml_find_first
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
 catch_errors <- function(x) {
   if(http_error(x)) {
     response_parsed <- content(x, encoding='UTF-8')
-    # convert to list if xml content type
-    content_type <- x$headers$`content-type`
-    if(grepl('xml', content_type)) {
-      response_parsed <- as_list(response_parsed)
-    }
     if(status_code(x) < 500) {
       if(!is.null(response_parsed$status) & !is.null(response_parsed$message)) {
         stop(sprintf("Status: %s\nMessage: %s", 
