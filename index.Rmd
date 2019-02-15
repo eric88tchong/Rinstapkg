@@ -124,7 +124,7 @@ timeline_results
 ### Get Followers
 
 With the `ig_get_followers()` function you can retrieve a `tbl_df` of all the users 
-that follow a particular user. Just provide the `user_id` of the account who's followers 
+that follow a particular user. Just provide the `user_id` of the account whose followers 
 you would like to get. **NOTE**: The Instagram APIs use Ids to retrieve information so 
 instead of giving the account's username (typically starting with an \@symbol), you 
 need to first grab the `user_id` of that account using the username, then supply it 

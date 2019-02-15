@@ -149,7 +149,7 @@
 <div id="authenticate" class="section level3">
 <h3 class="hasAnchor">
 <a href="#authenticate" class="anchor"></a>Authenticate</h3>
-<p>First, load the <strong>Rinstapkg</strong> package and login. There are two ways to authenticate:</p>
+<p>First, load the <strong>Rinstapkg</strong> package and log in. There are two ways to authenticate:</p>
 <ol style="list-style-type: decimal">
 <li>OAuth 2.0</li>
 <li>Basic Username-Password</li>
@@ -173,47 +173,43 @@
 <p>A simple function to start with is verifying that you can retrieve your timeline as it would appear in the Instagramm app or online. This function returns data that would appear in the authenticated user’s timeline feed. By default, the data is returned as a tidy <code>tbl_df</code> where each row represents one post from the feed. If you prefer to work with a list format, then just specify <code>return_df=FALSE</code> as an argument.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">timeline_results &lt;-<span class="st"> </span><span class="kw"><a href="reference/ig_my_timeline.html">ig_my_timeline</a></span>()</a>
 <a class="sourceLine" id="cb3-2" title="2">timeline_results</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 80 x 68</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 80 x 56</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;    taken_at       pk id    device_timestamp media_type code </span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;       &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  1   1.55e9  1.98e18 1979…  155024270227089          1 Bt6B…</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;  2   1.55e9  1.98e18 1979…       1550200867          1 Bt4x…</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;  3   1.55e9  1.98e18 1979…       1550242832          1 Bt6B…</span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  4  NA      NA       &lt;NA&gt;                NA         NA &lt;NA&gt; </span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  5   1.55e9  1.98e18 1979…       1550241016          1 Bt5-…</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  6   1.55e9  1.98e18 1979… 1550203460156717          1 Bt42…</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  7   1.55e9  1.97e18 1973…       1549485501          2 Btjd…</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  8   1.55e9  1.98e18 1979… 1550236884257953          1 Bt52…</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  9   1.55e9  1.98e18 1979…  155024270227089          1 Bt6B…</span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 10   1.55e9  1.98e18 1979…       1550200867          1 Bt4x…</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # … with 70 more rows, and 62 more variables: client_cache_key &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  1   1.55e9  1.98e18 1979… 1550243978277454          8 Bt6D…</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;  2   1.55e9  1.96e18 1958…       1547687588          1 Bst4…</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;  3   1.55e9  1.98e18 1979…  155024270227089          1 Bt6B…</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  4   1.55e9  1.98e18 1979…       1550243583          1 Bt6D…</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  5   1.55e9  1.98e18 1979…       1550242832          1 Bt6B…</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  6  NA      NA       &lt;NA&gt;                NA         NA &lt;NA&gt; </span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  7   1.55e9  1.98e18 1979…       1550241016          1 Bt5-…</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  8   1.55e9  1.97e18 1969…       1549036554          1 BtWE…</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  9   1.55e9  1.98e18 1979… 1550243978277454          8 Bt6D…</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 10   1.55e9  1.96e18 1958…       1547687588          1 Bst4…</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # … with 70 more rows, and 50 more variables: client_cache_key &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt; #   filter_type &lt;int&gt;, comment_likes_enabled &lt;lgl&gt;,</span></a>
 <a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; #   comment_threading_enabled &lt;lgl&gt;, has_more_comments &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; #   max_num_visible_preview_comments &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; #   max_num_visible_preview_comments &lt;int&gt;, preview_comments &lt;list&gt;,</span></a>
 <a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; #   can_view_more_preview_comments &lt;lgl&gt;, comment_count &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; #   inline_composer_display_condition &lt;chr&gt;, image_versions2 &lt;list&gt;,</span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; #   original_width &lt;int&gt;, original_height &lt;int&gt;, user &lt;list&gt;,</span></a>
-<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt; #   can_viewer_reshare &lt;lgl&gt;, caption &lt;list&gt;, caption_is_edited &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt; #   like_count &lt;int&gt;, has_liked &lt;lgl&gt;, photo_of_you &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt; #   can_viewer_save &lt;lgl&gt;, organic_tracking_token &lt;chr&gt;, preview &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt; #   organic_post_id &lt;dbl&gt;, injected &lt;list&gt;, collapse_comments &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt; #   ad_metadata &lt;list&gt;, link &lt;chr&gt;, link_text &lt;chr&gt;, ad_action &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt; #   link_hint_text &lt;chr&gt;, ad_link_type &lt;int&gt;, ad_header_style &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt; #   dr_ad_type &lt;int&gt;, android_links &lt;list&gt;, force_overlay &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt; #   hide_nux_text &lt;lgl&gt;, overlay_text &lt;chr&gt;, overlay_title &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt; #   overlay_subtitle &lt;chr&gt;, dominant_color &lt;chr&gt;, top_followers &lt;list&gt;,</span></a>
-<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt; #   top_followers_count &lt;int&gt;, follower_count &lt;int&gt;, post_count &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; #   fb_page_url &lt;chr&gt;, expiring_at &lt;int&gt;, usertags &lt;list&gt;,</span></a>
-<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; #   end_of_feed_demarcator &lt;list&gt;, location &lt;list&gt;, lat &lt;dbl&gt;, lng &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb3-35" title="35"><span class="co">#&gt; #   likers &lt;list&gt;, is_dash_eligible &lt;int&gt;, video_dash_manifest &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-36" title="36"><span class="co">#&gt; #   video_codec &lt;chr&gt;, number_of_qualities &lt;int&gt;, video_versions &lt;list&gt;,</span></a>
-<a class="sourceLine" id="cb3-37" title="37"><span class="co">#&gt; #   has_audio &lt;lgl&gt;, video_duration &lt;dbl&gt;, view_count &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb3-38" title="38"><span class="co">#&gt; #   next_max_id &lt;dbl&gt;, preview_comments &lt;list&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; #   inline_composer_display_condition &lt;chr&gt;, carousel_media_count &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; #   carousel_media &lt;list&gt;, user &lt;list&gt;, can_viewer_reshare &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb3-23" title="23"><span class="co">#&gt; #   caption &lt;list&gt;, caption_is_edited &lt;lgl&gt;, like_count &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-24" title="24"><span class="co">#&gt; #   has_liked &lt;lgl&gt;, photo_of_you &lt;lgl&gt;, can_viewer_save &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="co">#&gt; #   organic_tracking_token &lt;chr&gt;, image_versions2 &lt;list&gt;,</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="co">#&gt; #   original_width &lt;int&gt;, original_height &lt;int&gt;, injected &lt;list&gt;,</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="co">#&gt; #   collapse_comments &lt;lgl&gt;, ad_metadata &lt;list&gt;, link &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-28" title="28"><span class="co">#&gt; #   link_text &lt;chr&gt;, ad_action &lt;chr&gt;, link_hint_text &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-29" title="29"><span class="co">#&gt; #   ad_link_type &lt;int&gt;, ad_header_style &lt;int&gt;, dr_ad_type &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-30" title="30"><span class="co">#&gt; #   android_links &lt;list&gt;, force_overlay &lt;lgl&gt;, hide_nux_text &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="co">#&gt; #   overlay_text &lt;chr&gt;, overlay_title &lt;chr&gt;, overlay_subtitle &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="co">#&gt; #   dominant_color &lt;chr&gt;, follower_count &lt;int&gt;, post_count &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="co">#&gt; #   fb_page_url &lt;chr&gt;, expiring_at &lt;int&gt;, preview &lt;chr&gt;, likers &lt;list&gt;,</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="co">#&gt; #   usertags &lt;list&gt;, end_of_feed_demarcator &lt;list&gt;, location &lt;list&gt;</span></a></code></pre></div>
 </div>
 <div id="get-followers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-followers" class="anchor"></a>Get Followers</h3>
-<p>With the <code><a href="reference/ig_get_followers.html">ig_get_followers()</a></code> function you can retrieve a <code>tbl_df</code> of all the users that follow a particular user. Just provide the <code>user_id</code> of the account who’s followers you would like to get. <strong>NOTE</strong>: The Instagram APIs use Ids to retrieve information so instead of giving the account’s username (typically starting with an @symbol), you need to first grab the <code>user_id</code> of that account using the username, then supply it to the <code><a href="reference/ig_get_followers.html">ig_get_followers()</a></code> function.</p>
+<p>With the <code><a href="reference/ig_get_followers.html">ig_get_followers()</a></code> function you can retrieve a <code>tbl_df</code> of all the users that follow a particular user. Just provide the <code>user_id</code> of the account whose followers you would like to get. <strong>NOTE</strong>: The Instagram APIs use Ids to retrieve information so instead of giving the account’s username (typically starting with an @symbol), you need to first grab the <code>user_id</code> of that account using the username, then supply it to the <code><a href="reference/ig_get_followers.html">ig_get_followers()</a></code> function.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># Get Justin's Biebers beliebers!</span></a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co"># Side Note: A belieber is a HUGE Justin Bieber fan.</span></a>
 <a class="sourceLine" id="cb4-3" title="3">bieber_user_id &lt;-<span class="st"> </span><span class="kw"><a href="reference/ig_get_user_id.html">ig_get_user_id</a></span>(<span class="st">"justinbieber"</span>)</a>
@@ -222,16 +218,16 @@
 <a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; # A tibble: 200 x 10</span></a>
 <a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt;         pk username full_name is_private profile_pic_url profile_pic_id</span></a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;      &lt;chr&gt;           &lt;chr&gt;         </span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  1 2.25e 9 dyahaho  --        TRUE       https://sconte… 1972245157539…</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;  2 1.30e 7 caliwhi… Cali Whi… FALSE      https://sconte… 1850356382436…</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  3 7.58e 9 _xjonga… Jón Gabr… FALSE      https://sconte… 1979249717772…</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  4 3.47e 7 pyp_pen… Piyapen … FALSE      https://sconte… 1944424319979…</span></a>
-<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt;  5 2.25e 8 ferny_b… Ferny Be… FALSE      https://sconte… 1826645688173…</span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt;  6 9.27e 9 jambhul… ❎ S🔥H I … FALSE      https://sconte… 1975582735401…</span></a>
-<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt;  7 6.00e 9 yuda8098 Keyila c… FALSE      https://sconte… 1937115173233…</span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt;  8 1.94e 9 treviza… Rodrigo … FALSE      https://sconte… 1947915772789…</span></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt;  9 6.04e 8 terivop… Tereza V… FALSE      https://sconte… 1870350708004…</span></a>
-<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; 10 1.10e10 nidia_c… Nidia_ay… TRUE       https://sconte… 1977959732649…</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  1 9.31e 9 itz_iff… itz _Iff… FALSE      https://sconte… 1977407998842…</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;  2 8.80e 9 siapama… START 15K TRUE       https://sconte… 1958900144335…</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  3 8.55e 9 ben.ave… official… FALSE      https://sconte… 1956795662873…</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  4 4.16e 9 sara_zo… CHALLENG… FALSE      https://sconte… 1889971177415…</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt;  5 1.54e 9 yetajew… Ye&amp;Ta Je… FALSE      https://sconte… 1928289410769…</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt;  6 1.11e10 million… Milliona… FALSE      https://sconte… 1979725184518…</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt;  7 1.11e10 rangzz__ Tenzin R… TRUE       https://sconte… 1979890393069…</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt;  8 8.71e 9 el_yodi… Yodi Jor… FALSE      https://sconte… 1967538220586…</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt;  9 6.96e 9 lkhamja… 🌼Jambals… TRUE       https://sconte… 1979713374498…</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; 10 5.84e 9 udaiyya  Udaiyya … FALSE      https://sconte… 1811644263564…</span></a>
 <a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; # … with 190 more rows, and 4 more variables: is_verified &lt;lgl&gt;,</span></a>
 <a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, reel_auto_archive &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; #   latest_reel_media &lt;int&gt;</span></a></code></pre></div>
