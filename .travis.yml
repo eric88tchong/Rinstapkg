@@ -25,11 +25,9 @@ cache: packages
 latex: false
 matrix:
   include:
-  - r: oldrel
   - r: release
     env:
     - BUILD_PKGDOWN: true
-  - r: devel
 env:
   global:
   - _R_CHECK_FORCE_SUGGESTS_=false
