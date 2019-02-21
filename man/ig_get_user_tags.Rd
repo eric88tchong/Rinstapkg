@@ -33,10 +33,6 @@ pages returned, then modify this argument.}
 \description{
 This fuction returns all of the posts that the specified user was tagged in.
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 this_user_id <- ig_get_user_id("r4scatUVA")

@@ -85,8 +85,8 @@ library(Rinstapkg)
 
 # Username-Password authentication
 settings <- readRDS(here::here("tests", "testthat", "Rinstapkg_test_settings.rds"))
-suppressMessages(ig_auth(username=settings$prod_username, 
-                         password=settings$prod_password))
+suppressMessages(ig_auth(username=settings$dev$username, 
+                         password=settings$dev$password))
 ```
 
 ```{r, eval=FALSE}

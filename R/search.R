@@ -10,7 +10,7 @@
 #' @export
 ig_search_username <- function(username, return_df = FALSE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = sprintf("users/%s/usernameinfo/", username), 
-                 item_name = "user", 
+                 item_accessor = function(x) x[["user"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }

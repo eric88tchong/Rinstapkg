@@ -4,7 +4,7 @@
 \alias{ig_generic_GET}
 \title{A Generic GET Function}
 \usage{
-ig_generic_GET(relative_endpoint, query = NULL, item_name = NULL,
+ig_generic_GET(relative_endpoint, query = NULL, item_accessor = NULL,
   return_df = TRUE, paginate = FALSE, page_index = 1,
   max_pages = 10, verbose = FALSE)
 }

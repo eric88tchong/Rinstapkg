@@ -39,10 +39,6 @@ pages returned, then modify this argument.}
 This function uses the \code{user_id} to return data that would appear in a 
 user's timeline feed.
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 ig_get_user_feed(10719578450)

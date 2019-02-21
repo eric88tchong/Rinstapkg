@@ -1,9 +1,11 @@
 context("Retrieve")
 
+# login, then run tests
+# TODO: Figure out how to login once to run all tests so we can reduce the 
+# total number of logins which might trigger Instagram blocking our account
 Rinstapkg_test_settings <- readRDS("Rinstapkg_test_settings.rds")
-username <- Rinstapkg_test_settings$prod_username
-password <- Rinstapkg_test_settings$prod_password
-ig_auth(username = username, password = password)
+ig_auth(username = Rinstapkg_test_settings$dev$username, 
+        password = Rinstapkg_test_settings$dev$password)
 
 test_that("ig_get_user_id", {
   expect_true(TRUE)
@@ -14,7 +16,10 @@ test_that("ig_get_user_feed", {
 })
 
 test_that("ig_get_hashtag_feed", {
-  expect_true(TRUE)
+  hashtag_feed <- ig_get_hashtag_feed("R4SC4LIFE")
+  expect_s3_class(hashtag_feed, c("tbl_df", "tbl", "data.frame"))
+  expect_true(all(c("taken_at", "pk", "device_timestamp", "user", 
+                    "comment_count", "like_count") %in% names(hashtag_feed)))
 })
 
 test_that("ig_get_location_feed", {
