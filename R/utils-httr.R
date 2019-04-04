@@ -156,6 +156,7 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_name = NULL,
   endpoint_url <- parse_url(sprintf('%s/%s', 
                                     getOption("Rinstapkg.private_base_url"), 
                                     relative_endpoint))
+  
   endpoint_url$query <- query
   httr_url <- build_url(endpoint_url)
   

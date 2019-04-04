@@ -1,5 +1,8 @@
 before_install:
 - openssl aes-256-cbc -K $encrypted_9fd3ef297570_key -iv $encrypted_9fd3ef297570_iv
+  -in Rinstapkg_test_settings.rds.enc -out tests/testthat/Rinstapkg_test_settings.rds
+  -d
+- openssl aes-256-cbc -K $encrypted_9fd3ef297570_key -iv $encrypted_9fd3ef297570_iv
   -in tests/testthat/Rinstapkg_test_settings.rds.enc -out tests/testthat/Rinstapkg_test_settings.rds
   -d
 - R -q -e 'install.packages(c("remotes", "curl")); remotes::install_github("ropenscilabs/tic");

@@ -29,6 +29,17 @@ ig_search_users <- function(){
 #' NEEDS DOCUMENTATION!!!!
 #' 
 #' @export
-  ig_search_tags <- function(){
+  ig_search_tags <- function(tag, max_id = NULL, return_df = TRUE, 
+                             paginate = TRUE, max_pages = 10, verbose = FALSE){
+    ig_generic_GET(relative_endpoint = "tags/search",
+                   query = list(is_typeahead = "true", q = tag),
+                   item_name = "results", 
+                   return_df = return_df, 
+                   verbose = verbose)
   #Target Endpoint: tags/search/
-}
+  }
+  
+  
+  
+  
+
