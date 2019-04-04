@@ -40,10 +40,6 @@ include media from multiple locations within that area. But if your
 location is a very specific place such as a specific night club, it will usually 
 only include media from that exact location.
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 # location feed for the city of Washington, DC

@@ -30,10 +30,6 @@ pages returned, then modify this argument.}
 \description{
 This fuction returns all of the locations that the specified user was tagged at.
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 this_user_id <- ig_get_user_id("r4scatUVA")

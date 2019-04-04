@@ -3,7 +3,6 @@
 #' This function returns data that would appear in the authenticated user's 
 #' timeline feed.
 #' 
-#' @section Feeds:
 #' @template max_id
 #' @template min_timestamp
 #' @template ranked_content
@@ -22,7 +21,7 @@ ig_my_timeline <- function(max_id = NULL, min_timestamp = NULL, ranked_content =
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = "feed/timeline",
                  query = this_query, 
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  paginate = paginate, 
                  max_pages = max_pages, 
                  return_df = return_df,
@@ -40,7 +39,7 @@ ig_my_timeline <- function(max_id = NULL, min_timestamp = NULL, ranked_content =
 #' @export
 ig_autocomplete_userlist <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "friendships/autocomplete_user_list", 
-                 item_name = "users", 
+                 item_accessor = function(x) x[["users"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }
@@ -68,7 +67,7 @@ ig_my_inbox <- function(return_df = TRUE, verbose = FALSE) {
 #' @export
 ig_my_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "news/inbox", 
-                 item_name = "old_stories", 
+                 item_accessor = function(x) x[["old_stories"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }
@@ -83,7 +82,7 @@ ig_my_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
 #' @export
 ig_following_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "news", 
-                 item_name = "stories", 
+                 item_accessor = function(x) x[["stories"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }

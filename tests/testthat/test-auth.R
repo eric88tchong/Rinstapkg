@@ -1,6 +1,6 @@
 context("Authorization")
 
-skip("Skipping All Tests for Right Now")
+skip("Skipping All Authorization Tests for Right Now")
 
 test_that("testing missing auth", {
   expect_false(token_available())
@@ -15,8 +15,8 @@ test_that("testing nonsense inputs", {
 })
 
 Rinstapkg_test_settings <- readRDS("Rinstapkg_test_settings.rds")
-username <- Rinstapkg_test_settings$prod_username
-password <- Rinstapkg_test_settings$prod_password
+username <- Rinstapkg_test_settings$dev$username
+password <- Rinstapkg_test_settings$dev$password
 # we dont have an OAuth2.0 app yet so we cant create tokens to test that
 #Rinstapkg_token <- readRDS("Rinstapkg_token.rds")
 

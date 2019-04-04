@@ -27,10 +27,6 @@ pages returned, then modify this argument.}
 \description{
 This function returns all of the posts that you have saved
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 ig_get_saved_feed()

@@ -5,7 +5,7 @@
 #' 
 #' @template username
 #' @examples \dontrun{
-#' ig_get_user_id("r4scatUVA")
+#' ig_get_user_id("justinbieber")
 #' }
 #' @export
 ig_get_user_id <- function(username) {
@@ -40,7 +40,6 @@ NULL
 #' This function uses the \code{user_id} to return data that would appear in a 
 #' user's timeline feed.
 #' 
-#' @section Feeds:
 #' @template user_id
 #' @template max_id
 #' @template min_timestamp
@@ -59,7 +58,7 @@ ig_get_user_feed <- function(user_id, max_id = NULL, min_timestamp = NULL,
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = sprintf("feed/user/%s", user_id), 
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -71,7 +70,6 @@ ig_get_user_feed <- function(user_id, max_id = NULL, min_timestamp = NULL,
 #' This function filters by hashtags and returns all posts that have the same 
 #' hashtag string
 #' 
-#' @section Feeds:
 #' @template hashtag
 #' @template max_id
 #' @template ranked_content
@@ -88,7 +86,7 @@ ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE,
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = sprintf("feed/tag/%s", hashtag),
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -99,7 +97,6 @@ ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE,
 #' 
 #' This function filters by location and returns all posts that have the same location
 #' 
-#' @section Feeds:
 #' @template location_id
 #' @template max_id
 #' @template ranked_content
@@ -122,7 +119,7 @@ ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TR
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = sprintf("feed/location/%s", location_id),
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["story"]][["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -133,7 +130,6 @@ ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TR
 #' 
 #' This function returns current most popular posts on Instagram
 #' 
-#' @section Feeds:
 #' @template max_id
 #' @template ranked_content
 #' @inheritParams feed
@@ -149,7 +145,7 @@ ig_get_popular_feed <- function(max_id = NULL, ranked_content = TRUE,
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = "feed/popular",
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -160,7 +156,6 @@ ig_get_popular_feed <- function(max_id = NULL, ranked_content = TRUE,
 #' 
 #' This function returns all of the posts that you have liked
 #' 
-#' @section Feeds:
 #' @template max_id
 #' @inheritParams feed
 #' @examples \dontrun{
@@ -172,7 +167,7 @@ ig_get_liked_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = "feed/liked",
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -183,7 +178,6 @@ ig_get_liked_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
 #' 
 #' This function returns all of the posts that you have saved
 #' 
-#' @section Feeds:
 #' @template max_id
 #' @inheritParams feed
 #' @examples \dontrun{
@@ -195,7 +189,7 @@ ig_get_saved_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = "feed/saved",
                  query = this_query,
-                 item_name = "items", 
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -206,7 +200,6 @@ ig_get_saved_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
 #' 
 #' This fuction returns all of the posts that the specified user was tagged in.
 #' 
-#' @section Feeds:
 #' @template user_id
 #' @template max_id
 #' @template ranked_content
@@ -224,7 +217,7 @@ ig_get_user_tags <- function(user_id, max_id = NULL, ranked_content = TRUE,
                      ranked_content = tolower(ranked_content))
   ig_generic_GET(relative_endpoint = sprintf("usertags/%s/feed", user_id),
                  query = this_query,
-                 item_name = "items",
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -235,7 +228,6 @@ ig_get_user_tags <- function(user_id, max_id = NULL, ranked_content = TRUE,
 #' 
 #' This fuction returns all of the locations that the specified user was tagged at.
 #' 
-#' @section Feeds:
 #' @template user_id
 #' @template max_id
 #' @inheritParams feed
@@ -249,7 +241,7 @@ ig_get_geomedia <- function(user_id, max_id = NULL, return_df = TRUE,
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = sprintf("maps/user/%s", user_id),
                  query = this_query,
-                 item_name = "items",
+                 item_accessor = function(x) x[["items"]], 
                  return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages,
@@ -272,7 +264,7 @@ ig_get_followers <- function(user_id, max_id = NULL, return_df = TRUE,
                              paginate = TRUE, max_pages = 10, verbose = FALSE) {
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = sprintf("friendships/%s/followers", user_id),
-                 item_name = "users", 
+                 item_accessor = function(x) x[["users"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }
@@ -293,7 +285,7 @@ ig_get_following <- function(user_id, max_id = NULL, return_df = TRUE,
                              paginate = TRUE, max_pages = 10, verbose = FALSE) {
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = sprintf("friendships/%s/following", user_id),
-                 item_name = "users", 
+                 item_accessor = function(x) x[["users"]], 
                  return_df = return_df, 
                  verbose = verbose)
 }

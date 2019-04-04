@@ -103,41 +103,34 @@ list format, then just specify `return_df=FALSE` as an argument.
 ``` r
 timeline_results <- ig_my_timeline()
 timeline_results
-#> # A tibble: 80 x 64
+#> # A tibble: 80 x 45
 #>    taken_at       pk id    device_timestamp media_type code 
 #>       <int>    <dbl> <chr>            <dbl>      <int> <chr>
-#>  1   1.55e9  1.98e18 1979…  155024270227089          1 Bt6B…
-#>  2   1.55e9  1.97e18 1973…       1549485501          2 Btjd…
-#>  3   1.55e9  1.98e18 1979… 1550243978277454          8 Bt6D…
-#>  4   1.55e9  1.98e18 1979…       1550243583          1 Bt6D…
-#>  5   1.55e9  1.98e18 1979…       1550242832          1 Bt6B…
-#>  6  NA      NA       <NA>                NA         NA <NA> 
-#>  7   1.55e9  1.98e18 1979…       1550241016          1 Bt5-…
-#>  8   1.54e9  1.90e18 1901…       1540866471          2 Bpil…
-#>  9   1.55e9  1.98e18 1979…  155024270227089          1 Bt6B…
-#> 10   1.55e9  1.97e18 1973…       1549485501          2 Btjd…
-#> # … with 70 more rows, and 58 more variables: client_cache_key <chr>,
+#>  1   1.55e9  1.98e18 1982… 1550540314361522          1 BuC6…
+#>  2  NA      NA       2797…               NA         NA <NA> 
+#>  3  NA      NA       <NA>                NA         NA <NA> 
+#>  4   1.55e9  1.98e18 1981…  155045410572131          1 BuAV…
+#>  5   1.55e9  1.98e18 1981… 1550455167737230          1 BuAW…
+#>  6   1.55e9  1.98e18 1976… 1549857235614429          1 Btui…
+#>  7   1.55e9  1.97e18 1973… 1549464013913359          1 Bti0…
+#>  8   1.55e9  1.97e18 1972… 1549402375783967          1 Btg_…
+#>  9   1.55e9  1.98e18 1982… 1550540314361522          1 BuC6…
+#> 10  NA      NA       <NA>                NA         NA <NA> 
+#> # … with 70 more rows, and 39 more variables: client_cache_key <chr>,
 #> #   filter_type <int>, comment_likes_enabled <lgl>,
 #> #   comment_threading_enabled <lgl>, has_more_comments <lgl>,
 #> #   max_num_visible_preview_comments <int>,
 #> #   can_view_more_preview_comments <lgl>, comment_count <int>,
 #> #   inline_composer_display_condition <chr>, image_versions2 <list>,
-#> #   original_width <int>, original_height <int>, user <list>,
-#> #   can_viewer_reshare <lgl>, caption <list>, caption_is_edited <lgl>,
-#> #   like_count <int>, has_liked <lgl>, photo_of_you <lgl>,
+#> #   original_width <int>, original_height <int>, location <list>,
+#> #   lat <dbl>, lng <dbl>, user <list>, can_viewer_reshare <lgl>,
+#> #   caption <list>, caption_is_edited <lgl>, like_count <int>,
+#> #   has_liked <lgl>, likers <list>, photo_of_you <lgl>, usertags <list>,
 #> #   can_viewer_save <lgl>, organic_tracking_token <chr>, preview <chr>,
-#> #   is_dash_eligible <int>, video_dash_manifest <chr>, video_codec <chr>,
-#> #   number_of_qualities <int>, video_versions <list>, has_audio <lgl>,
-#> #   video_duration <dbl>, view_count <dbl>, injected <list>,
-#> #   collapse_comments <lgl>, ad_metadata <list>, link <chr>,
-#> #   link_text <chr>, ad_action <chr>, link_hint_text <chr>,
-#> #   ad_link_type <int>, ad_header_style <int>, dr_ad_type <int>,
-#> #   android_links <list>, force_overlay <lgl>, hide_nux_text <lgl>,
-#> #   overlay_text <chr>, overlay_title <chr>, overlay_subtitle <chr>,
-#> #   dominant_color <chr>, follower_count <int>, post_count <int>,
-#> #   fb_page_url <chr>, expiring_at <int>, preview_comments <list>,
-#> #   carousel_media_count <int>, carousel_media <list>, likers <list>,
-#> #   usertags <list>, end_of_feed_demarcator <list>, location <list>
+#> #   type <int>, suggestions <list>, landing_site_type <chr>, title <chr>,
+#> #   view_all_text <chr>, landing_site_title <chr>, netego_type <chr>,
+#> #   upsell_fb_pos <chr>, auto_dvance <chr>, tracking_token <chr>,
+#> #   end_of_feed_demarcator <list>, has_viewer_saved <lgl>
 ```
 
 ### Get Followers
@@ -157,18 +150,18 @@ bieber_user_id <- ig_get_user_id("justinbieber")
 follower_results <- ig_get_followers(bieber_user_id)
 follower_results
 #> # A tibble: 200 x 10
-#>         pk username full_name is_private profile_pic_url profile_pic_id
-#>      <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
-#>  1 6.70e 9 rehanja… Réhâñ Jä… TRUE       https://sconte… 1873425440490…
-#>  2 1.11e10 juliawo… Удаленна… FALSE      https://sconte… 1979908523626…
-#>  3 5.58e 9 adellia… Adellia … FALSE      https://sconte… 1975580586116…
-#>  4 2.90e 9 jadenha… Jaden Ha… FALSE      https://sconte… 1971643469832…
-#>  5 2.22e 9 solomon… S O L     FALSE      https://sconte… 1950465264111…
-#>  6 2.38e 9 shatu_m… Shatu Mo… FALSE      https://sconte… 1952438976930…
-#>  7 1.76e 9 rai0oh   Pedawi    FALSE      https://sconte… 1973519018514…
-#>  8 9.01e 8 baderxa… BADERXAN… FALSE      https://sconte… 1976325751138…
-#>  9 8.78e 9 radchen… Mariya    FALSE      https://instag… <NA>          
-#> 10 7.87e 9 ronjaaa9 ronja💘   TRUE       https://sconte… 1977855007806…
+#>        pk username full_name is_private profile_pic_url profile_pic_id
+#>     <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
+#>  1 1.99e9 joshuaf… Joshuafr… FALSE      https://sconte… 1623206444616…
+#>  2 8.97e9 klevers… ҝℓενεяรØ… FALSE      https://sconte… 1950468542487…
+#>  3 8.45e9 ivabrat… "\U0001f… TRUE       https://sconte… 1976367343223…
+#>  4 7.87e9 barosh.… بـږۆﺷ̲ﮬ̌…   FALSE      https://sconte… 1983692001187…
+#>  5 4.12e9 its.azz… ♠❎ROYALE… FALSE      https://sconte… 1966544156159…
+#>  6 9.79e9 __aman_… Pahadi_b… FALSE      https://sconte… 1975401294970…
+#>  7 8.57e9 cha.hr_… ◥(ฅº👅ºฅ)… TRUE       https://sconte… 1965669765175…
+#>  8 6.53e9 mrifkiq… M.Rifki … FALSE      https://sconte… 1944716363672…
+#>  9 4.52e9 kn.i9    Kholod A… FALSE      https://sconte… 1979897482515…
+#> 10 4.21e9 amaan.k7 ÀmåAñ Kh… FALSE      https://sconte… 1978220904561…
 #> # … with 190 more rows, and 4 more variables: is_verified <lgl>,
 #> #   has_anonymous_profile_picture <lgl>, reel_auto_archive <chr>,
 #> #   latest_reel_media <int>

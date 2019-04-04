@@ -146,10 +146,11 @@ catch_errors <- function(x) {
 #'
 #' @importFrom httr parse_url build_url content
 #' @importFrom dplyr bind_rows
+#' @importFrom purrr pluck
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
-ig_generic_GET <- function(relative_endpoint, query = NULL, item_name = NULL, 
+ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL, 
                            return_df = TRUE, paginate = FALSE, page_index = 1, 
                            max_pages = 10, verbose = FALSE) {
   
@@ -173,7 +174,7 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_name = NULL,
   catch_errors(resp) # how should we handle 404 errors?
   resp_parsed <- content(resp, "parsed")
   
-  target_data <- if(is.null(item_name)) resp_parsed else resp_parsed[[item_name]]
+  target_data <- if(is.null(item_accessor)) resp_parsed else pluck(resp_parsed, item_accessor)
   result <- if(return_df) items_to_tidy_df(target_data) else target_data
   
   # check whether it has another page of records and continue to pull if so
@@ -181,7 +182,7 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_name = NULL,
     if(resp_parsed$more_available & paginate & page_index < max_pages){
       next_result <- ig_generic_GET(relative_endpoint = relative_endpoint, 
                                     query = query,
-                                    item_name = item_name, 
+                                    item_accessor = item_accessor, 
                                     return_df = return_df, 
                                     paginate = paginate,
                                     page_index = page_index + 1, 

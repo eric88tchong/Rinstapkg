@@ -39,10 +39,6 @@ pages returned, then modify this argument.}
 This function returns data that would appear in the authenticated user's 
 timeline feed.
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 my_timeline <- ig_my_timeline()

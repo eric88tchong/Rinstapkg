@@ -34,10 +34,6 @@ pages returned, then modify this argument.}
 This function filters by hashtags and returns all posts that have the same 
 hashtag string
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{ 
 ig_get_hashtag_feed("R4SC4LIFE")

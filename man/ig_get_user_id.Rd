@@ -16,6 +16,6 @@ needed for other functions
 }
 \examples{
 \dontrun{
-ig_get_user_id("r4scatUVA")
+ig_get_user_id("justinbieber")
 }
 }

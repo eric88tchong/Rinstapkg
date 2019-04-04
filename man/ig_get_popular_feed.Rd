@@ -30,10 +30,6 @@ pages returned, then modify this argument.}
 \description{
 This function returns current most popular posts on Instagram
 }
-\section{Feeds}{
-
-}
-
 \examples{
 \dontrun{
 ig_get_popular_feed()
