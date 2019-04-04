@@ -9,7 +9,21 @@
 #' }
 #' @export
 ig_get_user_id <- function(username) {
-  as.integer(ig_search_username(username)$pk)
+  as.double(ig_search_username(username)$pk)
+}
+
+#' Return the media ID from a user_id and post index
+#' 
+#' This function accepts a Instagram user_id and the number of the post that you want
+#' and will return its MediaID, which is needed for other functions
+#' 
+#' @template username
+#' @examples \dontrun{
+#' 
+#' }
+#' @export
+ig_get_media_id <- function(user_id, post_index){
+  ig_get_user_feed(user_id)$id[post_index]
 }
 
 #' Return data from a feed-like Instagram endpoint
@@ -96,8 +110,8 @@ ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE,
 #' only include media from that exact location.
 #' @seealso \url{https://docs.social-streams.com/article/118-find-instagram-location-id}
 #' @examples \dontrun{
-#' # location feed for the city of Washington, DC
-#' ig_get_location_feed(213480180)
+#' # location feed for the city of The Juice Laundry
+#' ig_get_location_feed(1472678466133411)
 #' }
 #' @export
 ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TRUE, 
