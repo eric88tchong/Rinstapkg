@@ -4,7 +4,8 @@
 \alias{ig_search_tags}
 \title{ig_search_tags}
 \usage{
-ig_search_tags()
+ig_search_tags(tag, max_id = NULL, return_df = TRUE, paginate = TRUE,
+  max_pages = 10, verbose = FALSE)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

@@ -1,8 +1,10 @@
 ##### THIS FILE NEEDS FUNCTIONS & DOCUMENTATION
 
-#' ig_like 
+#' Like a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post and likes that post for you
+#' 
+#' @template media_id
 #' 
 #' @export
 ig_like <- function(media_id){
@@ -16,9 +18,11 @@ ig_like <- function(media_id){
   #Target Endpoint: media/{media_id}/like/
 }
 
-#' ig_unlike 
+#' Unlike a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post and unlikes that post for you
+#' 
+#' @template media_id
 #' 
 #' @export
 ig_unlike <- function(media_id){
@@ -32,9 +36,11 @@ ig_unlike <- function(media_id){
   #Target Endpoint: media/{media_id}/unlike/
 }
 
-#' ig_save 
+#' Saves a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post and puts that post in the Saved folder within Instagram
+#' 
+#' @template media_id
 #' 
 #' @export
 ig_save <- function(media_id){
@@ -48,9 +54,11 @@ ig_save <- function(media_id){
   #Target Endpoint: media/{media_id}/save/
 }
 
-#' ig_unsave 
+#' Unsaves a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post and removes that post from the Saved folder within Instagram
+#' 
+#' @template media_id
 #' 
 #' @export
 ig_unsave <- function(media_id){
@@ -64,9 +72,13 @@ ig_unsave <- function(media_id){
   #Target Endpoint: media/{media_id}/unsave/
 }
 
-#' ig_comment
+#' Writes a comment on a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post as well as a \code{comment_text}
+#' and leaves the comment on the post
+#' 
+#' @template media_id
+#' @param comment_text chr; the text that would be posted as a comment underneath the post
 #' 
 #' @export
 ig_comment <- function(media_id, comment_text){
@@ -80,9 +92,13 @@ ig_comment <- function(media_id, comment_text){
   #Target Endpoint: media/{media_id}/comment/
 }    
 
-#' ig_comment_delete
+#' Deletes a comment on a specified post
 #' 
-#' NEEDS DOCUMENTATION!!!!
+#' This function takes the \code{media_id} of a post as well as the \code{comment_id}
+#' that the user wants to delete and removes that comment from the post
+#' 
+#' @template media_id
+#' @param comment_id NEEDS DOCUMENTATION!!!!
 #' 
 #' @export
 ig_comment_delete <- function(media_id, comment_id){
@@ -116,9 +132,16 @@ ig_get_media_info <- function(media_id){
 #' NEEDS DOCUMENTATION!!!!
 #' 
 #' @export
-ig_get_media_comments <- function(media_id, max_id){
+ig_get_media_comments <- function(media_id, max_id = NULL, return_df = TRUE, paginate = TRUE,
+                                  max_pages = 10, verbose = FALSE){
+  this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = sprintf("media/%s/comments/", media_id),
-                  query = list(max_id = "", q = max_id))
+                query = this_query,
+                item_accessor = function(x) x[["comments"]], 
+                return_df = return_df, 
+                paginate = paginate,
+                max_pages = max_pages, 
+                verbose = verbose)
   #Target Endpoint: media/{media_id}/comments/
 } 
 
@@ -129,7 +152,7 @@ ig_get_media_comments <- function(media_id, max_id){
 #' @export
 ig_get_media_likers <- function(media_id, return_df = TRUE, verbose = FALSE){
   ig_generic_GET(relative_endpoint = sprintf("media/%s/likers/?", media_id),
-                 item_name = "users", 
+                 item_accessor = function(x) x[["users"]], 
                  return_df = return_df, 
                  verbose = verbose)
 

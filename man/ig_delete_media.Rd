@@ -4,7 +4,7 @@
 \alias{ig_delete_media}
 \title{ig_delete_media}
 \usage{
-ig_delete_media()
+ig_delete_media(media_id, media_type = 1)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

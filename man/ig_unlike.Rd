@@ -2,10 +2,14 @@
 % Please edit documentation in R/media.R
 \name{ig_unlike}
 \alias{ig_unlike}
-\title{ig_unlike}
+\title{Unlike a specified post}
 \usage{
-ig_unlike()
+ig_unlike(media_id)
+}
+\arguments{
+\item{media_id}{character; the unique id to identify a post which can be 
+found in the \code{"id"} on other posts returned via the Instagram API}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function takes the \code{media_id} of a post and unlikes that post for you
 }

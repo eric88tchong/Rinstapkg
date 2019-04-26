@@ -2,9 +2,10 @@
 % Please edit documentation in R/media.R
 \name{ig_get_media_comments}
 \alias{ig_get_media_comments}
-\title{ig_get_media_comments}
+\title{ig_get_media_comments NEEDS HELP}
 \usage{
-ig_get_media_comments()
+ig_get_media_comments(media_id, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

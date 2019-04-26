@@ -42,8 +42,8 @@ only include media from that exact location.
 }
 \examples{
 \dontrun{
-# location feed for the city of Washington, DC
-ig_get_location_feed(213480180)
+# location feed for the city of The Juice Laundry
+ig_get_location_feed(1472678466133411)
 }
 }
 \seealso{

@@ -4,7 +4,7 @@
 \alias{ig_get_media_info}
 \title{ig_get_media_info}
 \usage{
-ig_get_media_info()
+ig_get_media_info(media_id)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

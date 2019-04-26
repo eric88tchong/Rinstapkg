@@ -26,15 +26,6 @@ ig_get_media_id <- function(user_id, post_index){
   ig_get_user_feed(user_id)$id[post_index]
 }
 
-#' Return data from a feed-like Instagram endpoint
-#'
-#' @template return_df
-#' @template paginate 
-#' @template max_pages 
-#' @template verbose
-#' @name feed
-NULL
-
 #' Get a user's timeline feed
 #' 
 #' This function uses the \code{user_id} to return data that would appear in a 
@@ -44,6 +35,10 @@ NULL
 #' @template max_id
 #' @template min_timestamp
 #' @template ranked_content
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' ig_get_user_feed(10719578450)
@@ -73,6 +68,10 @@ ig_get_user_feed <- function(user_id, max_id = NULL, min_timestamp = NULL,
 #' @template hashtag
 #' @template max_id
 #' @template ranked_content
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{ 
 #' ig_get_hashtag_feed("R4SC4LIFE")
@@ -100,6 +99,10 @@ ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE,
 #' @template location_id
 #' @template max_id
 #' @template ranked_content
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @details Note that if your location is a "group" (such as a city), the feed will 
 #' include media from multiple locations within that area. But if your
@@ -132,6 +135,10 @@ ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TR
 #' 
 #' @template max_id
 #' @template ranked_content
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' ig_get_popular_feed()
@@ -157,6 +164,10 @@ ig_get_popular_feed <- function(max_id = NULL, ranked_content = TRUE,
 #' This function returns all of the posts that you have liked
 #' 
 #' @template max_id
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' ig_get_liked_feed()
@@ -179,6 +190,10 @@ ig_get_liked_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
 #' This function returns all of the posts that you have saved
 #' 
 #' @template max_id
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' ig_get_saved_feed()
@@ -203,6 +218,10 @@ ig_get_saved_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
 #' @template user_id
 #' @template max_id
 #' @template ranked_content
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' this_user_id <- ig_get_user_id("r4scatUVA")
@@ -230,6 +249,10 @@ ig_get_user_tags <- function(user_id, max_id = NULL, ranked_content = TRUE,
 #' 
 #' @template user_id
 #' @template max_id
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' this_user_id <- ig_get_user_id("r4scatUVA")
@@ -254,6 +277,10 @@ ig_get_geomedia <- function(user_id, max_id = NULL, return_df = TRUE,
 #' 
 #' @template user_id
 #' @template max_id
+#' @template return_df
+#' @template paginate
+#' @template max_pages
+#' @template verbose
 #' @inheritParams feed
 #' @examples \dontrun{
 #' this_user_id <- ig_get_user_id("r4scatUVA")
@@ -265,7 +292,9 @@ ig_get_followers <- function(user_id, max_id = NULL, return_df = TRUE,
   this_query <- list(max_id = max_id)
   ig_generic_GET(relative_endpoint = sprintf("friendships/%s/followers", user_id),
                  item_accessor = function(x) x[["users"]], 
-                 return_df = return_df, 
+                 return_df = return_df,
+                 paginate = paginate, 
+                 max_pages = max_pages,
                  verbose = verbose)
 }
 
@@ -275,6 +304,7 @@ ig_get_followers <- function(user_id, max_id = NULL, return_df = TRUE,
 #' 
 #' @template user_id
 #' @template max_id
+
 #' @inheritParams feed
 #' @examples \dontrun{
 #' this_user_id <- ig_get_user_id("r4scatUVA")

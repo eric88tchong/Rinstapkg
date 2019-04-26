@@ -2,10 +2,17 @@
 % Please edit documentation in R/media.R
 \name{ig_comment_delete}
 \alias{ig_comment_delete}
-\title{ig_comment_delete}
+\title{Deletes a comment on a specified post}
 \usage{
-ig_comment_delete()
+ig_comment_delete(media_id, comment_id)
+}
+\arguments{
+\item{media_id}{character; the unique id to identify a post which can be 
+found in the \code{"id"} on other posts returned via the Instagram API}
+
+\item{comment_id}{NEEDS DOCUMENTATION!!!!}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function takes the \code{media_id} of a post as well as the \code{comment_id}
+that the user wants to delete and removes that comment from the post
 }

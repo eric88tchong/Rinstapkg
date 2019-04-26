@@ -4,7 +4,7 @@
 \alias{ig_get_media_likers}
 \title{ig_get_media_likers}
 \usage{
-ig_get_media_likers()
+ig_get_media_likers(media_id, return_df = TRUE, verbose = FALSE)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

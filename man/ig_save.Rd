@@ -2,10 +2,14 @@
 % Please edit documentation in R/media.R
 \name{ig_save}
 \alias{ig_save}
-\title{ig_save}
+\title{Saves a specified post}
 \usage{
-ig_save()
+ig_save(media_id)
+}
+\arguments{
+\item{media_id}{character; the unique id to identify a post which can be 
+found in the \code{"id"} on other posts returned via the Instagram API}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function takes the \code{media_id} of a post and puts that post in the Saved folder within Instagram
 }

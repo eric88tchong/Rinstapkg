@@ -178,8 +178,10 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL
   result <- if(return_df) items_to_tidy_df(target_data) else target_data
   
   # check whether it has another page of records and continue to pull if so
-  if(!is.null(resp_parsed$more_available)){
-    if(resp_parsed$more_available & paginate & page_index < max_pages){
+  more_records <- any(unlist(resp_parsed[c('more_available', 'big_list', 'has_more_comments')]))
+  if(!is.null(more_records)){
+    if(more_records & paginate & page_index < max_pages){
+      query$max_id <- resp_parsed$next_max_id
       next_result <- ig_generic_GET(relative_endpoint = relative_endpoint, 
                                     query = query,
                                     item_accessor = item_accessor, 

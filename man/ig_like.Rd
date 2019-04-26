@@ -2,10 +2,14 @@
 % Please edit documentation in R/media.R
 \name{ig_like}
 \alias{ig_like}
-\title{ig_like}
+\title{Like a specified post}
 \usage{
-ig_like()
+ig_like(media_id)
+}
+\arguments{
+\item{media_id}{character; the unique id to identify a post which can be 
+found in the \code{"id"} on other posts returned via the Instagram API}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function takes the \code{media_id} of a post and likes that post for you
 }

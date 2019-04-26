@@ -4,7 +4,7 @@
 \alias{ig_edit_media}
 \title{ig_edit_media}
 \usage{
-ig_edit_media()
+ig_edit_media(media_id, caption_text)
 }
 \description{
 NEEDS DOCUMENTATION!!!!

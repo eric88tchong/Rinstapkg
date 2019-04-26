@@ -33,7 +33,7 @@ ig_search_users <- function(){
                              paginate = TRUE, max_pages = 10, verbose = FALSE){
     ig_generic_GET(relative_endpoint = "tags/search",
                    query = list(is_typeahead = "true", q = tag),
-                   item_name = "results", 
+                   item_accessor = function(x) x[["results"]], 
                    return_df = return_df, 
                    verbose = verbose)
   #Target Endpoint: tags/search/

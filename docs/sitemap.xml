@@ -22,9 +22,6 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/csrf_token_available.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/feed.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/generate_signed_body.html</loc>
   </url>
   <url>
@@ -92,6 +89,9 @@
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_comments.html</loc>
+  </url>
+  <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_id.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_info.html</loc>

@@ -2,10 +2,17 @@
 % Please edit documentation in R/media.R
 \name{ig_comment}
 \alias{ig_comment}
-\title{ig_comment}
+\title{Writes a comment on a specified post}
 \usage{
-ig_comment()
+ig_comment(media_id, comment_text)
+}
+\arguments{
+\item{media_id}{character; the unique id to identify a post which can be 
+found in the \code{"id"} on other posts returned via the Instagram API}
+
+\item{comment_text}{chr; the text that would be posted as a comment underneath the post}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function takes the \code{media_id} of a post as well as a \code{comment_text}
+and leaves the comment on the post
 }

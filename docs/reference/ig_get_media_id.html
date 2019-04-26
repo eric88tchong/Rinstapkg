@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get news feed of recent activities by you — ig_my_recent_activity • Rinstapkg</title>
+<title>Return the media ID from a user_id and post index — ig_get_media_id • Rinstapkg</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Get news feed of recent activities by you — ig_my_recent_activity" />
+<meta property="og:title" content="Return the media ID from a user_id and post index — ig_get_media_id" />
 
-<meta property="og:description" content="This function returns notifications regarding the actions you have recently took, 
-such as what posts you've liked or when you've started following other people." />
+<meta property="og:description" content="This function accepts a Instagram user_id and the number of the post that you want
+and will return its MediaID, which is needed for other functions" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,41 +120,43 @@ such as what posts you've liked or when you've started following other people." 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get news feed of recent activities by you</h1>
-    <small class="dont-index">Source: <a href='https://github.com/eric88tchong/Rinstapkg/blob/master/R/activity.R'><code>R/activity.R</code></a></small>
-    <div class="hidden name"><code>ig_my_recent_activity.Rd</code></div>
+    <h1>Return the media ID from a user_id and post index</h1>
+    <small class="dont-index">Source: <a href='https://github.com/eric88tchong/Rinstapkg/blob/master/R/retrieve.R'><code>R/retrieve.R</code></a></small>
+    <div class="hidden name"><code>ig_get_media_id.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function returns notifications regarding the actions you have recently took, 
-such as what posts you've liked or when you've started following other people.</p>
+    <p>This function accepts a Instagram user_id and the number of the post that you want
+and will return its MediaID, which is needed for other functions</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ig_my_recent_activity</span>(<span class='kw'>return_df</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>ig_get_media_id</span>(<span class='no'>user_id</span>, <span class='no'>post_index</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>return_df</th>
-      <td><p>logical; do you want to return the results as a <code>tbl_df</code> 
-with one row per entity or as a list with one element per entity?</p></td>
-    </tr>
-    <tr>
-      <th>verbose</th>
-      <td><p>logical; do you want informative messages?</p></td>
+      <th>username</th>
+      <td><p>character; the username of the Instagram user, typically referenced 
+by using the "@" symbol</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"># NOT RUN {
+# }
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
