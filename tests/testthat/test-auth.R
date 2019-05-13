@@ -39,8 +39,8 @@ test_that("testing custom token validation routine", {
 
 test_that("testing basic auth", {
   
-  username <- Rinstapkg_test_settings$prod_username
-  password <- Rinstapkg_test_settings$prod_password
+  username <- Rinstapkg_test_settings$dev$username
+  password <- Rinstapkg_test_settings$dev$password
   
   session <- ig_auth(username = username, password = password)
   expect_is(session, "list")

@@ -157,7 +157,6 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL
   endpoint_url <- parse_url(sprintf('%s/%s', 
                                     getOption("Rinstapkg.private_base_url"), 
                                     relative_endpoint))
-  
   endpoint_url$query <- query
   httr_url <- build_url(endpoint_url)
   
@@ -172,13 +171,17 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL
   
   resp <- rGET(httr_url)
   catch_errors(resp) # how should we handle 404 errors?
-  resp_parsed <- content(resp, "parsed")
+  resp_parsed <- content(resp, as = "parsed")
   
   target_data <- if(is.null(item_accessor)) resp_parsed else pluck(resp_parsed, item_accessor)
+  # drop any elements that are in the following list of ignored elements
+  ignore_idx <- sapply(sapply(target_data, names), FUN=function(x){any(x %in% c("end_of_feed_demarcator"))})    
+  target_data <- target_data[!ignore_idx]
   result <- if(return_df) items_to_tidy_df(target_data) else target_data
   
   # check whether it has another page of records and continue to pull if so
-  more_records <- any(unlist(resp_parsed[c('more_available', 'big_list', 'has_more_comments')]))
+  more_records <- any(unlist(resp_parsed[c('has_more', 'more_available', 
+                                           'big_list', 'has_more_comments')]))
   if(!is.null(more_records)){
     if(more_records & paginate & page_index <= max_pages){
       query$max_id <- resp_parsed$next_max_id

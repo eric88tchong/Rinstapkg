@@ -2,17 +2,17 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_id}
 \alias{ig_get_user_id}
-\title{Return the user ID from a username}
+\title{Get a User Id}
 \usage{
 ig_get_user_id(username)
 }
 \arguments{
-\item{username}{character; the username of the Instagram user, typically referenced 
-by using the "@" symbol}
+\item{username}{character; the username of the Instagram user. Omit the "@" symbol 
+that is typically used when referencing another user}
 }
 \description{
-This function accepts a Instagram username and returns their \code{user_id}, which is 
-needed for other functions
+This function accepts a Instagram username and returns their \code{user_id}, 
+which is needed for other functions
 }
 \examples{
 \dontrun{

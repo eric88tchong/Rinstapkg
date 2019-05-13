@@ -2,11 +2,39 @@
 % Please edit documentation in R/search.R
 \name{ig_search_tags}
 \alias{ig_search_tags}
-\title{ig_search_tags}
+\title{Search by Hashtag}
 \usage{
-ig_search_tags(tag, max_id = NULL, return_df = TRUE, paginate = TRUE,
-  max_pages = 10, verbose = FALSE)
+ig_search_tags(hashtag, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
+}
+\arguments{
+\item{hashtag}{character; do not include the hashtag (pound sign) at the beginning 
+of the string}
+
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function accepts a hashtag, without the "#" symbol and returns the similar 
+hashtags. You can then use \link{ig_get_hashtag_feed()} to return all posts associated 
+with that hashtag.
+}
+\examples{
+\dontrun{
+# search for posts using the #belieber hashtag
+belieber_posts <- ig_search_tags("belieber")
+}
 }

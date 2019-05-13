@@ -7,6 +7,49 @@ Rinstapkg_state <- function(){
   .state
 }
 
+#' Validate a User Id
+#' 
+#' This function checks whether a supplied user_id fits the pattern of one, mostly 
+#' to alert users when supplying a username instead of an id.
+#' 
+#' @template user_id
+#' @examples \dontrun{
+#' # return a warning that we need a User Id, not a Username
+#' check_user_id("justinbieber")
+#' 
+#' # check with a real user id
+#' bieber_user_id <- ig_get_user_id("justinbieber")
+#' check_user_id(bieber_user_id)
+#' }
+#' @export
+check_user_id <- function(user_id){
+  if(!is.numeric(user_id)){
+    valid_string <- grepl("^[0-9]+$", as.character(user_id))
+    if(!valid_string){
+      warning(sprintf("Invalid User Id - Check that this is not a username: %s", user_id), 
+              call. = FALSE)
+    }
+  }
+  return(invisible(user_id))
+}
+
+#' Lookup Media Type Enum
+#' 
+#' This function returns the integer value of a specified type of media
+#' 
+#' @template media_type
+#' @examples \dontrun{
+#' # photo media are mapped to 1
+#' media_type_enum("PHOTO")
+#' 
+#' # an unknown media type returns NULL
+#' media_type_enum("FAKE_MEDIA_TYPE")
+#' }
+#' @export
+media_type_enum <- function(media_type = c("PHOTO", "VIDEO", "ALBUM")){
+  switch(media_type, PHOTO = 1, VIDEO = 2, ALBUM = 8, NULL)
+}
+
 #' Convert a value to Epoch Time
 #' 
 #' This function takes an input and converts it to the Unix epoch which is the 
@@ -18,25 +61,31 @@ Rinstapkg_state <- function(){
 as_epoch <- function(x){
   UseMethod("as_epoch")
 }
-
+#' @export
 as_epoch.Date <- function(x){
   as.integer(as_datetime(x))
 }
+#' @export
 as_epoch.POSIXct <- function(x){
   as.integer(as_datetime(x))
 }
+#' @export
 as_epoch.POSIXlt <- function(x){
   as.integer(as.POSIXct(as_datetime(x)))
 }
+#' @export
 as_epoch.character <- function(x){
   as.integer(as_datetime(x))
 }
+#' @export
 as_epoch.numeric <- function(x){
   as.integer(x)
 }
+#' @export
 as_epoch.integer <- function(x){
   x
 }
+#' @export
 as_epoch.NULL <- function(x){
   NULL
 }

@@ -19,7 +19,13 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/catch_errors.html</loc>
   </url>
   <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/check_user_id.html</loc>
+  </url>
+  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/csrf_token_available.html</loc>
+  </url>
+  <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/feed.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/generate_signed_body.html</loc>
@@ -52,13 +58,16 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_comment_delete.html</loc>
   </url>
   <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_comment_delete_bulk.html</loc>
+  </url>
+  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_csrf_token.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_delete_media.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_edit_media.html</loc>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_edit_media_caption.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_following_recent_activity.html</loc>
@@ -73,12 +82,6 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_followers.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_following.html</loc>
-  </url>
-  <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_geomedia.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_hashtag_feed.html</loc>
   </url>
   <url>
@@ -91,25 +94,19 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_comments.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_id.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_info.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_media_likers.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_popular_feed.html</loc>
-  </url>
-  <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_saved_feed.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_user_feed.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_user_id.html</loc>
+  </url>
+  <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_user_profile.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_get_user_tags.html</loc>
@@ -139,9 +136,6 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_search_tags.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_search_username.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_search_users.html</loc>
   </url>
   <url>
@@ -158,6 +152,9 @@
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/items_to_tidy_df.html</loc>
+  </url>
+  <url>
+    <loc>https://eric88tchong.github.io/Rinstapkg/reference/media_type_enum.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/rDELETE.html</loc>

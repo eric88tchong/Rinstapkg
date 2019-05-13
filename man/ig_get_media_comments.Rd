@@ -2,11 +2,43 @@
 % Please edit documentation in R/media.R
 \name{ig_get_media_comments}
 \alias{ig_get_media_comments}
-\title{ig_get_media_comments NEEDS HELP}
+\alias{ig_get_media_likers}
+\title{Get Media Comments and Likers}
 \usage{
 ig_get_media_comments(media_id, max_id = NULL, return_df = TRUE,
   paginate = TRUE, max_pages = 10, verbose = FALSE)
+
+ig_get_media_likers(media_id, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
+}
+\arguments{
+\item{media_id}{numeric; the unique id to identify a post which can be 
+found in the \code{id}, not the \code{pk} field, of posts returned via many of 
+the functions retrieving feeds.}
+
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+These functions return the comments and user like data from a single post.
+}
+\examples{
+\dontrun{
+bieber_user_id <- ig_get_user_id("justinbieber")
+bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
+most_recent_post_comments <- ig_get_media_comments(media_id = bieber_feed$id[1])
+}
 }

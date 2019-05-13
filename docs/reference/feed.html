@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return data from a feed-like Instagram endpoint — feed • Rinstapkg</title>
+<title>Instagram Feeds — feed • Rinstapkg</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Return data from a feed-like Instagram endpoint — feed" />
+<meta property="og:title" content="Instagram Feeds — feed" />
 
-<meta property="og:description" content="Return data from a feed-like Instagram endpoint" />
+<meta property="og:description" content="The arguments available to all functions that return feed data from Instagram" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,14 +117,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return data from a feed-like Instagram endpoint</h1>
+    <h1>Instagram Feeds</h1>
     <small class="dont-index">Source: <a href='https://github.com/eric88tchong/Rinstapkg/blob/master/R/retrieve.R'><code>R/retrieve.R</code></a></small>
     <div class="hidden name"><code>feed.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Return data from a feed-like Instagram endpoint</p>
+    <p>The arguments available to all functions that return feed data from Instagram</p>
     
     </div>
 
@@ -132,6 +132,11 @@
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>max_id</th>
+      <td><p>integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call</p></td>
+    </tr>
     <tr>
       <th>return_df</th>
       <td><p>logical; do you want to return the results as a <code>tbl_df</code> 

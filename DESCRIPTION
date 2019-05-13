@@ -1,7 +1,7 @@
 Package: Rinstapkg
 Title: An Implementation of the 'Instagram' API Using Tidy Principles
 Version: 0.0.0.9000
-Date: 2019-01-27
+Date: 2019-05-13
 Description: An implementation of the 'Instagram' API using tidy principles. This 
     includes functions to get feeds and users, but also perform basic in-app 
     functionality such as liking, commenting, following, and blocking. Use of this 

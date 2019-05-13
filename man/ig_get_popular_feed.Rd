@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_popular_feed}
 \alias{ig_get_popular_feed}
-\title{Get the feed of most popular current posts on Instagram}
+\title{Get Feed of Popular Posts}
 \usage{
 ig_get_popular_feed(max_id = NULL, ranked_content = TRUE,
   return_df = TRUE, paginate = TRUE, max_pages = 10,
@@ -32,6 +32,6 @@ This function returns current most popular posts on Instagram
 }
 \examples{
 \dontrun{
-ig_get_popular_feed()
+most_popular_posts <- ig_get_popular_feed()
 }
 }

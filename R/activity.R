@@ -22,9 +22,9 @@ ig_my_timeline <- function(max_id = NULL, min_timestamp = NULL, ranked_content =
   ig_generic_GET(relative_endpoint = "feed/timeline",
                  query = this_query, 
                  item_accessor = function(x) x[["items"]], 
+                 return_df = return_df,
                  paginate = paginate, 
                  max_pages = max_pages, 
-                 return_df = return_df,
                  verbose = verbose)
 }
   

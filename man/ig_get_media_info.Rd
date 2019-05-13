@@ -2,10 +2,25 @@
 % Please edit documentation in R/media.R
 \name{ig_get_media_info}
 \alias{ig_get_media_info}
-\title{ig_get_media_info}
+\title{Get Media Info}
 \usage{
-ig_get_media_info(media_id)
+ig_get_media_info(media_id, verbose = FALSE)
+}
+\arguments{
+\item{media_id}{numeric; the unique id to identify a post which can be 
+found in the \code{id}, not the \code{pk} field, of posts returned via many of 
+the functions retrieving feeds.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function returns the details of a single post. It contains the same information 
+about a post that is retrieved by many of the feed functions.
+}
+\examples{
+\dontrun{
+bieber_user_id <- ig_get_user_id("justinbieber")
+bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
+most_recent_post <- ig_get_media_info(media_id = bieber_feed$id[1])
+}
 }

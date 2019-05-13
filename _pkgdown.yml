@@ -36,7 +36,9 @@ reference:
     desc: Functions used for getting data
     contents:
       - '`ig_get_user_id`'
+      - '`ig_get_user_profile`'
       - '`ig_get_user_feed`'
+      - '`ig_get_user_tags`'      
       - '`ig_get_hashtag_feed`'
       - '`ig_get_location_feed`'
       - '`ig_get_popular_feed`'
@@ -44,13 +46,10 @@ reference:
       - '`ig_get_saved_feed`'
       - '`ig_get_followers`'
       - '`ig_get_following`'
-      - '`ig_get_user_tags`'
-      - '`ig_get_geomedia`'
   - title: Search Functions
     desc: Functions used for searching data
     contents:      
       - '`ig_search_users`'
-      - '`ig_search_username`'
       - '`ig_search_tags`'
   - title: Media Functions
     desc: Functions typically used to interact with media (a.k.a. posts)
@@ -64,7 +63,7 @@ reference:
       - '`ig_get_media_info`'
       - '`ig_get_media_comments`'
       - '`ig_get_media_likers`'
-      - '`ig_edit_media`'
+      - '`ig_edit_media_caption`'
       - '`ig_delete_media`'
   - title: Activity Functions
     desc: Functions for recent activity and timelines as it relates to your account

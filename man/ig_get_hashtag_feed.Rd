@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_hashtag_feed}
 \alias{ig_get_hashtag_feed}
-\title{Get the feed for a hashtag}
+\title{Get Feed of a Hashtag}
 \usage{
 ig_get_hashtag_feed(hashtag, max_id = NULL, ranked_content = TRUE,
   return_df = TRUE, paginate = TRUE, max_pages = 10,
@@ -36,6 +36,6 @@ hashtag string
 }
 \examples{
 \dontrun{ 
-ig_get_hashtag_feed("R4SC4LIFE")
+beliebers_tagged_posts <- ig_get_hashtag_feed("beliebers")
 }
 }

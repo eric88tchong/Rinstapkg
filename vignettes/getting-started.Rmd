@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
 author: "Eric Tchong"
-date: "2019-02-15"
+date: "2019-05-13"
 output:
   rmarkdown::html_vignette:
     toc: true
@@ -38,7 +38,6 @@ username and password.
 
 ```{r auth, include = FALSE}
 suppressWarnings(suppressMessages(library(dplyr)))
-suppressWarnings(suppressMessages(library(here)))
 library(Rinstapkg)
 
 # OAuth2.0 token authentication, which we won't use here

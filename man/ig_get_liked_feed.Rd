@@ -2,9 +2,13 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_liked_feed}
 \alias{ig_get_liked_feed}
-\title{Get feed of your liked media}
+\alias{ig_get_saved_feed}
+\title{Get Feed of Liked or Saved Posts}
 \usage{
 ig_get_liked_feed(max_id = NULL, return_df = TRUE, paginate = TRUE,
+  max_pages = 10, verbose = FALSE)
+
+ig_get_saved_feed(max_id = NULL, return_df = TRUE, paginate = TRUE,
   max_pages = 10, verbose = FALSE)
 }
 \arguments{
@@ -25,10 +29,11 @@ pages returned, then modify this argument.}
 \item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function returns all of the posts that you have liked
+These functions return all of the posts that you have liked or saved
 }
 \examples{
 \dontrun{
-ig_get_liked_feed()
+my_liked_posts <- ig_get_liked_feed()
+my_saved_posts <- ig_get_saved_feed()
 }
 }

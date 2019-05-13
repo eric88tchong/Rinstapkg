@@ -2,14 +2,14 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_feed}
 \alias{ig_get_user_feed}
-\title{Get a user's timeline feed}
+\title{Get Feed of a User's Posts}
 \usage{
 ig_get_user_feed(user_id, max_id = NULL, min_timestamp = NULL,
   ranked_content = TRUE, return_df = TRUE, paginate = TRUE,
   max_pages = 10, verbose = FALSE)
 }
 \arguments{
-\item{user_id}{integer; the unique id to identify an Instagram user which can be 
+\item{user_id}{numeric; the unique id to identify an Instagram user which can be 
 found in the \code{"pk"} field on a \code{user} object}
 
 \item{max_id}{integer; the unique id identifying the oldest post that you 
@@ -36,11 +36,11 @@ pages returned, then modify this argument.}
 \item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function uses the \code{user_id} to return data that would appear in a 
-user's timeline feed.
+This function uses the \code{user_id} to return all posts made by that user.
 }
 \examples{
 \dontrun{
-ig_get_user_feed(10719578450)
+bieber_user_id <- ig_get_user_id("justinbieber")
+bieber_feed <- ig_get_user_feed(bieber_user_id)
 }
 }

@@ -2,14 +2,14 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_user_tags}
 \alias{ig_get_user_tags}
-\title{Get all posts that a user was tagged in}
+\title{Get Feed of Posts for a Tagged User}
 \usage{
 ig_get_user_tags(user_id, max_id = NULL, ranked_content = TRUE,
   return_df = TRUE, paginate = TRUE, max_pages = 10,
   verbose = FALSE)
 }
 \arguments{
-\item{user_id}{integer; the unique id to identify an Instagram user which can be 
+\item{user_id}{numeric; the unique id to identify an Instagram user which can be 
 found in the \code{"pk"} field on a \code{user} object}
 
 \item{max_id}{integer; the unique id identifying the oldest post that you 
@@ -35,7 +35,7 @@ This fuction returns all of the posts that the specified user was tagged in.
 }
 \examples{
 \dontrun{
-this_user_id <- ig_get_user_id("r4scatUVA")
-ig_get_user_tags(this_user_id)
+bieber_user_id <- ig_get_user_id("justinbieber")
+tagged_bieber_posts <- ig_get_user_tags(bieber_user_id)
 }
 }

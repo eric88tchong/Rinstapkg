@@ -2,14 +2,18 @@
 % Please edit documentation in R/media.R
 \name{ig_unsave}
 \alias{ig_unsave}
-\title{Unsaves a specified post}
+\title{Unsave a Post}
 \usage{
-ig_unsave(media_id)
+ig_unsave(media_id, verbose = FALSE)
 }
 \arguments{
-\item{media_id}{character; the unique id to identify a post which can be 
-found in the \code{"id"} on other posts returned via the Instagram API}
+\item{media_id}{numeric; the unique id to identify a post which can be 
+found in the \code{id}, not the \code{pk} field, of posts returned via many of 
+the functions retrieving feeds.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function takes the \code{media_id} of a post and removes that post from the Saved folder within Instagram
+This function takes the \code{media_id} of a post and removes that post from 
+the Saved folder within Instagram.
 }

@@ -1,45 +1,50 @@
-
-#' Search for a user's profile by username
+#' Search by Username
 #' 
-#' This function returns the details of a user's profile based on the supplied 
-#' username (omit the @@ symbol)
+#' This function accepts a username, without the "@@" symbol and finds matching 
+#' user profiles. This is helpful when you do not know a user's name exactly and 
+#' need to get their \code{user_id}. If you know the username exactly then you can
+#' use \link{ig_get_user_profile()} to pull the profile information without searching.
 #' 
+#' @importFrom dplyr distinct
 #' @template username
-#' @template return_df
-#' @template verbose
+#' @inheritParams feed
+#' @examples \dontrun{
+#' # search for usernames like Justin Bieber
+#' bieber_users <- ig_search_users("justinbieb")
+#' }
 #' @export
-ig_search_username <- function(username, return_df = FALSE, verbose = FALSE) {
-  ig_generic_GET(relative_endpoint = sprintf("users/%s/usernameinfo/", username), 
-                 item_accessor = function(x) x[["user"]], 
+ig_search_users <- function(username, max_id = NULL, return_df = TRUE, 
+                            paginate = TRUE, max_pages = 10, verbose = FALSE){
+  ig_generic_GET(relative_endpoint = "users/search",
+                 query = list(is_typeahead = "true", q = username),
+                 item_accessor = function(x) x[["users"]], 
                  return_df = return_df, 
+                 paginate = paginate, max_pages = max_pages,
+                 verbose = verbose) %>% 
+    # if the username is exact, then Instagram returns 2 records for some reason, 
+    # just use distinct to keep that from happening
+    distinct(pk, .keep_all = TRUE)
+}
+
+#' Search by Hashtag
+#' 
+#' This function accepts a hashtag, without the "#" symbol and returns the similar 
+#' hashtags. You can then use \link{ig_get_hashtag_feed()} to return all posts associated 
+#' with that hashtag.
+#' 
+#' @template hashtag
+#' @inheritParams feed
+#' @examples \dontrun{
+#' # search for posts using the #belieber hashtag
+#' belieber_posts <- ig_search_tags("belieber")
+#' }
+#' @export
+ig_search_tags <- function(hashtag, max_id = NULL, return_df = TRUE, 
+                           paginate = TRUE, max_pages = 10, verbose = FALSE){
+  ig_generic_GET(relative_endpoint = "tags/search",
+                 query = list(is_typeahead = "true", q = hashtag),
+                 item_accessor = function(x) x[["results"]], 
+                 return_df = return_df, 
+                 paginate = paginate, max_pages = max_pages,
                  verbose = verbose)
 }
-
-#' ig_search_users
-#' 
-#' NEEDS DOCUMENTATION!!!!
-#' 
-#' @export
-ig_search_users <- function(){
-  #Target Endpoint: users/search/
-}
-
-#' ig_search_tags
-#' 
-#' NEEDS DOCUMENTATION!!!!
-#' 
-#' @export
-  ig_search_tags <- function(tag, max_id = NULL, return_df = TRUE, 
-                             paginate = TRUE, max_pages = 10, verbose = FALSE){
-    ig_generic_GET(relative_endpoint = "tags/search",
-                   query = list(is_typeahead = "true", q = tag),
-                   item_accessor = function(x) x[["results"]], 
-                   return_df = return_df, 
-                   verbose = verbose)
-  #Target Endpoint: tags/search/
-  }
-  
-  
-  
-  
-

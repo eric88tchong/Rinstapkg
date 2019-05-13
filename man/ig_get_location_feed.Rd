@@ -2,14 +2,14 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_location_feed}
 \alias{ig_get_location_feed}
-\title{Get the feed for a location}
+\title{Get Feed of a Location}
 \usage{
 ig_get_location_feed(location_id, max_id = NULL, ranked_content = TRUE,
   return_df = TRUE, paginate = TRUE, max_pages = 10,
   verbose = FALSE)
 }
 \arguments{
-\item{location_id}{integer; the unique id to identify a place which can be 
+\item{location_id}{numeric; the unique id to identify a place which can be 
 found in the \code{"pk"}, \code{"external_id"}, or \code{"facebook_places_id"} fields 
 on other objects returned via the Instagram API}
 
@@ -42,8 +42,8 @@ only include media from that exact location.
 }
 \examples{
 \dontrun{
-# location feed for the city of The Juice Laundry
-ig_get_location_feed(1472678466133411)
+# location feed for Paris, France
+paris_location_feed <- ig_get_location_feed(6889842)
 }
 }
 \seealso{

@@ -2,13 +2,17 @@
 % Please edit documentation in R/retrieve.R
 \name{ig_get_followers}
 \alias{ig_get_followers}
-\title{Get all followers of user}
+\alias{ig_get_following}
+\title{Get Follower Info}
 \usage{
 ig_get_followers(user_id, max_id = NULL, return_df = TRUE,
   paginate = TRUE, max_pages = 10, verbose = FALSE)
+
+ig_get_following(user_id, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
 }
 \arguments{
-\item{user_id}{integer; the unique id to identify an Instagram user which can be 
+\item{user_id}{numeric; the unique id to identify an Instagram user which can be 
 found in the \code{"pk"} field on a \code{user} object}
 
 \item{max_id}{integer; the unique id identifying the oldest post that you 
@@ -28,11 +32,17 @@ pages returned, then modify this argument.}
 \item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This fuction returns all of the users that follow the specified user.
+These function returns all of the followers or users that a specific user is following
 }
 \examples{
 \dontrun{
-this_user_id <- ig_get_user_id("r4scatUVA")
-ig_get_followers(this_user_id)
+bieber_user_id <- ig_get_user_id("justinbieber")
+
+# By default, ig_get_followers will retrieve the top 10 pages of follower data. 
+# This is because IG users like Justin Bieber have 100M+ followers, so it could 
+# take a long time to pull. If you would really like to get all users, then set
+# the max_pages argument to Inf.
+bieber_followers <- ig_get_followers(bieber_user_id)
+bieber_following <- ig_get_following(bieber_user_id)
 }
 }

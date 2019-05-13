@@ -2,10 +2,40 @@
 % Please edit documentation in R/search.R
 \name{ig_search_users}
 \alias{ig_search_users}
-\title{ig_search_users}
+\title{Search by Username}
 \usage{
-ig_search_users()
+ig_search_users(username, max_id = NULL, return_df = TRUE,
+  paginate = TRUE, max_pages = 10, verbose = FALSE)
+}
+\arguments{
+\item{username}{character; the username of the Instagram user. Omit the "@" symbol 
+that is typically used when referencing another user}
+
+\item{max_id}{integer; the unique id identifying the oldest post that you 
+would want to retrieve in this function call}
+
+\item{return_df}{logical; do you want to return the results as a \code{tbl_df} 
+with one row per entity or as a list with one element per entity?}
+
+\item{paginate}{logical; do you want to paginate through results or just return 
+the first page?}
+
+\item{max_pages}{integer; a limit to the number of pages to retrieve from 
+paginated endpoints. Instagram feeds have the potential to paginate forever, 
+so by default we stop after pulling 10 pages. If you would like more or less 
+pages returned, then modify this argument.}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
-NEEDS DOCUMENTATION!!!!
+This function accepts a username, without the "@" symbol and finds matching 
+user profiles. This is helpful when you do not know a user's name exactly and 
+need to get their \code{user_id}. If you know the username exactly then you can
+use \link{ig_get_user_profile()} to pull the profile information without searching.
+}
+\examples{
+\dontrun{
+# search for usernames like Justin Bieber
+bieber_users <- ig_search_users("justinbieb")
+}
 }
