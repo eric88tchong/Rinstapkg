@@ -180,7 +180,7 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL
   # check whether it has another page of records and continue to pull if so
   more_records <- any(unlist(resp_parsed[c('more_available', 'big_list', 'has_more_comments')]))
   if(!is.null(more_records)){
-    if(more_records & paginate & page_index < max_pages){
+    if(more_records & paginate & page_index <= max_pages){
       query$max_id <- resp_parsed$next_max_id
       next_result <- ig_generic_GET(relative_endpoint = relative_endpoint, 
                                     query = query,
