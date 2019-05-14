@@ -13,6 +13,7 @@
 ^appveyor\.yml$
 ^_pkgdown\.yml$
 ^\.httr-oauth$
+^\.httr-oauth*
 ^\.httr-oauth-Rinstapkg$
 ^docs$
 ^tic\.R$
@@ -20,3 +21,5 @@ man-roxygen
 inst/hex
 tests/testthat/Rinstapkg_test_settings.rds.enc
 tests/testthat/Rinstapkg_test_settings.rds
+^travis-tool\.sh$
+^travis-tool\.sh\.cmd$
