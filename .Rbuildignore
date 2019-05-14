@@ -22,4 +22,4 @@ inst/hex
 tests/testthat/Rinstapkg_test_settings.rds.enc
 tests/testthat/Rinstapkg_test_settings.rds
 ^travis-tool\.sh$
-^travis-tool\.sh\.cmd$
+^travis-tool.sh.cmd$
