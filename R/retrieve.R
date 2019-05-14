@@ -27,8 +27,8 @@ ig_get_user_id <- function(username, verbose = FALSE) {
 #' @export
 ig_get_user_profile <- function(username, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = sprintf("users/%s/usernameinfo/", username), 
-                 item_accessor = function(x) x[["user"]], 
-                 return_df = return_df, 
+                 item_accessor = function(x) x[["user"]],
+                 return_df = FALSE,
                  verbose = verbose)
 }
 
