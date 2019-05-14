@@ -29,7 +29,7 @@ pages returned, then modify this argument.}
 }
 \description{
 This function accepts a hashtag, without the "#" symbol and returns the similar 
-hashtags. You can then use \link{ig_get_hashtag_feed()} to return all posts associated 
+hashtags. You can then use \link{ig_get_hashtag_feed} to return all posts associated 
 with that hashtag.
 }
 \examples{

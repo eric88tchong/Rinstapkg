@@ -3,9 +3,10 @@
 #' This function accepts a username, without the "@@" symbol and finds matching 
 #' user profiles. This is helpful when you do not know a user's name exactly and 
 #' need to get their \code{user_id}. If you know the username exactly then you can
-#' use \link{ig_get_user_profile()} to pull the profile information without searching.
+#' use \link{ig_get_user_profile} to pull the profile information without searching.
 #' 
 #' @importFrom dplyr distinct
+#' @importFrom rlang .data
 #' @template username
 #' @inheritParams feed
 #' @examples \dontrun{
@@ -15,21 +16,25 @@
 #' @export
 ig_search_users <- function(username, max_id = NULL, return_df = TRUE, 
                             paginate = TRUE, max_pages = 10, verbose = FALSE){
-  ig_generic_GET(relative_endpoint = "users/search",
-                 query = list(is_typeahead = "true", q = username),
-                 item_accessor = function(x) x[["users"]], 
-                 return_df = return_df, 
-                 paginate = paginate, max_pages = max_pages,
-                 verbose = verbose) %>% 
-    # if the username is exact, then Instagram returns 2 records for some reason, 
-    # just use distinct to keep that from happening
-    distinct(pk, .keep_all = TRUE)
+  result <- ig_generic_GET(relative_endpoint = "users/search",
+                           query = list(is_typeahead = "true", q = username),
+                           item_accessor = function(x) x[["users"]], 
+                           return_df = return_df, 
+                           paginate = paginate, max_pages = max_pages,
+                           verbose = verbose)
+  if(nrow(result) > 0){
+    result <- result %>% 
+      # if the username is exact, then Instagram returns 2 records for some reason, 
+      # just use distinct to keep that from happening
+      distinct(.data$pk, .keep_all = TRUE)
+  }
+  return(result)
 }
 
 #' Search by Hashtag
 #' 
 #' This function accepts a hashtag, without the "#" symbol and returns the similar 
-#' hashtags. You can then use \link{ig_get_hashtag_feed()} to return all posts associated 
+#' hashtags. You can then use \link{ig_get_hashtag_feed} to return all posts associated 
 #' with that hashtag.
 #' 
 #' @template hashtag

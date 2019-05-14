@@ -4,12 +4,13 @@
 #' which is needed for other functions
 #' 
 #' @template username
+#' @template verbose
 #' @examples \dontrun{
 #' ig_get_user_id("justinbieber")
 #' }
 #' @export
-ig_get_user_id <- function(username) {
-  as.double(ig_get_user_profile(username)$pk)
+ig_get_user_id <- function(username, verbose = FALSE) {
+  as.double(ig_get_user_profile(username, verbose = verbose)$pk)
 }
 
 #' Get a User's Profile
@@ -18,12 +19,13 @@ ig_get_user_id <- function(username) {
 #' username (omitting the @@ symbol)
 #' 
 #' @template username
+#' @template verbose
 #' @examples \dontrun{
 #' # get Jusin Bieber's profile and to see how many followers he has
 #' bieber_follower_cnt <- ig_get_user_profile("justinbieber")$follower_count
 #' }
 #' @export
-ig_get_user_profile <- function(username, return_df = FALSE, verbose = FALSE) {
+ig_get_user_profile <- function(username, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = sprintf("users/%s/usernameinfo/", username), 
                  item_accessor = function(x) x[["user"]], 
                  return_df = return_df, 

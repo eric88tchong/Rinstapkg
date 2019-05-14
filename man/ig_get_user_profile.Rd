@@ -4,11 +4,13 @@
 \alias{ig_get_user_profile}
 \title{Get a User's Profile}
 \usage{
-ig_get_user_profile(username, return_df = FALSE, verbose = FALSE)
+ig_get_user_profile(username, verbose = FALSE)
 }
 \arguments{
 \item{username}{character; the username of the Instagram user. Omit the "@" symbol 
 that is typically used when referencing another user}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
 This function returns the details of a user's profile based on the supplied 

@@ -31,7 +31,7 @@ pages returned, then modify this argument.}
 This function accepts a username, without the "@" symbol and finds matching 
 user profiles. This is helpful when you do not know a user's name exactly and 
 need to get their \code{user_id}. If you know the username exactly then you can
-use \link{ig_get_user_profile()} to pull the profile information without searching.
+use \link{ig_get_user_profile} to pull the profile information without searching.
 }
 \examples{
 \dontrun{

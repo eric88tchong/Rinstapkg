@@ -4,11 +4,13 @@
 \alias{ig_get_user_id}
 \title{Get a User Id}
 \usage{
-ig_get_user_id(username)
+ig_get_user_id(username, verbose = FALSE)
 }
 \arguments{
 \item{username}{character; the username of the Instagram user. Omit the "@" symbol 
 that is typically used when referencing another user}
+
+\item{verbose}{logical; do you want informative messages?}
 }
 \description{
 This function accepts a Instagram username and returns their \code{user_id}, 
