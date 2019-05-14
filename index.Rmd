@@ -14,14 +14,14 @@ knitr::opts_chunk$set(
 
 [![Build Status](https://travis-ci.org/eric88tchong/Rinstapkg.svg?branch=master)](https://travis-ci.org/eric88tchong/Rinstapkg)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/eric88tchong/Rinstapkg?branch=master&svg=true)](https://ci.appveyor.com/project/eric88tchong/Rinstapkg)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Rinstapkg)](http://cran.r-project.org/package=Rinstapkg)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Rinstapkg)](https://CRAN.R-project.org/package=Rinstapkg)
 [![Coverage Status](https://codecov.io/gh/eric88tchong/Rinstapkg/branch/master/graph/badge.svg)](https://codecov.io/gh/eric88tchong/Rinstapkg?branch=master)
 
 <br>
 <img src="man/figures/Rinstapkg.png" width="120px" align="right" />
 
 **Rinstapkg** is an R package that connects to the Instagram API using tidy principles. 
-Rinstapkg is short for The <b>R</b>eal <b>Insta</b>gram <b>P</b>ac<b>k</b>a<b>g</b>e. 
+Rinstapkg is short for the <b>R</b>eal <b>Insta</b>gram <b>P</b>ac<b>k</b>a<b>g</b>e. 
 With this package you can like, comment, follow, and slide into some DMs just like the 
 real Instagram. You can also get tons of feed data: user feeds, timeline feeds, location 
 feeds and more! All this comes without the need to register for an application. 
@@ -29,7 +29,7 @@ Here are some of the package highlights:
 
   * OAuth 2.0 (Single Sign On) and Basic (Username-Password) Authentication methods (`ig_auth()`)
   * Retrieve Feeds of different types:
-    * `ig_get_user_feed()`, `ig_get_timeline_feed()`, `ig_get_hashtag_feed()`, and more!
+    * `ig_my_timeline()`, `ig_get_user_feed()`, `ig_get_hashtag_feed()`, and more!
   * Retrieve Users, Tags, Comments, and Perform Searches: 
     * `ig_get_followers()`, `ig_get_user_tags()`, `ig_get_media_comments()`, `ig_search_users()`, etc.
   * Utility calls (`ig_change_password()`, `ig_sync_features()`)
@@ -75,8 +75,7 @@ App. This way multiple users can use your app without having to explicity share
 their credentials with you. If you do not have an approved app, you can still use this 
 package by providing your username and password.
 
-```{r auth, include = FALSE}
-suppressWarnings(suppressMessages(library(dplyr)))
+```{r auth, include = FALSE, message=FALSE, warning=FALSE}
 library(Rinstapkg)
 
 # OAuth2.0 token authentication, which we won't use here
@@ -85,13 +84,10 @@ library(Rinstapkg)
 
 # Username-Password authentication
 settings <- readRDS(here::here("tests", "testthat", "Rinstapkg_test_settings.rds"))
-suppressMessages(ig_auth(username=settings$dev$username, 
-                         password=settings$dev$password))
+ig_auth(username=settings$dev$username, password=settings$dev$password)
 ```
 
 ```{r, eval=FALSE}
-suppressWarnings(suppressMessages(library(dplyr)))
-suppressWarnings(suppressMessages(library(purrr)))
 library(Rinstapkg)
 
 # Using OAuth 2.0 authentication

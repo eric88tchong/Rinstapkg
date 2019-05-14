@@ -5,12 +5,12 @@
 Status](https://travis-ci.org/eric88tchong/Rinstapkg.svg?branch=master)](https://travis-ci.org/eric88tchong/Rinstapkg)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/eric88tchong/Rinstapkg?branch=master&svg=true)](https://ci.appveyor.com/project/eric88tchong/Rinstapkg)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/Rinstapkg)](http://cran.r-project.org/package=Rinstapkg)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/Rinstapkg)](https://CRAN.R-project.org/package=Rinstapkg)
 [![Coverage
 Status](https://codecov.io/gh/eric88tchong/Rinstapkg/branch/master/graph/badge.svg)](https://codecov.io/gh/eric88tchong/Rinstapkg?branch=master)
 
 **Rinstapkg** is an R package that connects to the Instagram API using
-tidy principles. Rinstapkg is short for The <b>R</b>eal <b>Insta</b>gram
+tidy principles. Rinstapkg is short for the <b>R</b>eal <b>Insta</b>gram
 <b>P</b>ac<b>k</b>a<b>g</b>e. With this package you can like, comment,
 follow, and slide into some DMs just like the real Instagram. You can
 also get tons of feed data: user feeds, timeline feeds, location feeds
@@ -20,7 +20,7 @@ application. Here are some of the package highlights:
   - OAuth 2.0 (Single Sign On) and Basic (Username-Password)
     Authentication methods (`ig_auth()`)
   - Retrieve Feeds of different types:
-      - `ig_get_user_feed()`, `ig_get_timeline_feed()`,
+      - `ig_my_timeline()`, `ig_get_user_feed()`,
         `ig_get_hashtag_feed()`, and more\!
   - Retrieve Users, Tags, Comments, and Perform Searches:
       - `ig_get_followers()`, `ig_get_user_tags()`,
@@ -74,8 +74,6 @@ an approved app, you can still use this package by providing your
 username and password.
 
 ``` r
-suppressWarnings(suppressMessages(library(dplyr)))
-suppressWarnings(suppressMessages(library(purrr)))
 library(Rinstapkg)
 
 # Using OAuth 2.0 authentication
@@ -103,34 +101,37 @@ list format, then just specify `return_df=FALSE` as an argument.
 ``` r
 timeline_results <- ig_my_timeline()
 timeline_results
-#> # A tibble: 80 x 45
-#>    taken_at       pk id    device_timestamp media_type code 
-#>       <int>    <dbl> <chr>            <dbl>      <int> <chr>
-#>  1   1.55e9  1.98e18 1982… 1550540314361522          1 BuC6…
-#>  2  NA      NA       2797…               NA         NA <NA> 
-#>  3  NA      NA       <NA>                NA         NA <NA> 
-#>  4   1.55e9  1.98e18 1981…  155045410572131          1 BuAV…
-#>  5   1.55e9  1.98e18 1981… 1550455167737230          1 BuAW…
-#>  6   1.55e9  1.98e18 1976… 1549857235614429          1 Btui…
-#>  7   1.55e9  1.97e18 1973… 1549464013913359          1 Bti0…
-#>  8   1.55e9  1.97e18 1972… 1549402375783967          1 Btg_…
-#>  9   1.55e9  1.98e18 1982… 1550540314361522          1 BuC6…
-#> 10  NA      NA       <NA>                NA         NA <NA> 
-#> # … with 70 more rows, and 39 more variables: client_cache_key <chr>,
-#> #   filter_type <int>, comment_likes_enabled <lgl>,
-#> #   comment_threading_enabled <lgl>, has_more_comments <lgl>,
-#> #   max_num_visible_preview_comments <int>,
+#> # A tibble: 16 x 37
+#>    taken_at      pk id    device_timestamp media_type code 
+#>       <int>   <dbl> <chr>            <dbl>      <int> <chr>
+#>  1   1.56e9 2.03e18 2034…  155676208810893          1 Bw8V…
+#>  2   1.56e9 2.02e18 2024…  155552010984491          1 BwXT…
+#>  3   1.55e9 2.01e18 2012… 1554147789723231          1 Bvua…
+#>  4   1.55e9 1.99e18 1994… 1551925346931404          1 BusL…
+#>  5   1.55e9 1.99e18 1991… 1551641044183919          1 Bujt…
+#>  6   1.55e9 1.99e18 1985… 1550918831604424          1 BuOL…
+#>  7   1.55e9 1.98e18 1982… 1550540314361522          1 BuC6…
+#>  8   1.55e9 1.98e18 1981…  155045410572131          1 BuAV…
+#>  9   1.55e9 1.98e18 1981… 1550455167737230          1 BuAW…
+#> 10   1.55e9 1.98e18 1976… 1549857235614429          1 Btui…
+#> 11   1.55e9 1.97e18 1973… 1549464013913359          1 Bti0…
+#> 12   1.55e9 1.97e18 1972… 1549402375783967          1 Btg_…
+#> 13   1.55e9 1.97e18 1968… 1548890866357063          1 BtRv…
+#> 14   1.55e9 1.97e18 1969… 1548970299424940          1 BtUG…
+#> 15   1.55e9 1.97e18 1969… 1548961006833604          1 BtT0…
+#> 16   1.55e9 1.97e18 1969… 1548955131255990          1 BtTp…
+#> # … with 31 more variables: client_cache_key <chr>, filter_type <int>,
+#> #   comment_likes_enabled <lgl>, comment_threading_enabled <lgl>,
+#> #   has_more_comments <lgl>, max_num_visible_preview_comments <int>,
 #> #   can_view_more_preview_comments <lgl>, comment_count <int>,
 #> #   inline_composer_display_condition <chr>, image_versions2 <list>,
 #> #   original_width <int>, original_height <int>, location <list>,
 #> #   lat <dbl>, lng <dbl>, user <list>, can_viewer_reshare <lgl>,
-#> #   caption <list>, caption_is_edited <lgl>, like_count <int>,
-#> #   has_liked <lgl>, likers <list>, photo_of_you <lgl>, usertags <list>,
-#> #   can_viewer_save <lgl>, organic_tracking_token <chr>, preview <chr>,
-#> #   type <int>, suggestions <list>, landing_site_type <chr>, title <chr>,
-#> #   view_all_text <chr>, landing_site_title <chr>, netego_type <chr>,
-#> #   upsell_fb_pos <chr>, auto_dvance <chr>, tracking_token <chr>,
-#> #   end_of_feed_demarcator <list>, has_viewer_saved <lgl>
+#> #   caption_is_edited <lgl>, like_count <int>, has_liked <lgl>,
+#> #   likers <list>, direct_reply_to_author_enabled <lgl>,
+#> #   photo_of_you <lgl>, caption <list>, can_viewer_save <lgl>,
+#> #   organic_tracking_token <chr>, preview <chr>, next_max_id <dbl>,
+#> #   preview_comments <list>, usertags <list>, has_viewer_saved <lgl>
 ```
 
 ### Get Followers
@@ -149,22 +150,21 @@ it to the `ig_get_followers()` function.
 bieber_user_id <- ig_get_user_id("justinbieber")
 follower_results <- ig_get_followers(bieber_user_id)
 follower_results
-#> # A tibble: 200 x 10
-#>        pk username full_name is_private profile_pic_url profile_pic_id
-#>     <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
-#>  1 1.99e9 joshuaf… Joshuafr… FALSE      https://sconte… 1623206444616…
-#>  2 8.97e9 klevers… ҝℓενεяรØ… FALSE      https://sconte… 1950468542487…
-#>  3 8.45e9 ivabrat… "\U0001f… TRUE       https://sconte… 1976367343223…
-#>  4 7.87e9 barosh.… بـږۆﺷ̲ﮬ̌…   FALSE      https://sconte… 1983692001187…
-#>  5 4.12e9 its.azz… ♠❎ROYALE… FALSE      https://sconte… 1966544156159…
-#>  6 9.79e9 __aman_… Pahadi_b… FALSE      https://sconte… 1975401294970…
-#>  7 8.57e9 cha.hr_… ◥(ฅº👅ºฅ)… TRUE       https://sconte… 1965669765175…
-#>  8 6.53e9 mrifkiq… M.Rifki … FALSE      https://sconte… 1944716363672…
-#>  9 4.52e9 kn.i9    Kholod A… FALSE      https://sconte… 1979897482515…
-#> 10 4.21e9 amaan.k7 ÀmåAñ Kh… FALSE      https://sconte… 1978220904561…
-#> # … with 190 more rows, and 4 more variables: is_verified <lgl>,
-#> #   has_anonymous_profile_picture <lgl>, reel_auto_archive <chr>,
-#> #   latest_reel_media <int>
+#> # A tibble: 2,197 x 9
+#>         pk username full_name is_private profile_pic_url profile_pic_id
+#>      <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
+#>  1 1.02e10 lokeshk… Lokesh_k… FALSE      https://sconte… 1960284374117…
+#>  2 5.17e 9 lii_meh  МОЖНО ПР… FALSE      https://sconte… 1984580027753…
+#>  3 1.01e 7 angelo.… Angelo P… FALSE      https://sconte… 1935736862468…
+#>  4 1.92e 9 alwi.24  Mohamad … FALSE      https://sconte… 1987211606165…
+#>  5 1.36e10 queenru… Queen Ru… FALSE      https://sconte… <NA>          
+#>  6 1.11e10 daymian… ""        TRUE       https://sconte… 2028778718935…
+#>  7 7.65e 9 0thix    0thix     FALSE      https://sconte… 2043201566875…
+#>  8 5.38e 9 bilal_t… Bilal     TRUE       https://sconte… 2040262886489…
+#>  9 3.61e 9 louiech… Erick C   FALSE      https://sconte… 1997264348619…
+#> 10 3.41e 8 papello… Papello … FALSE      https://sconte… 2024804340113…
+#> # … with 2,187 more rows, and 3 more variables: is_verified <lgl>,
+#> #   has_anonymous_profile_picture <lgl>, latest_reel_media <int>
 ```
 
 In the example above you’ll notice that we didn’t retrieve all 100M+
@@ -186,22 +186,22 @@ Bieber follows \~100 users. Who are those lucky few?
 ``` r
 following_results <- ig_get_following(bieber_user_id)
 following_results
-#> # A tibble: 106 x 11
-#>        pk username full_name is_private profile_pic_url is_verified
-#>     <dbl> <chr>    <chr>     <lgl>      <chr>           <lgl>      
-#>  1 1.87e8 davidbe… David Be… FALSE      https://sconte… TRUE       
-#>  2 7.69e6 jasperr  J a s p … FALSE      https://sconte… TRUE       
-#>  3 7.72e6 arianag… Ariana G… FALSE      https://sconte… TRUE       
-#>  4 2.88e7 sean_wo… Sean Wot… FALSE      https://sconte… TRUE       
-#>  5 7.49e9 mightyp… Mighty P… FALSE      https://sconte… FALSE      
-#>  6 1.56e9 brookly… bb🌷      FALSE      https://sconte… TRUE       
-#>  7 7.81e6 jerrylo… jerrylor… FALSE      https://sconte… TRUE       
-#>  8 1.11e9 klondik… BIG GANG… FALSE      https://sconte… FALSE      
-#>  9 1.44e8 alesso   Alesso    FALSE      https://sconte… TRUE       
-#> 10 2.32e8 therock  therock   FALSE      https://sconte… TRUE       
-#> # … with 96 more rows, and 5 more variables:
-#> #   has_anonymous_profile_picture <lgl>, reel_auto_archive <chr>,
-#> #   is_favorite <lgl>, profile_pic_id <chr>, latest_reel_media <int>
+#> # A tibble: 181 x 10
+#>         pk username full_name is_private profile_pic_url profile_pic_id
+#>      <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
+#>  1 2.69e 8 zachcla… Zach Cla… FALSE      https://sconte… 2034467612752…
+#>  2 2.16e 8 officia… Brandon … FALSE      https://sconte… 2027136821162…
+#>  3 2.91e 7 nickcan… NICK CAN… FALSE      https://sconte… 1896844691930…
+#>  4 4.28e 7 bertsho… Bert Wei… FALSE      https://sconte… <NA>          
+#>  5 5.50e 8 benjami… Business… FALSE      https://sconte… 2028127917154…
+#>  6 1.89e 8 nickjon… Nick Jon… FALSE      https://sconte… 2041658194653…
+#>  7 8.01e 9 lalalal… LISA      FALSE      https://sconte… 2017225651148…
+#>  8 1.86e 8 teddysp… Ed Sheer… FALSE      https://sconte… 2040461491211…
+#>  9 1.11e10 hdwg1    ""        TRUE       https://instag… <NA>          
+#> 10 2.98e 7 kriskli… Kristin … FALSE      https://sconte… 1698661949418…
+#> # … with 171 more rows, and 4 more variables: is_verified <lgl>,
+#> #   has_anonymous_profile_picture <lgl>, latest_reel_media <int>,
+#> #   is_favorite <lgl>
 ```
 
 ## Future
