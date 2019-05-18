@@ -1,6 +1,9 @@
 context("Media")
 
 # login with this test since alphabetically it is the first to execute
+message(paste0(list.files(), collapse=", "))
+message(paste0(list.files("../"), collapse=", "))
+message(paste0(list.files("../../"), collapse=", "))
 Rinstapkg_test_settings <- readRDS("Rinstapkg_test_settings.rds")
 ig_auth(username = Rinstapkg_test_settings$dev$username,
         password = Rinstapkg_test_settings$dev$password)

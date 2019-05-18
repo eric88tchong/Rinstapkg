@@ -1,5 +1,7 @@
 context("Retrieve")
 
+skip("Skip")
+
 # NOTE: the test-media.R file runs first and is where the login occurs
 
 testing_user_id <- 10719578450
