@@ -46,8 +46,8 @@ nefarious acts.
 ## Installation
 
 ``` r
-# cannot yet be installed from CRAN
-#install.packages("Rinstapkg")
+# install from CRAN
+install.packages("Rinstapkg")
 
 # get the latest version available on GitHub using the devtools package
 # install.packages("devtools")
@@ -150,21 +150,22 @@ it to the `ig_get_followers()` function.
 bieber_user_id <- ig_get_user_id("justinbieber")
 follower_results <- ig_get_followers(bieber_user_id)
 follower_results
-#> # A tibble: 2,197 x 9
-#>         pk username full_name is_private profile_pic_url profile_pic_id
-#>      <dbl> <chr>    <chr>     <lgl>      <chr>           <chr>         
-#>  1 1.02e10 lokeshk… Lokesh_k… FALSE      https://sconte… 1960284374117…
-#>  2 5.17e 9 lii_meh  МОЖНО ПР… FALSE      https://sconte… 1984580027753…
-#>  3 1.01e 7 angelo.… Angelo P… FALSE      https://sconte… 1935736862468…
-#>  4 1.92e 9 alwi.24  Mohamad … FALSE      https://sconte… 1987211606165…
-#>  5 1.36e10 queenru… Queen Ru… FALSE      https://sconte… <NA>          
-#>  6 1.11e10 daymian… ""        TRUE       https://sconte… 2028778718935…
-#>  7 7.65e 9 0thix    0thix     FALSE      https://sconte… 2043201566875…
-#>  8 5.38e 9 bilal_t… Bilal     TRUE       https://sconte… 2040262886489…
-#>  9 3.61e 9 louiech… Erick C   FALSE      https://sconte… 1997264348619…
-#> 10 3.41e 8 papello… Papello … FALSE      https://sconte… 2024804340113…
-#> # … with 2,187 more rows, and 3 more variables: is_verified <lgl>,
-#> #   has_anonymous_profile_picture <lgl>, latest_reel_media <int>
+#> # A tibble: 2,194 x 9
+#>         pk username full_name is_private profile_pic_url is_verified
+#>      <dbl> <chr>    <chr>     <lgl>      <chr>           <lgl>      
+#>  1 1.36e10 mr_fais… mr_faisu… FALSE      https://instag… FALSE      
+#>  2 1.36e10 eljavi.z el javi … FALSE      https://sconte… FALSE      
+#>  3 1.36e10 _wayanb… Wayan Bl… FALSE      https://sconte… FALSE      
+#>  4 1.32e10 00_anyt… Anyuta    FALSE      https://sconte… FALSE      
+#>  5 1.34e10 tusharr… tusharra… FALSE      https://instag… FALSE      
+#>  6 6.71e 9 a.h.u.m… Kenan     FALSE      https://sconte… FALSE      
+#>  7 5.37e 9 helenro… Helen Ro… TRUE       https://sconte… FALSE      
+#>  8 4.54e 9 chehron… Chehron … FALSE      https://sconte… FALSE      
+#>  9 4.09e 9 chiomaa… akunne c… FALSE      https://sconte… FALSE      
+#> 10 1.51e 9 ikillzz… DragonSq… FALSE      https://sconte… FALSE      
+#> # … with 2,184 more rows, and 3 more variables:
+#> #   has_anonymous_profile_picture <lgl>, profile_pic_id <chr>,
+#> #   latest_reel_media <int>
 ```
 
 In the example above you’ll notice that we didn’t retrieve all 100M+

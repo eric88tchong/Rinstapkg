@@ -51,8 +51,8 @@ that you will not use it to spam, harass, or perform other nefarious acts.
 ## Installation
 
 ```{r, eval = FALSE}
-# cannot yet be installed from CRAN
-#install.packages("Rinstapkg")
+# install from CRAN
+install.packages("Rinstapkg")
 
 # get the latest version available on GitHub using the devtools package
 # install.packages("devtools")

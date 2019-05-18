@@ -6,4 +6,4 @@
 
 ## R CMD check results
 
-? ERRORs | ? WARNINGs | ? NOTEs
+0 ERRORs | 0 WARNINGs | 0 NOTEs

@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">Rinstapkg</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 <a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;    taken_at       pk id    device_timestamp media_type code </span></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt;       &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;      &lt;int&gt; &lt;chr&gt;</span></a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;  1   1.56e9  2.03e18 2034…  155676208810893          1 Bw8V…</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;  2  NA      NA       5784…               NA         NA &lt;NA&gt; </span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;  2  NA      NA       4078…               NA         NA &lt;NA&gt; </span></a>
 <a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  3   1.56e9  2.02e18 2024…  155552010984491          1 BwXT…</span></a>
 <a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  4   1.55e9  2.01e18 2012… 1554147789723231          1 Bvua…</span></a>
 <a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  5   1.55e9  1.99e18 1994… 1551925346931404          1 BusL…</span></a>
@@ -158,22 +158,21 @@
 <a class="sourceLine" id="cb3-3" title="3">bieber_user_id &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_user_id.html">ig_get_user_id</a></span>(<span class="st">"justinbieber"</span>)</a>
 <a class="sourceLine" id="cb3-4" title="4">follower_results &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_followers.html">ig_get_followers</a></span>(bieber_user_id)</a>
 <a class="sourceLine" id="cb3-5" title="5">follower_results</a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; # A tibble: 2,199 x 9</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;         pk username full_name is_private profile_pic_url is_verified</span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;      &lt;chr&gt;           &lt;lgl&gt;      </span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  1 1.35e10 rachelh… Rachel H… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  2 1.36e10 ashkan_… ASHKAN    FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  3 6.29e 9 l1ll3r   Liam      FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  4 2.03e 9 lizkeni… KENIA SO… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  5 1.77e 9 aleks.f… Aleks Fl… TRUE       https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  6 1.18e10 emilio5… Emiliosa… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  7 6.98e 9 deconit… 自分でファックし… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  8 6.42e 9 maryamo… Marya Mo… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  9 1.92e 9 giorgia… Giorgia … FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; 10 1.78e 8 justint… Justin T… FALSE      https://sconte… FALSE      </span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # … with 2,189 more rows, and 3 more variables:</span></a>
-<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, profile_pic_id &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; #   latest_reel_media &lt;int&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; # A tibble: 2,194 x 9</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;         pk username full_name is_private profile_pic_url profile_pic_id</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;      &lt;chr&gt;           &lt;chr&gt;         </span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  1 5.32e 9 badr_2k  Badr Ous… TRUE       https://sconte… 1827326814754…</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  2 1.35e10 sarafin… Sarafina… TRUE       https://sconte… 2044340643782…</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  3 1.36e10 plaseos  plase os  FALSE      https://sconte… 2046712673489…</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  4 1.36e10 irmao_b… irmão be… FALSE      https://instag… &lt;NA&gt;          </span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  5 1.07e10 _techno… Techno+   FALSE      https://sconte… 1973159218895…</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  6 6.77e 9 angga_f… Angga_fe… FALSE      https://sconte… 1927786585324…</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  7 6.28e 9 raduand… Radu And… FALSE      https://sconte… 1992388180973…</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  8 1.43e 9 isabell… ""        FALSE      https://sconte… 2046371762782…</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  9 1.73e 9 iyongss  saturday… FALSE      https://sconte… 1978720564386…</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; 10 4.95e 8 chantel… ""        FALSE      https://sconte… 2026292769148…</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # … with 2,184 more rows, and 3 more variables: is_verified &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, latest_reel_media &lt;int&gt;</span></a></code></pre></div>
 <p>In the example above you’ll notice that we didn’t retrieve all 100M+ followers that Justin Bieber has. By default the function only returns the top 10 pages of followers, but you can set the <code>max_pages</code> argument equal to <code>Inf</code> to return all of them. Caution: This might take awhile!</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># return all 100M+ followers of Justin Bieber</span></a>
 <a class="sourceLine" id="cb4-2" title="2">follower_results &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_followers.html">ig_get_followers</a></span>(bieber_user_id, <span class="dt">max_pages =</span> <span class="ot">Inf</span>)</a></code></pre></div>
@@ -195,7 +194,7 @@
 <a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  6 1.89e 8 nickjon… Nick Jon… FALSE      https://sconte… 2041658194653…</span></a>
 <a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  7 8.01e 9 lalalal… LISA      FALSE      https://sconte… 2017225651148…</span></a>
 <a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  8 1.86e 8 teddysp… Ed Sheer… FALSE      https://sconte… 2040461491211…</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  9 1.11e10 hdwg1    ""        TRUE       https://instag… &lt;NA&gt;          </span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  9 1.11e10 hdwg1    ""        TRUE       https://sconte… &lt;NA&gt;          </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; 10 2.98e 7 kriskli… Kristin … FALSE      https://sconte… 1698661949418…</span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; # … with 171 more rows, and 4 more variables: is_verified &lt;lgl&gt;,</span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, latest_reel_media &lt;int&gt;,</span></a>
