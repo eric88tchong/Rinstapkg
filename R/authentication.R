@@ -38,7 +38,7 @@
 #' permission to operate on your behalf. By default, these user credentials are 
 #' cached in a file named \code{.httr-oauth-Rinstapkg} in the current working directory.
 #'
-#' @importFrom httr content oauth2.0_token oauth_app oauth_endpoint
+#' @importFrom httr content oauth2.0_token oauth_app oauth_endpoint stop_for_status
 #' @importFrom jsonlite toJSON
 #' @importFrom digest digest hmac
 #' @param username Instagram username, use the handle without the "@@" sign or an email
