@@ -1,6 +1,5 @@
 context("Search")
 
-stop(paste0(list.files("../Rinstapkg/"), collapse=", "))
 # NOTE: the test-media.R file runs first and is where the login occurs
 
 test_that("ig_search_users()", {
