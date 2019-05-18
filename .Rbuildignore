@@ -19,7 +19,5 @@
 ^\.httr-oauth$
 ^\.httr-oauth*
 ^\.httr-oauth-Rinstapkg$
-^tests/testthat/Rinstapkg_test_settings\.rds\.enc$
-^tests/testthat/Rinstapkg_test_settings\.rds$
 ^travis-tool\.sh$
 ^travis-tool\.sh\.cmd$
