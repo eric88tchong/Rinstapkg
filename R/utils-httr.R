@@ -35,9 +35,8 @@
 VERB_n <- function(VERB, n = 5) {
   function(url, headers=character(0), ...) {
     
-    stock_headers <- 
-    
     current_state <- Rinstapkg_state()
+    
     for (i in seq_len(n)) {
       
       if(!is.null(current_state$auth_method) && current_state$auth_method == "OAuth"){
