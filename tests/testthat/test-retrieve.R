@@ -1,6 +1,6 @@
 context("Retrieve")
 
-skip("Skip")
+stop(paste0(list.dirs("../../"), collapse=", "))
 
 # NOTE: the test-media.R file runs first and is where the login occurs
 
