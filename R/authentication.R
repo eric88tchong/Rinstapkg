@@ -106,6 +106,17 @@ ig_auth <- function(username = NULL,
     login_response <- rPOST(sprintf('%s/%s', getOption("Rinstapkg.private_base_url"), 'accounts/login/'),
                             body = generate_signed_body(login_data))
     login_response_parsed <- content(login_response)
+    if(login_response_parsed$status == "fail"){
+      if(login_response_parsed$message == "challenge_required"){
+       message(sprintf("%s %s %s", 
+                       "Your account has been flagged to enter a challenge code.", 
+                       "Go to https://instagram.com, login, and receive a code via email", 
+                       "or text message to re-enable programmatic access.")) 
+      }
+      stop(sprintf(login_response_parsed$message))
+    } else {
+      stop_for_status(login_response)
+    }
     
     # keep track of these for future requests
     my_username_id <- login_response_parsed$logged_in_user$pk
