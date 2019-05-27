@@ -18,9 +18,9 @@ This function returns the details of a single post. It contains the same informa
 about a post that is retrieved by many of the feed functions.
 }
 \examples{
-\dontrun{
+\donttest{
 bieber_user_id <- ig_get_user_id("justinbieber")
 bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
-most_recent_post <- ig_get_media_info(media_id = bieber_feed$id[1])
+most_recent_post_info <- ig_get_media_info(media_id = bieber_feed$id[1])
 }
 }

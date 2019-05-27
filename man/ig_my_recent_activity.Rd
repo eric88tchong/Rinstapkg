@@ -16,3 +16,8 @@ with one row per entity or as a list with one element per entity?}
 This function returns notifications regarding the actions you have recently took, 
 such as what posts you've liked or when you've started following other people.
 }
+\examples{
+\donttest{
+my_recent_activity <- ig_my_recent_activity()
+}
+}

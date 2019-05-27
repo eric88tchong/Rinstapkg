@@ -9,7 +9,7 @@
 #' @importFrom rlang .data
 #' @template username
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # search for usernames like Justin Bieber
 #' bieber_users <- ig_search_users("justinbieb")
 #' }
@@ -39,7 +39,7 @@ ig_search_users <- function(username, max_id = NULL, return_df = TRUE,
 #' 
 #' @template hashtag
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # search for posts using the #belieber hashtag
 #' belieber_posts <- ig_search_tags("belieber")
 #' }

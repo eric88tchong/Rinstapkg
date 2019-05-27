@@ -8,7 +8,7 @@
 #' @template ranked_content
 #' @inheritParams feed
 #' @return \code{tbl_df} or \code{list}
-#' @examples \dontrun{
+#' @examples \donttest{
 #' my_timeline <- ig_my_timeline()
 #' }
 #' @export
@@ -36,6 +36,10 @@ ig_my_timeline <- function(max_id = NULL, min_timestamp = NULL, ranked_content =
 #' @template verbose
 #' @details WARNING: This is a special, very heavily throttled API endpoint. Instagram 
 #' REQUIRES that you wait several minutes between calls to it
+#' @keywords internal
+#' @examples \donttest{
+#' my_autocompleted_userlist <- ig_autocomplete_userlist()
+#' }
 #' @export
 ig_autocomplete_userlist <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "friendships/autocomplete_user_list", 
@@ -50,6 +54,9 @@ ig_autocomplete_userlist <- function(return_df = TRUE, verbose = FALSE) {
 #' 
 #' @template return_df
 #' @template verbose
+#' @examples \donttest{
+#' my_inbox <- ig_my_inbox()
+#' }
 #' @export
 ig_my_inbox <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "direct_v2/inbox", 
@@ -64,6 +71,9 @@ ig_my_inbox <- function(return_df = TRUE, verbose = FALSE) {
 #' 
 #' @template return_df
 #' @template verbose
+#' @examples \donttest{
+#' my_recent_activity <- ig_my_recent_activity()
+#' }
 #' @export
 ig_my_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "news/inbox", 
@@ -79,6 +89,9 @@ ig_my_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
 #' 
 #' @template return_df
 #' @template verbose
+#' @examples \donttest{
+#' my_following_recent_activity <- ig_following_recent_activity()
+#' }
 #' @export
 ig_following_recent_activity <- function(return_df = TRUE, verbose = FALSE) {
   ig_generic_GET(relative_endpoint = "news", 

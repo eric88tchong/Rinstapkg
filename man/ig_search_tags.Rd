@@ -33,7 +33,7 @@ hashtags. You can then use \link{ig_get_hashtag_feed} to return all posts associ
 with that hashtag.
 }
 \examples{
-\dontrun{
+\donttest{
 # search for posts using the #belieber hashtag
 belieber_posts <- ig_search_tags("belieber")
 }

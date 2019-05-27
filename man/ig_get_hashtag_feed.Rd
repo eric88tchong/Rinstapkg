@@ -35,7 +35,7 @@ This function filters by hashtags and returns all posts that have the same
 hashtag string
 }
 \examples{
-\dontrun{ 
+\donttest{ 
 beliebers_tagged_posts <- ig_get_hashtag_feed("beliebers")
 }
 }

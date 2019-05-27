@@ -40,7 +40,7 @@ This function returns data that would appear in the authenticated user's
 timeline feed.
 }
 \examples{
-\dontrun{
+\donttest{
 my_timeline <- ig_my_timeline()
 }
 }

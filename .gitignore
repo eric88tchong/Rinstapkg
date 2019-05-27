@@ -27,6 +27,7 @@ vignettes/*.pdf
 Rinstapkg_test_settings.rds
 Rinstapkg_token.rds
 Rinstapkg.tar
+token.rds
 
 # knitr and R markdown default cache directories
 /*_cache/

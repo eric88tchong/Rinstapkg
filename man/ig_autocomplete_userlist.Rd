@@ -19,3 +19,9 @@ This function returns a list of users for you guessed by Instagram.
 WARNING: This is a special, very heavily throttled API endpoint. Instagram 
 REQUIRES that you wait several minutes between calls to it
 }
+\examples{
+\donttest{
+my_autocompleted_userlist <- ig_autocomplete_userlist()
+}
+}
+\keyword{internal}

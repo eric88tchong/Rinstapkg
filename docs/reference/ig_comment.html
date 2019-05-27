@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Comment on a Post — ig_comment • Rinstapkg</title>
+<title>Comment or Delete a Comment on a Post — ig_comment • Rinstapkg</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Comment on a Post — ig_comment" />
+<meta property="og:title" content="Comment or Delete a Comment on a Post — ig_comment" />
 
-<meta property="og:description" content="This function takes the media_id of a post as well as a comment_text
-and leaves the comment on the post." />
+<meta property="og:description" content="This function takes the media_id of a post and text for a comment or the 
+id of a comment to manipulate the comment on the post." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,19 +118,21 @@ and leaves the comment on the post." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Comment on a Post</h1>
+    <h1>Comment or Delete a Comment on a Post</h1>
     <small class="dont-index">Source: <a href='https://github.com/eric88tchong/Rinstapkg/blob/master/R/media.R'><code>R/media.R</code></a></small>
     <div class="hidden name"><code>ig_comment.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function takes the <code>media_id</code> of a post as well as a <code>comment_text</code>
-and leaves the comment on the post.</p>
+    <p>This function takes the <code>media_id</code> of a post and text for a comment or the 
+id of a comment to manipulate the comment on the post.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>ig_comment</span>(<span class='no'>media_id</span>, <span class='no'>comment_text</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>ig_comment</span>(<span class='no'>media_id</span>, <span class='no'>comment_text</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='fu'>ig_comment_delete</span>(<span class='no'>media_id</span>, <span class='no'>comment_id</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,15 +152,29 @@ underneath the post</p></td>
       <th>verbose</th>
       <td><p>logical; do you want informative messages?</p></td>
     </tr>
+    <tr>
+      <th>comment_id</th>
+      <td><p>numeric; the unique id to identify a post which can be 
+found in the <code>"id"</code> on other comments returned via the Instagram API</p></td>
+    </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>last_post_media_id</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ig_my_timeline.html'>ig_my_timeline</a></span>(<span class='kw'>paginate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)$<span class='no'>id</span>[<span class='fl'>1</span>]</div><div class='output co'>#&gt; <span class='message'>The rank_token is NULL in Rinstapkg's internal .state environment. This can occur if the user is authorized using OAuth 2.0, which doesn't require a rank_token, or the user is not yet performed any authorization routine.</span>
+#&gt; <span class='message'>When/if needed, 'Rinstapkg' will initiate authentication and authorization.</span>
+#&gt; <span class='message'>Or run ig_auth() to trigger this explicitly.</span></div><div class='output co'>#&gt; <span class='error'>Error: Status: fail</span>
+#&gt; <span class='error'>Message: login_required</span></div><div class='input'><span class='no'>comment_result</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_comment</span>(<span class='no'>last_post_media_id</span>,
+                             <span class='kw'>comment_text</span> <span class='kw'>=</span> <span class='st'>"New Comment!"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sprintf("media/%s/comment/", media_id): object 'last_post_media_id' not found</span></div><div class='input'><span class='no'>comment_media_id</span> <span class='kw'>&lt;-</span> <span class='no'>comment_result</span>$<span class='no'>comment</span>$<span class='no'>media_id</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'comment_result' not found</span></div><div class='input'><span class='no'>deletion_result</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_comment_delete</span>(<span class='no'>last_post_media_id</span>,
+                                     <span class='no'>comment_media_id</span>)</div><div class='output co'>#&gt; <span class='error'>Error in sprintf("media/%s/comment/%s/delete/", media_id, comment_id): object 'last_post_media_id' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

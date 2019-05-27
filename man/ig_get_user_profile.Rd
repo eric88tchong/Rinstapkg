@@ -17,7 +17,7 @@ This function returns the details of a user's profile based on the supplied
 username (omitting the @ symbol)
 }
 \examples{
-\dontrun{
+\donttest{
 # get Jusin Bieber's profile and to see how many followers he has
 bieber_follower_cnt <- ig_get_user_profile("justinbieber")$follower_count
 }

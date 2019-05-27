@@ -31,7 +31,7 @@ pages returned, then modify this argument.}
 This function returns current most popular posts on Instagram
 }
 \examples{
-\dontrun{
+\donttest{
 most_popular_posts <- ig_get_popular_feed()
 }
 }

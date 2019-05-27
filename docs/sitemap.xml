@@ -55,9 +55,6 @@
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_comment.html</loc>
   </url>
   <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_comment_delete.html</loc>
-  </url>
-  <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_comment_delete_bulk.html</loc>
   </url>
   <url>
@@ -140,12 +137,6 @@
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_sync_features.html</loc>
-  </url>
-  <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_unlike.html</loc>
-  </url>
-  <url>
-    <loc>https://eric88tchong.github.io/Rinstapkg/reference/ig_unsave.html</loc>
   </url>
   <url>
     <loc>https://eric88tchong.github.io/Rinstapkg/reference/is_legit_token.html</loc>

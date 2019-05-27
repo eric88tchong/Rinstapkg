@@ -174,7 +174,8 @@ ig_generic_GET <- function(relative_endpoint, query = NULL, item_accessor = NULL
   
   target_data <- if(is.null(item_accessor)) resp_parsed else pluck(resp_parsed, item_accessor)
   # drop any elements that are in the following list of ignored elements
-  ignore_idx <- sapply(sapply(target_data, names), FUN=function(x){any(x %in% c("end_of_feed_demarcator"))})    
+  ignore_idx <- sapply(sapply(target_data, names), FUN=function(x){any(x %in% c("end_of_feed_demarcator", 
+                                                                                "suggestions"))})    
   target_data <- target_data[!ignore_idx]
   result <- if(return_df) items_to_tidy_df(target_data) else target_data
   

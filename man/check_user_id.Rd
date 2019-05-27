@@ -15,12 +15,10 @@ This function checks whether a supplied user_id fits the pattern of one, mostly
 to alert users when supplying a username instead of an id.
 }
 \examples{
-\dontrun{
 # return a warning that we need a User Id, not a Username
 check_user_id("justinbieber")
 
 # check with a real user id
 bieber_user_id <- ig_get_user_id("justinbieber")
 check_user_id(bieber_user_id)
-}
 }

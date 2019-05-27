@@ -2,9 +2,12 @@
 % Please edit documentation in R/media.R
 \name{ig_like}
 \alias{ig_like}
-\title{Like a Post}
+\alias{ig_unlike}
+\title{Like or Unlike a Post}
 \usage{
 ig_like(media_id, verbose = FALSE)
+
+ig_unlike(media_id, verbose = FALSE)
 }
 \arguments{
 \item{media_id}{numeric; the unique id to identify a post which can be 
@@ -14,5 +17,12 @@ the functions retrieving feeds.}
 \item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function takes the \code{media_id} of a post and likes that post for you.
+This function takes the \code{media_id} of a post and likes/unlikes that post for you.
+}
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+liked_result <- ig_like(last_post_media_id)
+unliked_result <- ig_unlike(last_post_media_id)
+}
 }

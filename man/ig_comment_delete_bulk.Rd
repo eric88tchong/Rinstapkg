@@ -20,3 +20,17 @@ found in the \code{"id"} on other comments returned via the Instagram API}
 This function takes the \code{media_id} of a post as well as one or more \code{comment_id}s 
 and then deletes all of those comments
 }
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+comment_result1 <- ig_comment(last_post_media_id, 
+                             comment_text = "New Comment #1")
+comment1_media_id <- comment_result1$comment$media_id 
+comment_result2 <- ig_comment(last_post_media_id, 
+                             comment_text = "New Comment #2")
+comment2_media_id <- comment_result2$comment$media_id                               
+deletion_result <- ig_comment_delete(last_post_media_id, 
+                                     c(comment1_media_id, 
+                                       comment2_media_id))
+}
+}

@@ -180,21 +180,18 @@ the specified path as the cache file.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># log in using basic authentication (username-password)</span>
+    <pre class="examples"><div class='input'><span class='co'># log in using basic authentication (username-password)</span>
 <span class='fu'>ig_auth</span>(<span class='kw'>username</span> <span class='kw'>=</span> <span class='st'>"test@gmail.com"</span>,
-        <span class='kw'>password</span> <span class='kw'>=</span> <span class='st'>"test_password"</span>)
-
+        <span class='kw'>password</span> <span class='kw'>=</span> <span class='st'>"test_password"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in ig_auth(username = "test@gmail.com", password = "test_password"): The password you entered is incorrect. Please try again.</span></div><div class='input'>
 <span class='co'># log in using OAuth 2.0</span>
 <span class='co'># Via brower or refresh of .httr-oauth-Rinstapkg</span>
 <span class='fu'>options</span>(<span class='kw'>Rinstapkg.client_id</span> <span class='kw'>=</span> <span class='st'>"012345678901-99thisisatest99"</span>)
 <span class='fu'>options</span>(<span class='kw'>Rinstapkg.client_secret</span> <span class='kw'>=</span> <span class='st'>"Th1s1sMyC1ientS3cr3t"</span>)
-<span class='fu'>ig_auth</span>()
-
+<span class='fu'>ig_auth</span>()</div><div class='output co'>#&gt; <span class='error'>Error: Not implemented yet</span></div><div class='input'>
 <span class='co'># Save token and log in using it</span>
 <span class='fu'>saveRDS</span>(<span class='no'>.state</span>$<span class='no'>token</span>, <span class='st'>"token.rds"</span>)
-<span class='fu'>ig_auth</span>(<span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"token.rds"</span>)
-<span class='co'># }</span></pre>
+<span class='fu'>ig_auth</span>(<span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"token.rds"</span>)</div><div class='output co'>#&gt; <span class='message'>Not a Token2.0 object.</span></div><div class='output co'>#&gt; <span class='error'>Error: File does not contain a proper token:</span>
+#&gt; <span class='error'>token.rds</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

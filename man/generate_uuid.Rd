@@ -20,9 +20,7 @@ This function generates universally unique ids with or without dashes
 This function is meant to be used internally. Only use when debugging.
 }
 \examples{
-\dontrun{
 id_w_dashes <- generate_uuid()
 id_wo_dashes <- generate_uuid(keep_dashes=FALSE)
-}
 }
 \keyword{internal}

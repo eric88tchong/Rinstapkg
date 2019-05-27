@@ -186,10 +186,11 @@ only include media from that exact location.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># location feed for Paris, France</span>
-<span class='no'>paris_location_feed</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_location_feed</span>(<span class='fl'>6889842</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='co'># location feed for Paris, France</span>
+<span class='no'>paris_location_feed</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_location_feed</span>(<span class='fl'>6889842</span>)</div><div class='output co'>#&gt; <span class='message'>The rank_token is NULL in Rinstapkg's internal .state environment. This can occur if the user is authorized using OAuth 2.0, which doesn't require a rank_token, or the user is not yet performed any authorization routine.</span>
+#&gt; <span class='message'>When/if needed, 'Rinstapkg' will initiate authentication and authorization.</span>
+#&gt; <span class='message'>Or run ig_auth() to trigger this explicitly.</span></div><div class='output co'>#&gt; <span class='error'>Error: Status: fail</span>
+#&gt; <span class='error'>Message: login_required</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

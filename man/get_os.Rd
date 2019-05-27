@@ -17,9 +17,7 @@ is Windows, Mac, or Linux
 This function is meant to be used internally. Only use when debugging.
 }
 \examples{
-\dontrun{
-get_os()
-}
+my_os <- get_os()
 }
 \seealso{
 \url{http://conjugateprior.org/2015/06/identifying-the-os-from-r}

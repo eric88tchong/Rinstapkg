@@ -32,7 +32,7 @@ pages returned, then modify this argument.}
 These functions return all of the posts that you have liked or saved
 }
 \examples{
-\dontrun{
+\donttest{
 my_liked_posts <- ig_get_liked_feed()
 my_saved_posts <- ig_get_saved_feed()
 }

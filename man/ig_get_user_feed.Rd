@@ -39,7 +39,7 @@ pages returned, then modify this argument.}
 This function uses the \code{user_id} to return all posts made by that user.
 }
 \examples{
-\dontrun{
+\donttest{
 bieber_user_id <- ig_get_user_id("justinbieber")
 bieber_feed <- ig_get_user_feed(bieber_user_id)
 }

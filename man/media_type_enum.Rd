@@ -14,11 +14,9 @@ media_type_enum(media_type = c("PHOTO", "VIDEO", "ALBUM"))
 This function returns the integer value of a specified type of media
 }
 \examples{
-\dontrun{
 # photo media are mapped to 1
 media_type_enum("PHOTO")
 
 # an unknown media type returns NULL
 media_type_enum("FAKE_MEDIA_TYPE")
-}
 }

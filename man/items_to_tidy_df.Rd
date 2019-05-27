@@ -20,7 +20,6 @@ a \code{tbl_df} with one row per item
 This function is meant to be used internally. Only use when debugging.
 }
 \examples{
-\dontrun{
 list_dat <- list(list("name"="Item 1", 
                       "letters"=list("cap_letter"="A", 
                                      "lower_letter"="a")), 
@@ -28,6 +27,5 @@ list_dat <- list(list("name"="Item 1",
                       "letters"=list("cap_letter"="B", 
                                      "lower_letter"="b"))) 
 tidy_df_list <- items_to_tidy_df(list_dat)
-}
 }
 \keyword{internal}

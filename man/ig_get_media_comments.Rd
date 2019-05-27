@@ -36,9 +36,10 @@ pages returned, then modify this argument.}
 These functions return the comments and user like data from a single post.
 }
 \examples{
-\dontrun{
+\donttest{
 bieber_user_id <- ig_get_user_id("justinbieber")
 bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
 most_recent_post_comments <- ig_get_media_comments(media_id = bieber_feed$id[1])
+most_recent_post_likers <- ig_get_media_likers(media_id = bieber_feed$id[1])
 }
 }

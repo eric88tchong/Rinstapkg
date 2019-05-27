@@ -41,7 +41,7 @@ location is a very specific place such as a specific night club, it will usually
 only include media from that exact location.
 }
 \examples{
-\dontrun{
+\donttest{
 # location feed for Paris, France
 paris_location_feed <- ig_get_location_feed(6889842)
 }

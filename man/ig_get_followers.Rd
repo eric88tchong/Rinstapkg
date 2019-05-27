@@ -35,7 +35,7 @@ pages returned, then modify this argument.}
 These function returns all of the followers or users that a specific user is following
 }
 \examples{
-\dontrun{
+\donttest{
 bieber_user_id <- ig_get_user_id("justinbieber")
 
 # By default, ig_get_followers will retrieve the top 10 pages of follower data. 

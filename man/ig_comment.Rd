@@ -2,9 +2,12 @@
 % Please edit documentation in R/media.R
 \name{ig_comment}
 \alias{ig_comment}
-\title{Comment on a Post}
+\alias{ig_comment_delete}
+\title{Comment or Delete a Comment on a Post}
 \usage{
 ig_comment(media_id, comment_text, verbose = FALSE)
+
+ig_comment_delete(media_id, comment_id, verbose = FALSE)
 }
 \arguments{
 \item{media_id}{numeric; the unique id to identify a post which can be 
@@ -15,8 +18,21 @@ the functions retrieving feeds.}
 underneath the post}
 
 \item{verbose}{logical; do you want informative messages?}
+
+\item{comment_id}{numeric; the unique id to identify a post which can be 
+found in the \code{"id"} on other comments returned via the Instagram API}
 }
 \description{
-This function takes the \code{media_id} of a post as well as a \code{comment_text}
-and leaves the comment on the post.
+This function takes the \code{media_id} of a post and text for a comment or the 
+id of a comment to manipulate the comment on the post.
+}
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+comment_result <- ig_comment(last_post_media_id, 
+                             comment_text = "New Comment!")
+comment_media_id <- comment_result$comment$media_id                              
+deletion_result <- ig_comment_delete(last_post_media_id, 
+                                     comment_media_id)
+}
 }

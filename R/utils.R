@@ -13,14 +13,13 @@ Rinstapkg_state <- function(){
 #' to alert users when supplying a username instead of an id.
 #' 
 #' @template user_id
-#' @examples \dontrun{
+#' @examples
 #' # return a warning that we need a User Id, not a Username
 #' check_user_id("justinbieber")
 #' 
 #' # check with a real user id
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' check_user_id(bieber_user_id)
-#' }
 #' @export
 check_user_id <- function(user_id){
   if(!is.numeric(user_id)){
@@ -38,13 +37,12 @@ check_user_id <- function(user_id){
 #' This function returns the integer value of a specified type of media
 #' 
 #' @template media_type
-#' @examples \dontrun{
+#' @examples
 #' # photo media are mapped to 1
 #' media_type_enum("PHOTO")
 #' 
 #' # an unknown media type returns NULL
 #' media_type_enum("FAKE_MEDIA_TYPE")
-#' }
 #' @export
 media_type_enum <- function(media_type = c("PHOTO", "VIDEO", "ALBUM")){
   switch(media_type, PHOTO = 1, VIDEO = 2, ALBUM = 8, NULL)
@@ -100,10 +98,8 @@ as_epoch.NULL <- function(x){
 #' the generated Id
 #' @return character
 #' @examples
-#' \dontrun{
 #' id_w_dashes <- generate_uuid()
 #' id_wo_dashes <- generate_uuid(keep_dashes=FALSE)
-#' }
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
@@ -123,7 +119,6 @@ generate_uuid <- function(keep_dashes=TRUE){
 #' @param list_data \code{list}; a list of data to be converted to JSON
 #' @return character
 #' @examples
-#' \dontrun{
 #' login_data <- list('phone_id' = "012345678901-99thisisatest99",
 #'                    '_csrftoken' = "012345678901-99thisisatest99",
 #'                    'username' = "testuser",
@@ -132,7 +127,6 @@ generate_uuid <- function(keep_dashes=TRUE){
 #'                    'password' = "testpassword",
 #'                    'login_attempt_count' = 0)
 #' signed_body <- generate_signed_body(login_json)
-#' }
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
@@ -157,7 +151,6 @@ generate_signed_body <- function(list_data){
 #' @param x \code{list}; a list object where each element is an item
 #' @return \code{tbl_df}
 #' @examples
-#' \dontrun{
 #' list_dat <- list(list("name"="Item 1", 
 #'                       "letters"=list("cap_letter"="A", 
 #'                                      "lower_letter"="a")), 
@@ -165,7 +158,6 @@ generate_signed_body <- function(list_data){
 #'                       "letters"=list("cap_letter"="B", 
 #'                                      "lower_letter"="b"))) 
 #' tidy_df_list <- items_to_tidy_df(list_dat)
-#' }
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal
 #' @export
@@ -182,9 +174,7 @@ items_to_tidy_df <- function(l){
 #'
 #' @return A character string
 #' @examples
-#' \dontrun{
-#' get_os()
-#' }
+#' my_os <- get_os()
 #' @seealso \url{http://conjugateprior.org/2015/06/identifying-the-os-from-r}
 #' @note This function is meant to be used internally. Only use when debugging.
 #' @keywords internal

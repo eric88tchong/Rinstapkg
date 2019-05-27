@@ -16,3 +16,8 @@ with one row per entity or as a list with one element per entity?}
 This function returns notifications regarding the people you follow, such as 
 what posts they've liked or that they've started following other people.
 }
+\examples{
+\donttest{
+my_following_recent_activity <- ig_following_recent_activity()
+}
+}

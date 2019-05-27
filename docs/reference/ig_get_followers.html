@@ -172,16 +172,13 @@ pages returned, then modify this argument.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>bieber_user_id</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ig_get_user_id.html'>ig_get_user_id</a></span>(<span class='st'>"justinbieber"</span>)
-
+    <pre class="examples"><div class='input'><span class='no'>bieber_user_id</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='ig_get_user_id.html'>ig_get_user_id</a></span>(<span class='st'>"justinbieber"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Status: fail</span>
+#&gt; <span class='error'>Message: login_required</span></div><div class='input'>
 <span class='co'># By default, ig_get_followers will retrieve the top 10 pages of follower data. </span>
 <span class='co'># This is because IG users like Justin Bieber have 100M+ followers, so it could </span>
 <span class='co'># take a long time to pull. If you would really like to get all users, then set</span>
 <span class='co'># the max_pages argument to Inf.</span>
-<span class='no'>bieber_followers</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_followers</span>(<span class='no'>bieber_user_id</span>)
-<span class='no'>bieber_following</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_following</span>(<span class='no'>bieber_user_id</span>)
-<span class='co'># }</span></pre>
+<span class='no'>bieber_followers</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_followers</span>(<span class='no'>bieber_user_id</span>)</div><div class='output co'>#&gt; <span class='error'>Error in check_user_id(user_id): object 'bieber_user_id' not found</span></div><div class='input'><span class='no'>bieber_following</span> <span class='kw'>&lt;-</span> <span class='fu'>ig_get_following</span>(<span class='no'>bieber_user_id</span>)</div><div class='output co'>#&gt; <span class='error'>Error in check_user_id(user_id): object 'bieber_user_id' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

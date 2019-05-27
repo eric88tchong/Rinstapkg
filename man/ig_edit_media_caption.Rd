@@ -18,3 +18,10 @@ the functions retrieving feeds.}
 \description{
 This function can be used to edit the caption of a post that has already been made.
 }
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+edit_result <- ig_edit_media_caption(last_post_media_id, 
+                                     caption_text = "New, Edited Caption")
+}
+}

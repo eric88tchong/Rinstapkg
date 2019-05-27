@@ -34,7 +34,7 @@ pages returned, then modify this argument.}
 This fuction returns all of the posts that the specified user was tagged in.
 }
 \examples{
-\dontrun{
+\donttest{
 bieber_user_id <- ig_get_user_id("justinbieber")
 tagged_bieber_posts <- ig_get_user_tags(bieber_user_id)
 }

@@ -1,9 +1,14 @@
-#' Like a Post
+#' Like or Unlike a Post
 #' 
-#' This function takes the \code{media_id} of a post and likes that post for you.
+#' This function takes the \code{media_id} of a post and likes/unlikes that post for you.
 #' 
 #' @template media_id
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' liked_result <- ig_like(last_post_media_id)
+#' unliked_result <- ig_unlike(last_post_media_id)
+#' }
 #' @export
 ig_like <- function(media_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -16,12 +21,7 @@ ig_like <- function(media_id, verbose = FALSE){
                   verbose = verbose)
 }
 
-#' Unlike a Post
-#' 
-#' This function takes the \code{media_id} of a post and unlikes that post for you.
-#' 
-#' @template media_id
-#' @template verbose
+#' @rdname ig_like
 #' @export
 ig_unlike <- function(media_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -34,13 +34,18 @@ ig_unlike <- function(media_id, verbose = FALSE){
                   verbose = verbose)
 }
 
-#' Save a Post
+#' Save or Unsave a Post
 #' 
-#' This function takes the \code{media_id} of a post and puts that post in the 
-#' Saved folder within Instagram.
+#' This function takes the \code{media_id} of a post and adds/removes that post from 
+#' the Saved folder within Instagram.
 #' 
 #' @template media_id
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' save_result <- ig_save(last_post_media_id)
+#' unsave_result <- ig_unsave(last_post_media_id)
+#' }
 #' @export
 ig_save <- function(media_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -53,13 +58,7 @@ ig_save <- function(media_id, verbose = FALSE){
                   verbose = verbose)
 }
 
-#' Unsave a Post
-#' 
-#' This function takes the \code{media_id} of a post and removes that post from 
-#' the Saved folder within Instagram.
-#' 
-#' @template media_id
-#' @template verbose
+#' @rdname ig_save
 #' @export
 ig_unsave <- function(media_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -72,15 +71,24 @@ ig_unsave <- function(media_id, verbose = FALSE){
                   verbose = verbose)
 }
 
-#' Comment on a Post
+#' Comment or Delete a Comment on a Post
 #' 
-#' This function takes the \code{media_id} of a post as well as a \code{comment_text}
-#' and leaves the comment on the post.
+#' This function takes the \code{media_id} of a post and text for a comment or the 
+#' id of a comment to manipulate the comment on the post.
 #' 
 #' @template media_id
 #' @param comment_text character; the text that would be posted as a comment 
 #' underneath the post
+#' @template comment_id
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' comment_result <- ig_comment(last_post_media_id, 
+#'                              comment_text = "New Comment!")
+#' comment_media_id <- comment_result$comment$media_id                              
+#' deletion_result <- ig_comment_delete(last_post_media_id, 
+#'                                      comment_media_id)
+#' }
 #' @export
 ig_comment <- function(media_id, comment_text, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -93,14 +101,7 @@ ig_comment <- function(media_id, comment_text, verbose = FALSE){
                   verbose = verbose)
 }    
 
-#' Delete a Comment on a Post
-#' 
-#' This function takes the \code{media_id} of a post as well as the \code{comment_id}
-#' that the user wants to delete and removes that comment from the post.
-#' 
-#' @template media_id
-#' @template comment_id
-#' @template verbose
+#' @rdname ig_comment
 #' @export
 ig_comment_delete <- function(media_id, comment_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -121,6 +122,18 @@ ig_comment_delete <- function(media_id, comment_id, verbose = FALSE){
 #' @template media_id
 #' @template comment_id
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' comment_result1 <- ig_comment(last_post_media_id, 
+#'                              comment_text = "New Comment #1")
+#' comment1_media_id <- comment_result1$comment$media_id 
+#' comment_result2 <- ig_comment(last_post_media_id, 
+#'                              comment_text = "New Comment #2")
+#' comment2_media_id <- comment_result2$comment$media_id                               
+#' deletion_result <- ig_comment_delete(last_post_media_id, 
+#'                                      c(comment1_media_id, 
+#'                                        comment2_media_id))
+#' }
 #' @export
 ig_comment_delete_bulk <- function(media_id, comment_id, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -141,10 +154,10 @@ ig_comment_delete_bulk <- function(media_id, comment_id, verbose = FALSE){
 #' 
 #' @template media_id
 #' @template verbose
-#' @examples \dontrun{
+#' @examples \donttest{
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
-#' most_recent_post <- ig_get_media_info(media_id = bieber_feed$id[1])
+#' most_recent_post_info <- ig_get_media_info(media_id = bieber_feed$id[1])
 #' }
 #' @export
 ig_get_media_info <- function(media_id, verbose = FALSE){
@@ -161,10 +174,11 @@ ig_get_media_info <- function(media_id, verbose = FALSE){
 #' 
 #' @template media_id
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' bieber_feed <- ig_get_user_feed(bieber_user_id, paginate = FALSE)
 #' most_recent_post_comments <- ig_get_media_comments(media_id = bieber_feed$id[1])
+#' most_recent_post_likers <- ig_get_media_likers(media_id = bieber_feed$id[1])
 #' }
 #' @export
 ig_get_media_comments <- function(media_id, max_id = NULL, return_df = TRUE, paginate = TRUE,
@@ -200,6 +214,11 @@ ig_get_media_likers <- function(media_id, max_id = NULL, return_df = TRUE, pagin
 #' @template media_id
 #' @param caption_text character; the text below a post's image or video.
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' edit_result <- ig_edit_media_caption(last_post_media_id, 
+#'                                      caption_text = "New, Edited Caption")
+#' }
 #' @export
 ig_edit_media_caption <- function(media_id, caption_text, verbose = FALSE){
   current_state <- Rinstapkg_state()
@@ -218,6 +237,10 @@ ig_edit_media_caption <- function(media_id, caption_text, verbose = FALSE){
 #' 
 #' @template media_id
 #' @template verbose
+#' @examples \donttest{
+#' last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+#' deletion_result <- ig_delete_media(last_post_media_id)
+#' }
 #' @export
 ig_delete_media <- function(media_id, verbose = FALSE){
   current_state <- Rinstapkg_state()

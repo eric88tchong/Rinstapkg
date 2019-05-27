@@ -32,6 +32,8 @@ Useful links:
 Other contributors:
 \itemize{
   \item Steven M. Mortimer \email{reportmort@gmail.com} [contributor]
+  \item Jennifer Bryan \email{jenny@rstudio.com} [contributor]
+  \item Joanna Zhao \email{joanna.zhao@alumni.ubc.ca} [contributor]
 }
 
 }

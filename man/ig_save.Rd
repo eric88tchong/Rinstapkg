@@ -2,9 +2,12 @@
 % Please edit documentation in R/media.R
 \name{ig_save}
 \alias{ig_save}
-\title{Save a Post}
+\alias{ig_unsave}
+\title{Save or Unsave a Post}
 \usage{
 ig_save(media_id, verbose = FALSE)
+
+ig_unsave(media_id, verbose = FALSE)
 }
 \arguments{
 \item{media_id}{numeric; the unique id to identify a post which can be 
@@ -14,6 +17,13 @@ the functions retrieving feeds.}
 \item{verbose}{logical; do you want informative messages?}
 }
 \description{
-This function takes the \code{media_id} of a post and puts that post in the 
-Saved folder within Instagram.
+This function takes the \code{media_id} of a post and adds/removes that post from 
+the Saved folder within Instagram.
+}
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+save_result <- ig_save(last_post_media_id)
+unsave_result <- ig_unsave(last_post_media_id)
+}
 }

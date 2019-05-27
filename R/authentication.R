@@ -52,8 +52,7 @@
 #' file \code{.httr-oauth-Rinstapkg}, FALSE means don't cache. A string means use 
 #' the specified path as the cache file.
 #' @template verbose
-#' @examples
-#' \dontrun{
+#' @examples \donttest{
 #' # log in using basic authentication (username-password)
 #' ig_auth(username = "test@@gmail.com", 
 #'         password = "test_password")

@@ -16,3 +16,9 @@ the functions retrieving feeds.}
 \description{
 This function can be used to delete a post.
 }
+\examples{
+\donttest{
+last_post_media_id <- ig_my_timeline(paginate = FALSE)$id[1]
+deletion_result <- ig_delete_media(last_post_media_id)
+}
+}

@@ -19,7 +19,6 @@ This function generates signed json body when sending information to the API
 This function is meant to be used internally. Only use when debugging.
 }
 \examples{
-\dontrun{
 login_data <- list('phone_id' = "012345678901-99thisisatest99",
                    '_csrftoken' = "012345678901-99thisisatest99",
                    'username' = "testuser",
@@ -28,6 +27,5 @@ login_data <- list('phone_id' = "012345678901-99thisisatest99",
                    'password' = "testpassword",
                    'login_attempt_count' = 0)
 signed_body <- generate_signed_body(login_json)
-}
 }
 \keyword{internal}

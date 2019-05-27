@@ -15,3 +15,8 @@ with one row per entity or as a list with one element per entity?}
 \description{
 This function returns direct messages for your account.
 }
+\examples{
+\donttest{
+my_inbox <- ig_my_inbox()
+}
+}

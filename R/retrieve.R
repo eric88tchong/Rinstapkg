@@ -5,7 +5,7 @@
 #' 
 #' @template username
 #' @template verbose
-#' @examples \dontrun{
+#' @examples \donttest{
 #' ig_get_user_id("justinbieber")
 #' }
 #' @export
@@ -20,7 +20,7 @@ ig_get_user_id <- function(username, verbose = FALSE) {
 #' 
 #' @template username
 #' @template verbose
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # get Jusin Bieber's profile and to see how many followers he has
 #' bieber_follower_cnt <- ig_get_user_profile("justinbieber")$follower_count
 #' }
@@ -52,7 +52,7 @@ NULL
 #' @template min_timestamp
 #' @template ranked_content
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' bieber_feed <- ig_get_user_feed(bieber_user_id)
 #' }
@@ -81,7 +81,7 @@ ig_get_user_feed <- function(user_id, max_id = NULL, min_timestamp = NULL,
 #' @template user_id
 #' @template ranked_content
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' tagged_bieber_posts <- ig_get_user_tags(bieber_user_id)
 #' }
@@ -110,7 +110,7 @@ ig_get_user_tags <- function(user_id, max_id = NULL, ranked_content = TRUE,
 #' @template hashtag
 #' @template ranked_content
 #' @inheritParams feed
-#' @examples \dontrun{ 
+#' @examples \donttest{ 
 #' beliebers_tagged_posts <- ig_get_hashtag_feed("beliebers")
 #' }
 #' @export
@@ -141,7 +141,7 @@ ig_get_hashtag_feed <- function(hashtag, max_id = NULL, ranked_content = TRUE,
 #' location is a very specific place such as a specific night club, it will usually 
 #' only include media from that exact location.
 #' @seealso \url{https://docs.social-streams.com/article/118-find-instagram-location-id}
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # location feed for Paris, France
 #' paris_location_feed <- ig_get_location_feed(6889842)
 #' }
@@ -167,7 +167,7 @@ ig_get_location_feed <- function(location_id, max_id = NULL, ranked_content = TR
 #' 
 #' @template ranked_content
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' most_popular_posts <- ig_get_popular_feed()
 #' }
 #' @export
@@ -191,7 +191,7 @@ ig_get_popular_feed <- function(max_id = NULL, ranked_content = TRUE,
 #' These functions return all of the posts that you have liked or saved
 #' 
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' my_liked_posts <- ig_get_liked_feed()
 #' my_saved_posts <- ig_get_saved_feed()
 #' }
@@ -228,7 +228,7 @@ ig_get_saved_feed <- function(max_id = NULL, return_df = TRUE, paginate = TRUE,
 #' 
 #' @template user_id
 #' @inheritParams feed
-#' @examples \dontrun{
+#' @examples \donttest{
 #' bieber_user_id <- ig_get_user_id("justinbieber")
 #' 
 #' # By default, ig_get_followers will retrieve the top 10 pages of follower data. 
@@ -272,7 +272,7 @@ ig_get_following <- function(user_id, max_id = NULL, return_df = TRUE,
 # #' 
 # #' @template user_id
 # #' @param post_index integer; an index starting at 1 to indicate the most recent post
-# #' @examples \dontrun{
+# #' @examples \donttest{
 # #' # return the media id for Jusin Bieber's 2nd to last post
 # #' bieber_user_id <- ig_get_user_id("justinbieber")
 # #' post2_media_id <- ig_get_media_id(bieber_user_id, post_index = 2)
@@ -291,7 +291,7 @@ ig_get_following <- function(user_id, max_id = NULL, return_df = TRUE,
 # #' 
 # #' @template user_id
 # #' @inheritParams feed
-# #' @examples \dontrun{
+# #' @examples \donttest{
 # #' bieber_user_id <- ig_get_user_id("justinbieber")
 # #' tagged_bieber_posts <- ig_get_geomedia(bieber_user_id)
 # #' }

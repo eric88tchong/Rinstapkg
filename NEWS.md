@@ -28,6 +28,7 @@ functions to pull feeds and interact with media on Instagram.
     * `ig_unsave()`    
     * `ig_comment()`
     * `ig_comment_delete()`
+    * `ig_comment_delete_bulk()`
     * `ig_get_media_info()`
     * `ig_get_media_comments()`
     * `ig_get_media_likers()`

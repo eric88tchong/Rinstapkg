@@ -34,7 +34,7 @@ need to get their \code{user_id}. If you know the username exactly then you can
 use \link{ig_get_user_profile} to pull the profile information without searching.
 }
 \examples{
-\dontrun{
+\donttest{
 # search for usernames like Justin Bieber
 bieber_users <- ig_search_users("justinbieb")
 }

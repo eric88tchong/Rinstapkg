@@ -31,7 +31,6 @@ Here are some of the package highlights:
     * `ig_my_timeline()`, `ig_get_user_feed()`, `ig_get_hashtag_feed()`, and more!
   * Retrieve Users, Tags, Comments, and Perform Searches: 
     * `ig_get_followers()`, `ig_get_user_tags()`, `ig_get_media_comments()`, `ig_search_users()`, etc.
-  * Utility calls (`ig_change_password()`, `ig_sync_features()`)
 
 **NOTE:** With great power comes great responsibility. Use of this package means 
 that you will not use it to spam, harass, or perform other nefarious acts.

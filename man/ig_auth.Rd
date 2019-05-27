@@ -37,7 +37,7 @@ permission to operate on your behalf. By default, these user credentials are
 cached in a file named \code{.httr-oauth-Rinstapkg} in the current working directory.
 }
 \examples{
-\dontrun{
+\donttest{
 # log in using basic authentication (username-password)
 ig_auth(username = "test@gmail.com", 
         password = "test_password")

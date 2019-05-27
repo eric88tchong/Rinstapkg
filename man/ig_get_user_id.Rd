@@ -17,7 +17,7 @@ This function accepts a Instagram username and returns their \code{user_id},
 which is needed for other functions
 }
 \examples{
-\dontrun{
+\donttest{
 ig_get_user_id("justinbieber")
 }
 }
