@@ -26,6 +26,6 @@ login_data <- list('phone_id' = "012345678901-99thisisatest99",
                    'device_id' = "012345678901-99thisisatest99",
                    'password' = "testpassword",
                    'login_attempt_count' = 0)
-signed_body <- generate_signed_body(login_json)
+signed_body <- generate_signed_body(login_data)
 }
 \keyword{internal}
