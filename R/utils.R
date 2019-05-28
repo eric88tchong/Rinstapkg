@@ -14,18 +14,18 @@ Rinstapkg_state <- function(){
 #' 
 #' @template user_id
 #' @examples
-#' # return a warning that we need a User Id, not a Username
-#' check_user_id("justinbieber")
-#' 
 #' # check with a real user id
-#' bieber_user_id <- ig_get_user_id("justinbieber")
+#' bieber_user_id <- 6860189 # returned using ig_get_user_id("justinbieber")
 #' check_user_id(bieber_user_id)
+#' 
+#' # this will return a warning that we need a User Id, not a Username
+#' #check_user_id("justinbieber")
 #' @export
 check_user_id <- function(user_id){
   if(!is.numeric(user_id)){
     valid_string <- grepl("^[0-9]+$", as.character(user_id))
     if(!valid_string){
-      warning(sprintf("Invalid User Id - Check that this is not a username: %s", user_id), 
+      warning(sprintf("Invalid User Id - Check that this is not a Username: %s", user_id), 
               call. = FALSE)
     }
   }
