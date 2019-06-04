@@ -1,13 +1,14 @@
 Package: Rinstapkg
 Title: An Implementation of the 'Instagram' API Using Tidy Principles
 Version: 0.1.0
-Date: 2019-05-18
-Description: Provides functions to use the Instagram API to get feed and user information, 
-    but also performs basic in-app functionality such as liking, commenting, following, 
-    and blocking. Use of this package means that you will not use it to spam, harass, 
-    or perform other nefarious acts. For more details on how to use the API please 
-    see this package's website <https://eric88tchong.github.io/Rinstapkg/> for more 
-    information, documentation, and examples.
+Date: 2019-06-04
+Description: Provides functions to use the 'Instagram' API <https://developers.facebook.com/docs/instagram-api> 
+    to get feed and user information, but also performs basic in-app functionality 
+    such as liking, commenting, following, and blocking. Use of this package means 
+    that you will not use it to spam, harass, or perform other nefarious acts. 
+    For more details on how to use the API please see this package's website 
+    <https://eric88tchong.github.io/Rinstapkg/> for more information, documentation, 
+    and examples.
 Authors@R: c(
     person("Eric", "Tchong", , "est2fr@virginia.edu", c("aut", "cre")),
     person(c("Steven", "M."), "Mortimer", , "reportmort@gmail.com", c("ctb")),
