@@ -3,6 +3,7 @@ url: https://eric88tchong.github.io/Rinstapkg
 template:
   params:
     bootswatch: spacelab
+    ganalytics: UA-141699764-1
 
 home:
   strip_header: true
