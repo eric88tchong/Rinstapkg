@@ -9,13 +9,21 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started">
+<script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Getting Started">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-141699764-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141699764-1');
+</script>
 </head>
 <body>
     <div class="container template-article">
@@ -73,7 +81,13 @@
   </a>
 </li>
       </ul>
+<form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
 </div>
+      </form>
+      
+    </div>
 <!--/.nav-collapse -->
   </div>
 <!--/.container -->
@@ -154,20 +168,20 @@
 <a class="sourceLine" id="cb3-3" title="3">bieber_user_id &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_user_id.html">ig_get_user_id</a></span>(<span class="st">"justinbieber"</span>)</a>
 <a class="sourceLine" id="cb3-4" title="4">follower_results &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_followers.html">ig_get_followers</a></span>(bieber_user_id)</a>
 <a class="sourceLine" id="cb3-5" title="5">follower_results</a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; # A tibble: 2,200 x 9</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; # A tibble: 2,198 x 9</span></a>
 <a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;         pk username full_name is_private profile_pic_url profile_pic_id</span></a>
 <a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;      &lt;chr&gt;           &lt;chr&gt;         </span></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  1 1.36e10 0fficia… Kristen … FALSE      https://sconte… 2058810088249…</span></a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  2 1.28e 9 dirty.s… 📀 DIRTY … FALSE      https://sconte… 2057247657673…</span></a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  3 1.36e10 selin_4… ""        TRUE       https://sconte… 2061039304907…</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  4 3.45e 9 mustafi… Fida_Col… FALSE      https://sconte… 2057455588908…</span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  5 6.64e 9 karimam… Karim Am… FALSE      https://sconte… 1943216958914…</span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  6 1.74e 8 line_ol… Line Rei… FALSE      https://sconte… 2029976920927…</span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  7 5.79e 9 silfyaf… silfyafa… FALSE      https://sconte… 2016677949327…</span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  8 1.43e10 ismaisy… ismail i… FALSE      https://sconte… 2059066347488…</span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  9 8.17e 9 syafara… ""        TRUE       https://sconte… 2059033205231…</span></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; 10 5.78e 9 m4z1_    "Moaued\… FALSE      https://sconte… 1835001759304…</span></a>
-<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # … with 2,190 more rows, and 3 more variables: is_verified &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="co">#&gt;  1 2.07e 9 leasmami LeAs MaMi TRUE       https://sconte… 1830052145585…</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="co">#&gt;  2 8.59e 9 _rodrig… SRTA. RO… FALSE      https://sconte… 2049594173313…</span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;  3 7.16e 9 ramfam_… 3shit💰Da… FALSE      https://sconte… 1720535502326…</span></a>
+<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  4 4.22e 9 smarck_… Marco Pe… FALSE      https://sconte… 1992154923319…</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  5 1.79e 8 valeria… VALERIA … FALSE      https://sconte… 2048321227919…</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  6 1.47e10 amababa… amababa   FALSE      https://sconte… 2063841347500…</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt;  7 1.47e10 avocado… Avocado … FALSE      https://sconte… 2064066587381…</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt;  8 8.51e 9 holy_pl… ""        FALSE      https://sconte… 2036652619575…</span></a>
+<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt;  9 4.30e 9 chavaa_… Chava Gu… FALSE      https://sconte… 2059168557461…</span></a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; 10 2.54e 9 jb_car_… FFM Cars… FALSE      https://sconte… 1431378289334…</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # … with 2,188 more rows, and 3 more variables: is_verified &lt;lgl&gt;,</span></a>
 <a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, latest_reel_media &lt;int&gt;</span></a></code></pre></div>
 <p>In the example above you’ll notice that we didn’t retrieve all 100M+ followers that Justin Bieber has. By default the function only returns the top 10 pages of followers, but you can set the <code>max_pages</code> argument equal to <code>Inf</code> to return all of them. Caution: This might take awhile!</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># return all 100M+ followers of Justin Bieber</span></a>
@@ -179,7 +193,7 @@
 <p>With the <code><a href="../reference/ig_get_followers.html">ig_get_following()</a></code> function you can retrieve a <code>tbl_df</code> of all the users that a particular user is following. For example, Justin Bieber follows ~100 users. Who are those lucky few?</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">following_results &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ig_get_followers.html">ig_get_following</a></span>(bieber_user_id)</a>
 <a class="sourceLine" id="cb5-2" title="2">following_results</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; # A tibble: 181 x 10</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; # A tibble: 178 x 10</span></a>
 <a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;         pk username full_name is_private profile_pic_url profile_pic_id</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;lgl&gt;      &lt;chr&gt;           &lt;chr&gt;         </span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  1 6.96e 9 redcarp… 💕 ZaZa 💕… FALSE      https://sconte… 2035788434706…</span></a>
@@ -190,9 +204,9 @@
 <a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  6 1.89e 8 nickjon… Nick Jon… FALSE      https://sconte… 2041658194653…</span></a>
 <a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  7 8.01e 9 lalalal… LISA      FALSE      https://sconte… 2017225651148…</span></a>
 <a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  8 1.86e 8 teddysp… Ed Sheer… FALSE      https://sconte… 2050041949683…</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  9 1.11e10 hdwg1    ""        TRUE       https://instag… &lt;NA&gt;          </span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; 10 2.98e 7 kriskli… Kristin … FALSE      https://sconte… 1698661949418…</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; # … with 171 more rows, and 4 more variables: is_verified &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  9 1.11e10 hdwg1    ""        TRUE       https://sconte… &lt;NA&gt;          </span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; 10 2.98e 7 kriskli… Kristin … FALSE      https://sconte… 2061217361650…</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; # … with 168 more rows, and 4 more variables: is_verified &lt;lgl&gt;,</span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; #   has_anonymous_profile_picture &lt;lgl&gt;, latest_reel_media &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; #   is_favorite &lt;lgl&gt;</span></a></code></pre></div>
 </div>
@@ -221,6 +235,20 @@
 </div>
 
   
-
-  </body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script>
+  docsearch({
+    
+    
+    apiKey: '97f70020802dc01c00099917d24376a0',
+    indexName: 'rinstapkg',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+</body>
 </html>
