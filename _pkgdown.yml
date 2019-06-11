@@ -4,6 +4,9 @@ template:
   params:
     bootswatch: spacelab
     ganalytics: UA-141699764-1
+    docsearch: 
+      api_key: 97f70020802dc01c00099917d24376a0
+      index_name: rinstapkg
 
 home:
   strip_header: true
